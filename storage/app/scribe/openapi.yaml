@@ -1,0 +1,981 @@
+openapi: 3.0.3
+info:
+  title: 'Linkscircle API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://app.linkscircle.com'
+paths:
+  /api/v1/websites:
+    get:
+      summary: 'Get All Websites'
+      operationId: getAllWebsites
+      description: 'This endpoint is used to fetch all available websites from the database through authentication.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+          example: 1.0
+          required: false
+          schema:
+            type: number
+            description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+            example: 1.0
+        -
+          in: query
+          name: limit
+          description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+          example: 20.0
+          required: false
+          schema:
+            type: number
+            description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+            example: 20.0
+        -
+          in: header
+          name: token
+          description: ''
+          example: 5VP6Z86fDkcab31Edhv4ega
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get All Websites'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 90644632
+                      name: '****************'
+                      url: 'https://www.*********.au/'
+                      partner_types:
+                        - Coupons/Deals
+                        - Content/Blog
+                      categories:
+                        - 'News & Blogging'
+                        - Business
+                        - Shopping
+                        - Lifestyle
+                      status: Active
+                      monthly_traffic: '25000'
+                      monthly_page_views: '55000'
+                      last_updated: 08/14/2023
+                  pagination:
+                    total: 1
+                    count: 1
+                    per_page: 20
+                    current_page: 1
+                    total_pages: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 90644632
+                        name: '****************'
+                        url: 'https://www.*********.au/'
+                        partner_types:
+                          - Coupons/Deals
+                          - Content/Blog
+                        categories:
+                          - 'News & Blogging'
+                          - Business
+                          - Shopping
+                          - Lifestyle
+                        status: Active
+                        monthly_traffic: '25000'
+                        monthly_page_views: '55000'
+                        last_updated: 08/14/2023
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 90644632
+                        name:
+                          type: string
+                          example: '****************'
+                        url:
+                          type: string
+                          example: 'https://www.*********.au/'
+                        partner_types:
+                          type: array
+                          example:
+                            - Coupons/Deals
+                            - Content/Blog
+                          items:
+                            type: string
+                        categories:
+                          type: array
+                          example:
+                            - 'News & Blogging'
+                            - Business
+                            - Shopping
+                            - Lifestyle
+                          items:
+                            type: string
+                        status:
+                          type: string
+                          example: Active
+                        monthly_traffic:
+                          type: string
+                          example: '25000'
+                        monthly_page_views:
+                          type: string
+                          example: '55000'
+                        last_updated:
+                          type: string
+                          example: 08/14/2023
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+                      count:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      current_page:
+                        type: integer
+                        example: 1
+                      total_pages:
+                        type: integer
+                        example: 1
+      tags:
+        - Websites
+  '/api/v1/websites/{id}':
+    get:
+      summary: 'Get Website By ID'
+      operationId: getWebsiteByID
+      description: ''
+      parameters:
+        -
+          in: header
+          name: token
+          description: ''
+          example: k4gv53fdZ8abDhVec6EPa16
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get Website By ID'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 90644632
+                      name: '****************'
+                      url: 'https://www.*********.au/'
+                      partner_types:
+                        - Coupons/Deals
+                        - Content/Blog
+                      categories:
+                        - 'News & Blogging'
+                        - Business
+                        - Shopping
+                        - Lifestyle
+                      status: Active
+                      monthly_traffic: '25000'
+                      monthly_page_views: '55000'
+                      last_updated: 08/14/2023
+                  pagination:
+                    total: 1
+                    count: 1
+                    per_page: 20
+                    current_page: 1
+                    total_pages: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 90644632
+                        name: '****************'
+                        url: 'https://www.*********.au/'
+                        partner_types:
+                          - Coupons/Deals
+                          - Content/Blog
+                        categories:
+                          - 'News & Blogging'
+                          - Business
+                          - Shopping
+                          - Lifestyle
+                        status: Active
+                        monthly_traffic: '25000'
+                        monthly_page_views: '55000'
+                        last_updated: 08/14/2023
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 90644632
+                        name:
+                          type: string
+                          example: '****************'
+                        url:
+                          type: string
+                          example: 'https://www.*********.au/'
+                        partner_types:
+                          type: array
+                          example:
+                            - Coupons/Deals
+                            - Content/Blog
+                          items:
+                            type: string
+                        categories:
+                          type: array
+                          example:
+                            - 'News & Blogging'
+                            - Business
+                            - Shopping
+                            - Lifestyle
+                          items:
+                            type: string
+                        status:
+                          type: string
+                          example: Active
+                        monthly_traffic:
+                          type: string
+                          example: '25000'
+                        monthly_page_views:
+                          type: string
+                          example: '55000'
+                        last_updated:
+                          type: string
+                          example: 08/14/2023
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+                      count:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      current_page:
+                        type: integer
+                        example: 1
+                      total_pages:
+                        type: integer
+                        example: 1
+      tags:
+        - Websites
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the website.'
+        example: 90644632
+        required: true
+        schema:
+          type: integer
+  /api/v1/advertisers:
+    get:
+      summary: 'Get All Advertisers'
+      operationId: getAllAdvertisers
+      description: 'This endpoint is used to fetch all available advertisers from the database through authentication.'
+      parameters:
+        -
+          in: query
+          name: wid
+          description: 'The website ID is required to filter the data.'
+          example: 90644632.0
+          required: true
+          schema:
+            type: number
+            description: 'The website ID is required to filter the data.'
+            example: 90644632.0
+        -
+          in: query
+          name: page
+          description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+          example: 1.0
+          required: false
+          schema:
+            type: number
+            description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+            example: 1.0
+        -
+          in: query
+          name: limit
+          description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+          example: 20.0
+          required: false
+          schema:
+            type: number
+            description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+            example: 20.0
+        -
+          in: header
+          name: token
+          description: ''
+          example: 6DPV3dbZvgkfac4e61h5E8a
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get All Advertisers'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 57601894
+                      name: '4 Corners Cannabis'
+                      url: 'http://4cornerscannabis.com/'
+                      logo: 'https://app.linkscircle.com/storage/4cornerscannabis.gif'
+                      primary_regions:
+                        - US
+                      supported_regions:
+                        - CA
+                      currency_code: null
+                      average_payment_time: null
+                      epc: null
+                      click_through_url: 'https://go.linkscircle.com/track/{id1}/{id2}'
+                      click_through_short_url: 'https://go.linkscircle.com/short/*******'
+                      categories:
+                        - Entertainment
+                        - Lifestyle
+                      validation_days: '30'
+                      deeplink_enabled: 1
+                      program_restrictions:
+                        - 'PPC Site'
+                        - 'TM+ Bidding'
+                      promotional_methods:
+                        - 'Social Media'
+                        - 'Email Marketing'
+                        - 'Blog Site'
+                        - 'Content Site'
+                        - 'Coupon Site'
+                      description: '<div data-v-5a495e4e="" id="about-description" bis_skin_checked="1" style="margin: 0px; padding: 30px; border-bottom: 1px solid rgb(234, 235, 237); color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Description</h2><div data-v-5a495e4e="" class="content" bis_skin_checked="1" style="margin: 0px; padding: 0px; line-height: 18px;">4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM</div></div><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Preferred business models</h2><div data-v-5a495e4e="" class="promo-methods-container" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Loyalty/Rewards</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Deal/Coupons</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Social Influencer</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Content/Reviews</div></div></div></div></div><div data-v-e3ef0116="" id="brand-stats-outer-container" bis_skin_checked="1" style="margin: 0px; padding: 30px; display: flex; align-items: center; justify-content: center; color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">30 Day EPC</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">NEW</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Response</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">19%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Acceptance</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">100%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Funding Status</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">83%</div></div></div></div>'
+                      short_description: '4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM'
+                      program_policies: '<h3 class="ioHeader" style="margin-top: 30px; margin-right: 0px; margin-left: 0px; padding: 0px; font-size: 32px; font-weight: 500; color: rgb(45, 62, 80); font-family: Roboto, sans-serif;">Mar 28, 2023 10:23 PDT - Onwards</h3><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell;"><span class="name" style="margin: 0px; padding: 0px;">Online Sale:</span>&nbsp;<span class="payout" style="margin: 0px; padding: 0px;">20%</span>&nbsp;<span class="currency" style="margin: 0px; padding: 0px; text-transform: uppercase; color: rgb(199, 203, 208);">USD</span></div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="heading1" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 20px;">Payout Details</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Default Payout</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">20% of order sale amount</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Schedule</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Action Locking</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are locked 1 month(s) after end of the month they are tracked</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Invoicing</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are invoiced on the 3 of the month after they lock</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Payout Scheduling</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Approved transactions are paid 15 day(s) after the end of the day they are invoiced</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Qualified Referrals</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Credit Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Last Click</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Referral Window</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Allow referrals from clicks within 30 day(s)</div></div></div></div></div><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="generalTermsHeading" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 22px; display: table-cell;">General Terms</div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="labelLine" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Currency</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Financial transactions covered by this Contract will be processed in the USD currency. Currency exchanges will occur when you or your partner(s) have set a different default currency in account settings.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Change Notification Period</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">The Contract can be changed or cancelled with 1 day(s) notification to the media partner.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Reversal Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Reversal of performance advertising actions are decided by the Advertiser governed by a max reversal percentage of 100%</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Media Partner Tracking Pixel</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Advertiser does NOT allow media partner to fire their tracking pixel when the consumer action is completed.</div></div></div></div></div>'
+                      type: api
+                      status: joined
+                      commission: 20%
+                      goto_cookie_lifetime: null
+                      exclusive: 0
+                  pagination:
+                    total: 7024
+                    count: 20
+                    per_page: 20
+                    current_page: 1
+                    total_pages: 352
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 57601894
+                        name: '4 Corners Cannabis'
+                        url: 'http://4cornerscannabis.com/'
+                        logo: 'https://app.linkscircle.com/storage/4cornerscannabis.gif'
+                        primary_regions:
+                          - US
+                        supported_regions:
+                          - CA
+                        currency_code: null
+                        average_payment_time: null
+                        epc: null
+                        click_through_url: 'https://go.linkscircle.com/track/{id1}/{id2}'
+                        click_through_short_url: 'https://go.linkscircle.com/short/*******'
+                        categories:
+                          - Entertainment
+                          - Lifestyle
+                        validation_days: '30'
+                        deeplink_enabled: 1
+                        program_restrictions:
+                          - 'PPC Site'
+                          - 'TM+ Bidding'
+                        promotional_methods:
+                          - 'Social Media'
+                          - 'Email Marketing'
+                          - 'Blog Site'
+                          - 'Content Site'
+                          - 'Coupon Site'
+                        description: '<div data-v-5a495e4e="" id="about-description" bis_skin_checked="1" style="margin: 0px; padding: 30px; border-bottom: 1px solid rgb(234, 235, 237); color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Description</h2><div data-v-5a495e4e="" class="content" bis_skin_checked="1" style="margin: 0px; padding: 0px; line-height: 18px;">4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM</div></div><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Preferred business models</h2><div data-v-5a495e4e="" class="promo-methods-container" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Loyalty/Rewards</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Deal/Coupons</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Social Influencer</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Content/Reviews</div></div></div></div></div><div data-v-e3ef0116="" id="brand-stats-outer-container" bis_skin_checked="1" style="margin: 0px; padding: 30px; display: flex; align-items: center; justify-content: center; color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">30 Day EPC</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">NEW</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Response</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">19%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Acceptance</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">100%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Funding Status</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">83%</div></div></div></div>'
+                        short_description: '4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM'
+                        program_policies: '<h3 class="ioHeader" style="margin-top: 30px; margin-right: 0px; margin-left: 0px; padding: 0px; font-size: 32px; font-weight: 500; color: rgb(45, 62, 80); font-family: Roboto, sans-serif;">Mar 28, 2023 10:23 PDT - Onwards</h3><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell;"><span class="name" style="margin: 0px; padding: 0px;">Online Sale:</span>&nbsp;<span class="payout" style="margin: 0px; padding: 0px;">20%</span>&nbsp;<span class="currency" style="margin: 0px; padding: 0px; text-transform: uppercase; color: rgb(199, 203, 208);">USD</span></div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="heading1" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 20px;">Payout Details</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Default Payout</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">20% of order sale amount</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Schedule</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Action Locking</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are locked 1 month(s) after end of the month they are tracked</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Invoicing</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are invoiced on the 3 of the month after they lock</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Payout Scheduling</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Approved transactions are paid 15 day(s) after the end of the day they are invoiced</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Qualified Referrals</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Credit Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Last Click</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Referral Window</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Allow referrals from clicks within 30 day(s)</div></div></div></div></div><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="generalTermsHeading" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 22px; display: table-cell;">General Terms</div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="labelLine" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Currency</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Financial transactions covered by this Contract will be processed in the USD currency. Currency exchanges will occur when you or your partner(s) have set a different default currency in account settings.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Change Notification Period</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">The Contract can be changed or cancelled with 1 day(s) notification to the media partner.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Reversal Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Reversal of performance advertising actions are decided by the Advertiser governed by a max reversal percentage of 100%</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Media Partner Tracking Pixel</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Advertiser does NOT allow media partner to fire their tracking pixel when the consumer action is completed.</div></div></div></div></div>'
+                        type: api
+                        status: joined
+                        commission: 20%
+                        goto_cookie_lifetime: null
+                        exclusive: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 57601894
+                        name:
+                          type: string
+                          example: '4 Corners Cannabis'
+                        url:
+                          type: string
+                          example: 'http://4cornerscannabis.com/'
+                        logo:
+                          type: string
+                          example: 'https://app.linkscircle.com/storage/4cornerscannabis.gif'
+                        primary_regions:
+                          type: array
+                          example:
+                            - US
+                          items:
+                            type: string
+                        supported_regions:
+                          type: array
+                          example:
+                            - CA
+                          items:
+                            type: string
+                        currency_code:
+                          type: string
+                          example: null
+                        average_payment_time:
+                          type: string
+                          example: null
+                        epc:
+                          type: string
+                          example: null
+                        click_through_url:
+                          type: string
+                          example: 'https://go.linkscircle.com/track/{id1}/{id2}'
+                        click_through_short_url:
+                          type: string
+                          example: 'https://go.linkscircle.com/short/*******'
+                        categories:
+                          type: array
+                          example:
+                            - Entertainment
+                            - Lifestyle
+                          items:
+                            type: string
+                        validation_days:
+                          type: string
+                          example: '30'
+                        deeplink_enabled:
+                          type: integer
+                          example: 1
+                        program_restrictions:
+                          type: array
+                          example:
+                            - 'PPC Site'
+                            - 'TM+ Bidding'
+                          items:
+                            type: string
+                        promotional_methods:
+                          type: array
+                          example:
+                            - 'Social Media'
+                            - 'Email Marketing'
+                            - 'Blog Site'
+                            - 'Content Site'
+                            - 'Coupon Site'
+                          items:
+                            type: string
+                        description:
+                          type: string
+                          example: '<div data-v-5a495e4e="" id="about-description" bis_skin_checked="1" style="margin: 0px; padding: 30px; border-bottom: 1px solid rgb(234, 235, 237); color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Description</h2><div data-v-5a495e4e="" class="content" bis_skin_checked="1" style="margin: 0px; padding: 0px; line-height: 18px;">4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM</div></div><div data-v-5a495e4e="" class="about-description-section" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px;"><h2 data-v-5a495e4e="" class="sub-title" style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;">Preferred business models</h2><div data-v-5a495e4e="" class="promo-methods-container" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Loyalty/Rewards</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Deal/Coupons</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Social Influencer</div></div><div data-v-5a495e4e="" bis_skin_checked="1" style="margin: 0px; padding: 0px;"><div data-v-5a495e4e="" class="promo-method" bis_skin_checked="1" style="margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;">Content/Reviews</div></div></div></div></div><div data-v-e3ef0116="" id="brand-stats-outer-container" bis_skin_checked="1" style="margin: 0px; padding: 30px; display: flex; align-items: center; justify-content: center; color: rgb(45, 62, 80); font-family: Muli, sans-serif;"><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">30 Day EPC</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">NEW</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Response</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">19%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Acceptance</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">100%</div></div></div><div data-v-e3ef0116="" class="stat" bis_skin_checked="1" style="margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;"><span data-v-e3ef0116="" class="separating-bar" style="margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);"></span><div data-v-e3ef0116="" class="stat-content" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;"><div data-v-e3ef0116="" class="stat-label" bis_skin_checked="1" style="margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;">Funding Status</div><div data-v-e3ef0116="" class="stat-val" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;">83%</div></div></div></div>'
+                        short_description:
+                          type: string
+                          example: '4 Corners Cannabis was one of the nation’s first CBD companies. We control our entire production process, from “soil to oil,” so we know exactly what goes into our products — and what doesn’t. All of our CBD products are organic, food grade, non-GM'
+                        program_policies:
+                          type: string
+                          example: '<h3 class="ioHeader" style="margin-top: 30px; margin-right: 0px; margin-left: 0px; padding: 0px; font-size: 32px; font-weight: 500; color: rgb(45, 62, 80); font-family: Roboto, sans-serif;">Mar 28, 2023 10:23 PDT - Onwards</h3><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell;"><span class="name" style="margin: 0px; padding: 0px;">Online Sale:</span>&nbsp;<span class="payout" style="margin: 0px; padding: 0px;">20%</span>&nbsp;<span class="currency" style="margin: 0px; padding: 0px; text-transform: uppercase; color: rgb(199, 203, 208);">USD</span></div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="heading1" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 20px;">Payout Details</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Default Payout</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">20% of order sale amount</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Schedule</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Action Locking</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are locked 1 month(s) after end of the month they are tracked</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Invoicing</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Actions are invoiced on the 3 of the month after they lock</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Payout Scheduling</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Approved transactions are paid 15 day(s) after the end of the day they are invoiced</div></div></div><div class="heading1 additionalTopMargin" bis_skin_checked="1" style="margin: 40px 0px 0px; padding: 0px; font-size: 20px;">Qualified Referrals</div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Credit Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Last Click</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Referral Window</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Allow referrals from clicks within 30 day(s)</div></div></div></div></div><div class="tracker" bis_skin_checked="1" style="margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;"><div class="trackerHeading" bis_skin_checked="1" style="margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="generalTermsHeading" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 22px; display: table-cell;">General Terms</div><div class="trackerMinimize" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;"><span class="fa fa-minus" style="margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;"></span></div></div></div><div class="trackerContent" bis_skin_checked="1" style="margin: 0px; padding: 30px 25px;"><div class="labelLine" bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Currency</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Financial transactions covered by this Contract will be processed in the USD currency. Currency exchanges will occur when you or your partner(s) have set a different default currency in account settings.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Change Notification Period</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">The Contract can be changed or cancelled with 1 day(s) notification to the media partner.</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Reversal Policy</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Reversal of performance advertising actions are decided by the Advertiser governed by a max reversal percentage of 100%</div></div></div><div class="labelLine" bis_skin_checked="1" style="margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;"><div bis_skin_checked="1" style="margin: 0px; padding: 0px; display: table-row;"><div class="labelCell heading2text" bis_skin_checked="1" style="margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;">Media Partner Tracking Pixel</div><div class="labelValue io_diff_line" bis_skin_checked="1" style="margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;">Advertiser does NOT allow media partner to fire their tracking pixel when the consumer action is completed.</div></div></div></div></div>'
+                        type:
+                          type: string
+                          example: api
+                        status:
+                          type: string
+                          example: joined
+                        commission:
+                          type: string
+                          example: 20%
+                        goto_cookie_lifetime:
+                          type: string
+                          example: null
+                        exclusive:
+                          type: integer
+                          example: 0
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 7024
+                      count:
+                        type: integer
+                        example: 20
+                      per_page:
+                        type: integer
+                        example: 20
+                      current_page:
+                        type: integer
+                        example: 1
+                      total_pages:
+                        type: integer
+                        example: 352
+      tags:
+        - Advertisers
+  '/api/v1/advertisers/{id}':
+    get:
+      summary: 'Get Advertiser By ID'
+      operationId: getAdvertiserByID
+      description: 'This endpoint is used to fetch get advertiser by id available in the database.'
+      parameters:
+        -
+          in: query
+          name: wid
+          description: 'The website ID is required to filter the data based on websites.'
+          example: 90644632.0
+          required: true
+          schema:
+            type: number
+            description: 'The website ID is required to filter the data based on websites.'
+            example: 90644632.0
+        -
+          in: header
+          name: token
+          description: ''
+          example: ZP5EgevkVbDc8hf1346ada6
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get Advertiser By ID'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"data\": {\n\"id\": 86049368,\n\"name\": \" ESM-Computer\",\n\"url\": \"https://www.esm-computer.de/\",\n\"logo\": \"https://app.linkscircle.com/\",\n\"primary_regions\": [\n\"DE\"\n],\n\"supported_regions\": [],\n\"currency_code\": \"EUR\",\n\"average_payment_time\": \"14\",\n\"epc\": \"0\",\n\"click_through_url\": null,\n\"click_through_short_url\": null,\n\"validation_days\": null,\n\"status\": \"Not Joined\",\n\"commission\": \"7%\",\n\"goto_cookie_lifetime\": null,\n\"exclusive\": 0,\n\"deeplink_enabled\": 1,\n\"categories\": null,\n\"program_restrictions\": [\n\"PPC Site\",\n\"TM+ Bidding\"\n],\n\"promotional_methods\": [\n\"Social Media\",\n\"Email Marketing\",\n\"Blog Site\",\n\"Content Site\",\n\"Coupon Site\"\n],\n\"description\": null,\n\"short_description\": null,\n\"program_policies\": null\n}"
+      tags:
+        - Advertisers
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the advertiser.'
+        example: 86049368
+        required: true
+        schema:
+          type: integer
+  /api/v1/offers:
+    get:
+      summary: 'Get All Offers'
+      operationId: getAllOffers
+      description: 'This endpoint is used to fetch all available offers from the database through authentication.'
+      parameters:
+        -
+          in: query
+          name: wid
+          description: 'The website ID is required to filter the data.'
+          example: 90644632.0
+          required: true
+          schema:
+            type: number
+            description: 'The website ID is required to filter the data.'
+            example: 90644632.0
+        -
+          in: query
+          name: page
+          description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+          example: 1.0
+          required: false
+          schema:
+            type: number
+            description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+            example: 1.0
+        -
+          in: query
+          name: limit
+          description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+          example: 20.0
+          required: false
+          schema:
+            type: number
+            description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+            example: 20.0
+        -
+          in: header
+          name: token
+          description: ''
+          example: dh18ZvkaaDEf664ce3gPb5V
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get All Offers'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n {\n\"data\": [\n{\n\"id\": \"cf8bee9a-14ee-4eca-99bb-1979893f5d81\",\n\"name\": \"Co-Found Private Link\",\n\"advertiser_id\": 18393049,\n\"advertiser_name\": \"99designs by Vista\",\n\"advertiser_url\": \"https://99designs.com\",\n\"url_tracking\": \"http://track.test.local/track/d5592ba4-3247-48fd-bc13-9b124acb889f/d5b45a0d-5604-4872-b3d1-8dbf315b586c/cf8bee9a-14ee-4eca-99bb-1979893f5d81\",\n\"advertiser_status\": \"active\",\n\"type\": \"promotion\",\n\"description\": \"\",\n\"terms\": null,\n\"start_date\": \"11/08/2023\",\n\"end_date\": \"11/08/2023\",\n\"code\": \"No code required\",\n\"exclusive\": 0,\n\"regions\": null,\n\"categories\": null\n},\n{............},\n],\n\"pagination\": {\n\"total\": 832,\n\"count\": 50,\n\"per_page\": 50,\n\"current_page\": 1,\n\"total_pages\": 17\n}\n}"
+      tags:
+        - Offers
+  '/api/v1/offer/{id}':
+    get:
+      summary: 'Get Offer By ID'
+      operationId: getOfferByID
+      description: 'This endpoint is used to fetch get offer by id available in the database.'
+      parameters:
+        -
+          in: query
+          name: wid
+          description: 'The website ID is required to filter the data based on websites.'
+          example: 90644632.0
+          required: true
+          schema:
+            type: number
+            description: 'The website ID is required to filter the data based on websites.'
+            example: 90644632.0
+        -
+          in: header
+          name: token
+          description: ''
+          example: Z5Dd3f4bVavcak6h681ePgE
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get Advertiser By ID'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 0004f9f0-4224-4228-8e85-5a58683c0862
+                    name: 'The Kobo Elipsa Pack has all you need to mark up your eBooks and documents, and create your own notebooks. Includes a Kobo Stylus and SleepCover!'
+                    advertiser_id: 62947499
+                    advertiser_name: 'Rakuten Kobo Australia'
+                    advertiser_url: 'https://www.kobo.com/au/en'
+                    url_tracking: 'http://track.test.local/track/f5ca51a4-e843-4005-a96f-db88ddfc9916/d5b45a0d-5604-4872-b3d1-8dbf315b586c/0004f9f0-4224-4228-8e85-5a58683c0862'
+                    advertiser_status: active
+                    type: promotion
+                    description: null
+                    terms: null
+                    start_date: 14/04/2022
+                    end_date: 14/04/2028
+                    code: 'No code required'
+                    exclusive: 0
+                    regions: null
+                    categories: null
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 0004f9f0-4224-4228-8e85-5a58683c0862
+                      name:
+                        type: string
+                        example: 'The Kobo Elipsa Pack has all you need to mark up your eBooks and documents, and create your own notebooks. Includes a Kobo Stylus and SleepCover!'
+                      advertiser_id:
+                        type: integer
+                        example: 62947499
+                      advertiser_name:
+                        type: string
+                        example: 'Rakuten Kobo Australia'
+                      advertiser_url:
+                        type: string
+                        example: 'https://www.kobo.com/au/en'
+                      url_tracking:
+                        type: string
+                        example: 'http://track.test.local/track/f5ca51a4-e843-4005-a96f-db88ddfc9916/d5b45a0d-5604-4872-b3d1-8dbf315b586c/0004f9f0-4224-4228-8e85-5a58683c0862'
+                      advertiser_status:
+                        type: string
+                        example: active
+                      type:
+                        type: string
+                        example: promotion
+                      description:
+                        type: string
+                        example: null
+                      terms:
+                        type: string
+                        example: null
+                      start_date:
+                        type: string
+                        example: 14/04/2022
+                      end_date:
+                        type: string
+                        example: 14/04/2028
+                      code:
+                        type: string
+                        example: 'No code required'
+                      exclusive:
+                        type: integer
+                        example: 0
+                      regions:
+                        type: string
+                        example: null
+                      categories:
+                        type: string
+                        example: null
+      tags:
+        - Offers
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the offer.'
+        example: 0004f9f0-4224-4228-8e85-5a58683c0862
+        required: true
+        schema:
+          type: string
+  '/api/v1/generate-link/{id}':
+    post:
+      summary: 'Generate Tracking Links'
+      operationId: generateTrackingLinks
+      description: 'This endpoint is used to generate tracking links by id available in the database.'
+      parameters:
+        -
+          in: header
+          name: token
+          description: ''
+          example: baa1k4P8dvhEZg6Dfc36e5V
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Generate Tracking Links'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": true,\n\"name\": \"99designs by Vista\",\n\"tracking_url\": \"https://go.linkscircle.com/short/NaxDGFkv\",\n}"
+      tags:
+        - 'Generate Deep / Tracking Links'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wid:
+                  type: number
+                  description: 'The website ID is required to filter the data based on websites.'
+                  example: 45174194.0
+                sub_id:
+                  type: string
+                  description: 'The Sub ID is required to filter the data based on Sub ID. Must not be greater than 40 characters.'
+                  example: 980b6fb4-5bd8-11ee-8c99-0242ac120002
+              required:
+                - wid
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the advertiser.'
+        example: 86049368
+        required: true
+        schema:
+          type: integer
+  '/api/v1/generate-deep-link/{id}':
+    post:
+      summary: 'Generate Deep Links'
+      operationId: generateDeepLinks
+      description: 'This endpoint is used to generate deep links by id available in the database.'
+      parameters:
+        -
+          in: header
+          name: token
+          description: ''
+          example: vc13EagdVhb5fDa466keZP8
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Generate Deep Links'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  name: '99designs by Vista'
+                  deeplink_enabled: true
+                  deeplink_link_url: 'https://go.linkscircle.com/deeplink/77Gdj4gT'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  name:
+                    type: string
+                    example: '99designs by Vista'
+                  deeplink_enabled:
+                    type: boolean
+                    example: true
+                  deeplink_link_url:
+                    type: string
+                    example: 'https://go.linkscircle.com/deeplink/77Gdj4gT'
+      tags:
+        - 'Generate Deep / Tracking Links'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wid:
+                  type: number
+                  description: 'The website ID is required to filter the data based on websites.'
+                  example: 45174194.0
+                sub_id:
+                  type: string
+                  description: 'The Sub ID is required to filter the data based on Sub ID. Must not be greater than 40 characters.'
+                  example: 980b6fb4-5bd8-11ee-8c99-0242ac120002
+                landing_url:
+                  type: string
+                  description: 'It must be a valid URL and should not exceed 191 characters in length. Must be a valid URL. Must not be greater than 1000 characters.'
+                  example: 'https://www.esm-computer.de/'
+              required:
+                - wid
+                - landing_url
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the advertiser.'
+        example: 86049368
+        required: true
+        schema:
+          type: integer
+  /api/v1/transactions:
+    get:
+      summary: 'Get All Transactions'
+      operationId: getAllTransactions
+      description: 'This endpoint is used to fetch all available transactions from the database through authentication.'
+      parameters:
+        -
+          in: query
+          name: wid
+          description: 'The website ID is required to filter the data.'
+          example: 90644632.0
+          required: true
+          schema:
+            type: number
+            description: 'The website ID is required to filter the data.'
+            example: 90644632.0
+        -
+          in: query
+          name: page
+          description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+          example: 1.0
+          required: false
+          schema:
+            type: number
+            description: 'The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of <code>0</code> Must be at least 1.'
+            example: 1.0
+        -
+          in: query
+          name: limit
+          description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+          example: 20.0
+          required: false
+          schema:
+            type: number
+            description: 'The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.'
+            example: 20.0
+        -
+          in: query
+          name: start_date
+          description: 'The start_date is optional, with a default value of 2024-10-01. Must be a valid date.'
+          example: '2024-10-01'
+          required: false
+          schema:
+            type: string
+            description: 'The start_date is optional, with a default value of 2024-10-01. Must be a valid date.'
+            example: '2024-10-01'
+        -
+          in: query
+          name: end_date
+          description: 'The end_date is optional, with a default value of 2024-10-31. Must be a valid date.'
+          example: '2024-10-31'
+          required: false
+          schema:
+            type: string
+            description: 'The end_date is optional, with a default value of 2024-10-31. Must be a valid date.'
+            example: '2024-10-31'
+        -
+          in: query
+          name: transaction_id
+          description: 'The transaction_id is optional, with a value of 10959121312.'
+          example: '10959121312'
+          required: false
+          schema:
+            type: string
+            description: 'The transaction_id is optional, with a value of 10959121312.'
+            example: '10959121312'
+        -
+          in: query
+          name: payment_id
+          description: 'The payment_id is optional, with a value of 455832323.'
+          example: '455832323'
+          required: false
+          schema:
+            type: string
+            description: 'The payment_id is optional, with a value of 455832323.'
+            example: '455832323'
+        -
+          in: header
+          name: token
+          description: ''
+          example: Dgev4a35fc6dP6k81abEVZh
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Get All Transactions'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"data\": [\n{\n\"transaction_id\": \"10789.5686.1207059\",\n\"advertiser_id\": 94731544,\n\"advertiser_name\": \"KitchenAid Australia\",\n\"publisher_id\": 14447196,\n\"publisher_name\": \"Zain ul Abedin\",\n\"website_id\": 90644632,\n\"website_name\": \"*******.com.au/\",\n\"payment_id\": null,\n\"commission_status\": \"Pending\",\n\"commission_amount\": \"5.03\",\n\"commission_amount_currency\": \"USD\",\n\"sale_amount\": \"167.77\",\n\"sale_amount_currency\": \"USD\",\n\"transaction_date\": \"2023-07-27 23:41:30\",\n\"commission_type\": \"CLICK_COOKIE\",\n\"url\": null,\n\"sub_id\": \"aaf265c2-7385-4a3a-9d75-991f3e284064\",\n},\n{...............},\n]\n \"pagination\": {\n \"total\": 832,\n \"count\": 50,\n \"per_page\": 50,\n \"current_page\": 1,\n \"total_pages\": 17\n }\n}"
+      tags:
+        - Transactions
+tags:
+  -
+    name: Websites
+    description: "\nAPIs for managing Websites"
+  -
+    name: Advertisers
+    description: "\nAPIs for managing Advertisers"
+  -
+    name: Offers
+    description: "\nAPIs for managing Advertisers"
+  -
+    name: 'Generate Deep / Tracking Links'
+    description: "\nAPIs for managing Generate Deep / Tracking Links"
+  -
+    name: Transactions
+    description: "\nAPIs for managing Transactions"
+components:
+  securitySchemes:
+    default:
+      type: apiKey
+      name: token
+      in: header
+      description: 'You can retrieve your token by visiting our <b>Linkscircle Publisher dashboard</b>, accessing the settings, clicking on the <b>API Info section</b>, and then copying the token for use here. <br />  <br /> You can utilize the following APIs to make <b>10 requests</b> within a <b>one-minute time</b> frame.'
+security:
+  -
+    default: []

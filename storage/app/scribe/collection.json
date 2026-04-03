@@ -1,0 +1,506 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "https:\/\/app.linkscircle.com\/"
+        }
+    ],
+    "info": {
+        "name": "Linkscircle API Documentation",
+        "_postman_id": "21c936c6-a22c-4eff-bdca-9937036e86d1",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Websites",
+            "description": "\nAPIs for managing Websites",
+            "item": [
+                {
+                    "name": "Get All Websites",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/websites",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of 0 Must be at least 1.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "20",
+                                    "description": "The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/websites?page=1&limit=20"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch all available websites from the database through authentication."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": [\n{\n\"id\": 90644632,\n\"name\": \"****************\",\n\"url\": \"https:\/\/www.*********.au\/\",\n\"partner_types\": [\n\"Coupons\/Deals\",\n\"Content\/Blog\"\n],\n\"categories\": [\n\"News & Blogging\",\n\"Business\",\n\"Shopping\",\n\"Lifestyle\"\n],\n\"status\": \"Active\",\n\"monthly_traffic\": \"25000\",\n\"monthly_page_views\": \"55000\",\n\"last_updated\": \"08\/14\/2023\"\n}\n],\n\"pagination\": {\n\"total\": 1,\n\"count\": 1,\n\"per_page\": 20,\n\"current_page\": 1,\n\"total_pages\": 1\n}\n}",
+                            "name": "Get All Websites"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Website By ID",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/websites\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/websites\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "90644632",
+                                    "description": "The ID of the website."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": [\n{\n\"id\": 90644632,\n\"name\": \"****************\",\n\"url\": \"https:\/\/www.*********.au\/\",\n\"partner_types\": [\n\"Coupons\/Deals\",\n\"Content\/Blog\"\n],\n\"categories\": [\n\"News & Blogging\",\n\"Business\",\n\"Shopping\",\n\"Lifestyle\"\n],\n\"status\": \"Active\",\n\"monthly_traffic\": \"25000\",\n\"monthly_page_views\": \"55000\",\n\"last_updated\": \"08\/14\/2023\"\n}\n],\n\"pagination\": {\n\"total\": 1,\n\"count\": 1,\n\"per_page\": 20,\n\"current_page\": 1,\n\"total_pages\": 1\n}\n}",
+                            "name": "Get Website By ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Advertisers",
+            "description": "\nAPIs for managing Advertisers",
+            "item": [
+                {
+                    "name": "Get All Advertisers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/advertisers",
+                            "query": [
+                                {
+                                    "key": "wid",
+                                    "value": "90644632",
+                                    "description": "The website ID is required to filter the data.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of 0 Must be at least 1.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "20",
+                                    "description": "The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/advertisers?wid=90644632&page=1&limit=20"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch all available advertisers from the database through authentication."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": [\n {\n\"id\": 57601894,\n\"name\": \"4 Corners Cannabis\",\n\"url\": \"http:\/\/4cornerscannabis.com\/\",\n\"logo\": \"https:\/\/app.linkscircle.com\/storage\/4cornerscannabis.gif\",\n\"primary_regions\": [\n\"US\"\n],\n\"supported_regions\": [\n\"CA\"\n],\n\"currency_code\": null,\n\"average_payment_time\": null,\n\"epc\": null,\n\"click_through_url\": \"https:\/\/go.linkscircle.com\/track\/{id1}\/{id2}\",\n\"click_through_short_url\": \"https:\/\/go.linkscircle.com\/short\/*******\",\n\"categories\": [\n\"Entertainment\",\n\"Lifestyle\"\n],\n\"validation_days\": \"30\",\n\"deeplink_enabled\": 1,\n\"program_restrictions\": [\n\"PPC Site\",\n\"TM+ Bidding\"\n],\n\"promotional_methods\": [\n\"Social Media\",\n\"Email Marketing\",\n\"Blog Site\",\n\"Content Site\",\n\"Coupon Site\"\n],\n\"description\": \"<div data-v-5a495e4e=\\\"\\\" id=\\\"about-description\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 30px; border-bottom: 1px solid rgb(234, 235, 237); color: rgb(45, 62, 80); font-family: Muli, sans-serif;\\\"><div data-v-5a495e4e=\\\"\\\" class=\\\"about-description-section\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px;\\\"><h2 data-v-5a495e4e=\\\"\\\" class=\\\"sub-title\\\" style=\\\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;\\\">Description<\/h2><div data-v-5a495e4e=\\\"\\\" class=\\\"content\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; line-height: 18px;\\\">4 Corners Cannabis was one of the nation\u2019s first CBD companies. We control our entire production process, from \u201csoil to oil,\u201d so we know exactly what goes into our products \u2014 and what doesn\u2019t. All of our CBD products are organic, food grade, non-GM<\/div><\/div><div data-v-5a495e4e=\\\"\\\" class=\\\"about-description-section\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px;\\\"><h2 data-v-5a495e4e=\\\"\\\" class=\\\"sub-title\\\" style=\\\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-size: 16px; line-height: 24px;\\\">Preferred business models<\/h2><div data-v-5a495e4e=\\\"\\\" class=\\\"promo-methods-container\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;\\\"><div data-v-5a495e4e=\\\"\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px;\\\"><div data-v-5a495e4e=\\\"\\\" class=\\\"promo-method\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;\\\">Loyalty\/Rewards<\/div><\/div><div data-v-5a495e4e=\\\"\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px;\\\"><div data-v-5a495e4e=\\\"\\\" class=\\\"promo-method\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;\\\">Deal\/Coupons<\/div><\/div><div data-v-5a495e4e=\\\"\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px;\\\"><div data-v-5a495e4e=\\\"\\\" class=\\\"promo-method\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;\\\">Social Influencer<\/div><\/div><div data-v-5a495e4e=\\\"\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px;\\\"><div data-v-5a495e4e=\\\"\\\" class=\\\"promo-method\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 3px 10px; background-color: rgb(242, 243, 244); font-size: 12px; line-height: 24px; border-radius: 5px;\\\">Content\/Reviews<\/div><\/div><\/div><\/div><\/div><div data-v-e3ef0116=\\\"\\\" id=\\\"brand-stats-outer-container\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 30px; display: flex; align-items: center; justify-content: center; color: rgb(45, 62, 80); font-family: Muli, sans-serif;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-content\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-label\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;\\\">30 Day EPC<\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-val\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;\\\">NEW<\/div><\/div><\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;\\\"><span data-v-e3ef0116=\\\"\\\" class=\\\"separating-bar\\\" style=\\\"margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);\\\"><\/span><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-content\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-label\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;\\\">Response<\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-val\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;\\\">19%<\/div><\/div><\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;\\\"><span data-v-e3ef0116=\\\"\\\" class=\\\"separating-bar\\\" style=\\\"margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);\\\"><\/span><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-content\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-label\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;\\\">Acceptance<\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-val\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;\\\">100%<\/div><\/div><\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px 0px 0px auto; padding: 0px 20px 0px 0px; display: flex;\\\"><span data-v-e3ef0116=\\\"\\\" class=\\\"separating-bar\\\" style=\\\"margin: 0px 20px 0px 0px; padding: 0px; height: 60px; border-left: 1px solid rgb(234, 235, 237);\\\"><\/span><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-content\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px;\\\"><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-label\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; color: rgb(129, 129, 129); font-size: 12px; line-height: 15px;\\\">Funding Status<\/div><div data-v-e3ef0116=\\\"\\\" class=\\\"stat-val\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-weight: 600; line-height: 24px;\\\">83%<\/div><\/div><\/div><\/div>\",\n\"short_description\": \"4 Corners Cannabis was one of the nation\u2019s first CBD companies. We control our entire production process, from \u201csoil to oil,\u201d so we know exactly what goes into our products \u2014 and what doesn\u2019t. All of our CBD products are organic, food grade, non-GM\",\n\"program_policies\": \"<h3 class=\\\"ioHeader\\\" style=\\\"margin-top: 30px; margin-right: 0px; margin-left: 0px; padding: 0px; font-size: 32px; font-weight: 500; color: rgb(45, 62, 80); font-family: Roboto, sans-serif;\\\">Mar 28, 2023 10:23 PDT - Onwards<\/h3><div class=\\\"tracker\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;\\\"><div class=\\\"trackerHeading\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-cell;\\\"><span class=\\\"name\\\" style=\\\"margin: 0px; padding: 0px;\\\">Online Sale:<\/span>&nbsp;<span class=\\\"payout\\\" style=\\\"margin: 0px; padding: 0px;\\\">20%<\/span>&nbsp;<span class=\\\"currency\\\" style=\\\"margin: 0px; padding: 0px; text-transform: uppercase; color: rgb(199, 203, 208);\\\">USD<\/span><\/div><div class=\\\"trackerMinimize\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;\\\"><span class=\\\"fa fa-minus\\\" style=\\\"margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;\\\"><\/span><\/div><\/div><\/div><div class=\\\"trackerContent\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 30px 25px;\\\"><div class=\\\"heading1\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 20px;\\\">Payout Details<\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Default Payout<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">20% of order sale amount<\/div><\/div><\/div><div class=\\\"heading1 additionalTopMargin\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 40px 0px 0px; padding: 0px; font-size: 20px;\\\">Schedule<\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Action Locking<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Actions are locked 1 month(s) after end of the month they are tracked<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Invoicing<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Actions are invoiced on the 3 of the month after they lock<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Payout Scheduling<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Approved transactions are paid 15 day(s) after the end of the day they are invoiced<\/div><\/div><\/div><div class=\\\"heading1 additionalTopMargin\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 40px 0px 0px; padding: 0px; font-size: 20px;\\\">Qualified Referrals<\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Credit Policy<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Last Click<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Referral Window<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Allow referrals from clicks within 30 day(s)<\/div><\/div><\/div><\/div><\/div><div class=\\\"tracker\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 40px; padding: 0px; border: 1px solid rgb(229, 231, 234); border-radius: 8px; color: rgb(45, 62, 80); font-family: Roboto, sans-serif; font-size: 12px;\\\"><div class=\\\"trackerHeading\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 15px 25px; font-size: 20px; width: 1121px; display: table; background-color: rgb(144, 152, 161); color: rgb(255, 255, 255); border-top-left-radius: 8px; border-top-right-radius: 8px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"generalTermsHeading\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 22px; display: table-cell;\\\">General Terms<\/div><div class=\\\"trackerMinimize\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-cell; text-align: right; font-size: 22px;\\\"><span class=\\\"fa fa-minus\\\" style=\\\"margin: 0px; padding: 0px; font-weight: normal; font-stretch: normal; font-family: FontAwesome; font-size: inherit; transform: translate(0px, 0px); cursor: pointer; user-select: none;\\\"><\/span><\/div><\/div><\/div><div class=\\\"trackerContent\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 30px 25px;\\\"><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Currency<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Financial transactions covered by this Contract will be processed in the USD currency. Currency exchanges will occur when you or your partner(s) have set a different default currency in account settings.<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Change Notification Period<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">The Contract can be changed or cancelled with 1 day(s) notification to the media partner.<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Reversal Policy<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Reversal of performance advertising actions are decided by the Advertiser governed by a max reversal percentage of 100%<\/div><\/div><\/div><div class=\\\"labelLine\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 20px 0px 0px; padding: 0px; display: table; width: 1071px;\\\"><div bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; display: table-row;\\\"><div class=\\\"labelCell heading2text\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px; font-size: 14px; display: table-cell; width: 200px;\\\">Media Partner Tracking Pixel<\/div><div class=\\\"labelValue io_diff_line\\\" bis_skin_checked=\\\"1\\\" style=\\\"margin: 0px; padding: 0px 0px 0px 10px; line-height: 26px; font-size: 14px; word-break: break-word; display: table-cell;\\\">Advertiser does NOT allow media partner to fire their tracking pixel when the consumer action is completed.<\/div><\/div><\/div><\/div><\/div>\",\n\"type\": \"api\",\n\"status\": \"joined\",\n\"commission\": \"20%\",\n\"goto_cookie_lifetime\": null,\n\"exclusive\": 0\n}\n],\n\"pagination\": {\n\"total\": 7024,\n\"count\": 20,\n\"per_page\": 20,\n\"current_page\": 1,\n\"total_pages\": 352\n}\n}",
+                            "name": "Get All Advertisers"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Advertiser By ID",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/advertisers\/:id",
+                            "query": [
+                                {
+                                    "key": "wid",
+                                    "value": "90644632",
+                                    "description": "The website ID is required to filter the data based on websites.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/advertisers\/:id?wid=90644632",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "86049368",
+                                    "description": "The ID of the advertiser."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch get advertiser by id available in the database."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": {\n\"id\": 86049368,\n\"name\": \" ESM-Computer\",\n\"url\": \"https:\/\/www.esm-computer.de\/\",\n\"logo\": \"https:\/\/app.linkscircle.com\/\",\n\"primary_regions\": [\n\"DE\"\n],\n\"supported_regions\": [],\n\"currency_code\": \"EUR\",\n\"average_payment_time\": \"14\",\n\"epc\": \"0\",\n\"click_through_url\": null,\n\"click_through_short_url\": null,\n\"validation_days\": null,\n\"status\": \"Not Joined\",\n\"commission\": \"7%\",\n\"goto_cookie_lifetime\": null,\n\"exclusive\": 0,\n\"deeplink_enabled\": 1,\n\"categories\": null,\n\"program_restrictions\": [\n\"PPC Site\",\n\"TM+ Bidding\"\n],\n\"promotional_methods\": [\n\"Social Media\",\n\"Email Marketing\",\n\"Blog Site\",\n\"Content Site\",\n\"Coupon Site\"\n],\n\"description\": null,\n\"short_description\": null,\n\"program_policies\": null\n}",
+                            "name": "Get Advertiser By ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Offers",
+            "description": "\nAPIs for managing Advertisers",
+            "item": [
+                {
+                    "name": "Get All Offers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/offers",
+                            "query": [
+                                {
+                                    "key": "wid",
+                                    "value": "90644632",
+                                    "description": "The website ID is required to filter the data.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of 0 Must be at least 1.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "20",
+                                    "description": "The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/offers?wid=90644632&page=1&limit=20"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch all available offers from the database through authentication."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n {\n\"data\": [\n{\n\"id\": \"cf8bee9a-14ee-4eca-99bb-1979893f5d81\",\n\"name\": \"Co-Found Private Link\",\n\"advertiser_id\": 18393049,\n\"advertiser_name\": \"99designs by Vista\",\n\"advertiser_url\": \"https:\/\/99designs.com\",\n\"url_tracking\": \"http:\/\/track.test.local\/track\/d5592ba4-3247-48fd-bc13-9b124acb889f\/d5b45a0d-5604-4872-b3d1-8dbf315b586c\/cf8bee9a-14ee-4eca-99bb-1979893f5d81\",\n\"advertiser_status\": \"active\",\n\"type\": \"promotion\",\n\"description\": \"\",\n\"terms\": null,\n\"start_date\": \"11\/08\/2023\",\n\"end_date\": \"11\/08\/2023\",\n\"code\": \"No code required\",\n\"exclusive\": 0,\n\"regions\": null,\n\"categories\": null\n},\n{............},\n],\n\"pagination\": {\n\"total\": 832,\n\"count\": 50,\n\"per_page\": 50,\n\"current_page\": 1,\n\"total_pages\": 17\n}\n}",
+                            "name": "Get All Offers"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Offer By ID",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/offer\/:id",
+                            "query": [
+                                {
+                                    "key": "wid",
+                                    "value": "90644632",
+                                    "description": "The website ID is required to filter the data based on websites.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/offer\/:id?wid=90644632",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "0004f9f0-4224-4228-8e85-5a58683c0862",
+                                    "description": "The ID of the offer."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch get offer by id available in the database."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": {\n\"id\": \"0004f9f0-4224-4228-8e85-5a58683c0862\",\n\"name\": \"The Kobo Elipsa Pack has all you need to mark up your eBooks and documents, and create your own notebooks. Includes a Kobo Stylus and SleepCover!\",\n\"advertiser_id\": 62947499,\n\"advertiser_name\": \"Rakuten Kobo Australia\",\n\"advertiser_url\": \"https:\/\/www.kobo.com\/au\/en\",\n\"url_tracking\": \"http:\/\/track.test.local\/track\/f5ca51a4-e843-4005-a96f-db88ddfc9916\/d5b45a0d-5604-4872-b3d1-8dbf315b586c\/0004f9f0-4224-4228-8e85-5a58683c0862\",\n\"advertiser_status\": \"active\",\n\"type\": \"promotion\",\n\"description\": null,\n\"terms\": null,\n\"start_date\": \"14\/04\/2022\",\n\"end_date\": \"14\/04\/2028\",\n\"code\": \"No code required\",\n\"exclusive\": 0,\n\"regions\": null,\n\"categories\": null\n}\n}",
+                            "name": "Get Advertiser By ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Generate Deep \/ Tracking Links",
+            "description": "\nAPIs for managing Generate Deep \/ Tracking Links",
+            "item": [
+                {
+                    "name": "Generate Tracking Links",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/generate-link\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/generate-link\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "86049368",
+                                    "description": "The ID of the advertiser."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"wid\":45174194,\"sub_id\":\"980b6fb4-5bd8-11ee-8c99-0242ac120002\"}"
+                        },
+                        "description": "This endpoint is used to generate tracking links by id available in the database."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"name\": \"99designs by Vista\",\n\"tracking_url\": \"https:\/\/go.linkscircle.com\/short\/NaxDGFkv\",\n}",
+                            "name": "Generate Tracking Links"
+                        }
+                    ]
+                },
+                {
+                    "name": "Generate Deep Links",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/generate-deep-link\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/generate-deep-link\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "86049368",
+                                    "description": "The ID of the advertiser."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"wid\":45174194,\"sub_id\":\"980b6fb4-5bd8-11ee-8c99-0242ac120002\",\"landing_url\":\"https:\\\/\\\/www.esm-computer.de\\\/\"}"
+                        },
+                        "description": "This endpoint is used to generate deep links by id available in the database."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"name\": \"99designs by Vista\",\n\"deeplink_enabled\": true,\n\"deeplink_link_url\": \"https:\/\/go.linkscircle.com\/deeplink\/77Gdj4gT\"\n}",
+                            "name": "Generate Deep Links"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Transactions",
+            "description": "\nAPIs for managing Transactions",
+            "item": [
+                {
+                    "name": "Get All Transactions",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/transactions",
+                            "query": [
+                                {
+                                    "key": "wid",
+                                    "value": "90644632",
+                                    "description": "The website ID is required to filter the data.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page is optional, with a default value of 1 and a minimum requirement of 1. Must not be one of 0 Must be at least 1.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "20",
+                                    "description": "The limit is optional, with a default value of 20 and a minimum requirement of 20 and maximum requirement of 500. Must be between 20 and 500.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2024-10-01",
+                                    "description": "The start_date is optional, with a default value of 2024-10-01. Must be a valid date.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "end_date",
+                                    "value": "2024-10-31",
+                                    "description": "The end_date is optional, with a default value of 2024-10-31. Must be a valid date.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transaction_id",
+                                    "value": "10959121312",
+                                    "description": "The transaction_id is optional, with a value of 10959121312.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "payment_id",
+                                    "value": "455832323",
+                                    "description": "The payment_id is optional, with a value of 455832323.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/transactions?wid=90644632&page=1&limit=20&start_date=2024-10-01&end_date=2024-10-31&transaction_id=10959121312&payment_id=455832323"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint is used to fetch all available transactions from the database through authentication."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": [\n{\n\"transaction_id\": \"10789.5686.1207059\",\n\"advertiser_id\": 94731544,\n\"advertiser_name\": \"KitchenAid Australia\",\n\"publisher_id\": 14447196,\n\"publisher_name\": \"Zain ul Abedin\",\n\"website_id\": 90644632,\n\"website_name\": \"*******.com.au\/\",\n\"payment_id\": null,\n\"commission_status\": \"Pending\",\n\"commission_amount\": \"5.03\",\n\"commission_amount_currency\": \"USD\",\n\"sale_amount\": \"167.77\",\n\"sale_amount_currency\": \"USD\",\n\"transaction_date\": \"2023-07-27 23:41:30\",\n\"commission_type\": \"CLICK_COOKIE\",\n\"url\": null,\n\"sub_id\": \"aaf265c2-7385-4a3a-9d75-991f3e284064\",\n},\n{...............},\n]\n \"pagination\": {\n \"total\": 832,\n \"count\": 50,\n \"per_page\": 50,\n \"current_page\": 1,\n \"total_pages\": 17\n }\n}",
+                            "name": "Get All Transactions"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "apikey",
+        "apikey": [
+            {
+                "key": "in",
+                "value": "header",
+                "type": "string"
+            },
+            {
+                "key": "key",
+                "value": "token",
+                "type": "string"
+            }
+        ]
+    }
+}

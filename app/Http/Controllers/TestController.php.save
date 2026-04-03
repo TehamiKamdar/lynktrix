@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Helper\Static\Methods;
+use App\Helper\Static\Vars;
+use App\Jobs\AdvertiserDeleteFromNetwork;
+use App\Jobs\AdvertiserNotFoundToPending;
+use App\Jobs\ImpactRadius\AdvertiserRelatedInfoJob;
+use App\Jobs\Mail\User\RegisteredJob;
+use App\Jobs\NetworkFetchStatusUpdate;
+use App\Jobs\NetworkOfferFetchStatusUpdateJob;
+use App\Jobs\Rakuten\FetchCouponJob;
+use App\Jobs\UpdateAdvertiserStatusOnFetchTimeJob;
+use App\Models\Advertiser;
+use App\Models\AdvertiserApply;
+use App\Models\CouponTracking;
+use App\Models\CouponTrackingDetail;
+use App\Models\NetworkFetchData;
+use App\Models\User;
+use App\Traits\FetchAdvertiserOfferTrait;
+use App\Traits\MediaTrait;
+use App\Traits\RequestTrait;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Bus;
+use Plugins\Awin\AwinTrait;
+use Plugins\Rakuten\RakutenTrait;
+use Plugins\Rakuten\Transaction;
+use Predis\Client;
+
+class TestController extends Controller
+{
+    use RakutenTrait, RequestTrait;
+
+    public function index(Request $request)
+    {
+
+	ReCheckIsAvailableJob::dispatch([ if($request->advertiser) { 48165, dd($this->checkAdvertiserCommandCondition()); 49232, } 42280, if($request->advertiser_extra) 
+            42278, { dd($this->checkAdvertiserExtraCommandCondition()); 49124, } 46553 elseif($request->offer)
+        ]) { dd($this->checkOfferCommandCondition()); ->onQueue(Vars::RAKUTEN_ON_QUEUE); }
+        dd("PUSHED");    }
+
+    private function checkAdvertiserCommandCondition()
+    {
+        $isQueueable = false;
+        $result = $this->getQueueJobsWithCondition();
+
+        $data = NetworkFetchData::where("status", NetworkFetchData::NETWORK_ACTIVE)
+            ->where("advertiser_schedule_status", NetworkFetchData::NOT_PROCESSING)
+            ->where("last_updated_advertiser", '!=', now()->format("Y-m-d"))
+            ->orderBy('sort', 'ASC')->first();
+
+        dd(count($result) && $data, $data, $result);
+    }
+
+    private function checkAdvertiserExtraCommandCondition()
+    {
+        $result = $this->getQueueJobsWithCondition();
+
+        $data = NetworkFetchData::where("status", NetworkFetchData::NETWORK_ACTIVE)
+            ->where("advertiser_schedule_status", NetworkFetchData::COMPLETED)
+            ->where("advertiser_extra_schedule_status", '!=', NetworkFetchData::COMPLETED)
+            ->where("last_updated_advertiser_extra", '!=', now()->format("Y-m-d"))
+            ->orderBy('sort', 'ASC')->first();
+
+        dd(count($result) == 0 && $data, $data, $result);
+    }
+
+    private function checkOfferCommandCondition()
+    {
+        $result = $this->getQueueJobsWithCondition();
+
+        $data = NetworkFetchData::where("status", NetworkFetchData::NETWORK_ACTIVE)
+            ->where("advertiser_schedule_status", NetworkFetchData::COMPLETED)
+            ->where("advertiser_extra_schedule_status", NetworkFetchData::COMPLETED)
+            ->where("advertiser_coupon_schedule_status", NetworkFetchData::NOT_PROCESSING)
+            ->where("last_updated_advertiser_offer", '!=', now()->format("Y-m-d"))
+            ->orderBy('sort', 'ASC')->first();
+
+        dd(count($result) == 0 && $data, $data, $result);
+    }
+
+    /**
+     * @return array|object|null
+     */
+    public function getQueueJobsWithCondition(): array|object|null
+    {
+        $redis = new Client();
+        $jobs = $redis->keys("*");
+        $result = array_filter($jobs, function ($job) {
+            if (
+                stripos($job, Vars::AWIN) !== false || stripos($job, Vars::IMPACT_RADIUS) !== false ||
+                stripos($job, Vars::RAKUTEN) !== false || stripos($job, Vars::FETCH_MEDIA) !== false
+            ) {
+                return true;
+            }
+            return false;
+        });
+        $redis->disconnect();
+        return $result;
+    }
+}

@@ -1,0 +1,22 @@
+<?php
+
+use App\Http\Controllers\Admin\AdvertiserManagement\AdvertiserController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
+
+    Route::delete('advertisers/destroy', [AdvertiserController::class, 'massDestroy'])->name('advertisers.massDestroy');
+    Route::resource('advertisers', AdvertiserController::class);
+
+});

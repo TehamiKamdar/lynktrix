@@ -1,0 +1,688 @@
+[2025-12-17 11:50:30] local.ERROR: Undefined variable $calculated {"view":{"view":"C:\\Users\\lenovo\\Downloads\\application\\resources\\views\\template\\publisher\\widgets\\section_performance_overview.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-1397785718 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#439</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1397785718\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","performanceOverview":"<pre class=sf-dump id=sf-dump-6918055 data-indent-pad=\"  \"><span class=sf-dump-note>array:7</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>commission</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str title=\"2 characters\">1K</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20.0</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>1</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>2</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>3</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>4</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>5</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>6</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>7</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>8</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>9</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>10</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>11</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>12</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>13</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>14</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>15</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>16</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>17</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>18</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>19</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>20</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>21</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>22</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>23</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>24</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>25</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>26</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>27</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>28</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>29</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>30</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>approved</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str title=\"5 characters\">831.8</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20.0</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>1</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>2</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>3</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>4</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>5</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>6</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>7</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>8</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>9</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>10</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>11</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>12</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>13</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>14</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>15</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>16</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>17</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>18</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>19</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>20</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>21</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>22</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>23</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>24</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>25</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>26</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>27</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>28</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>29</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>30</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>pending</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str>0</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20.0</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>1</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>2</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>3</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>4</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>5</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>6</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>7</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>8</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>9</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>10</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>11</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>12</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>13</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>14</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>15</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>16</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>17</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>18</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>19</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>20</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>21</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>22</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>23</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>24</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>25</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>26</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>27</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>28</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>29</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>30</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>declined</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str title=\"5 characters\">204.3</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20.0</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>1</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>2</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>3</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>4</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>5</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>6</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>7</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>8</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>9</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>10</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>11</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>12</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>13</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>14</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>15</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>16</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>17</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>18</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>19</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>20</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>21</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>22</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>23</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>24</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>25</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>26</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>27</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>28</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>29</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+      <span class=sf-dump-index>30</span> => \"<span class=sf-dump-str title=\"4 characters\">0.00</span>\"
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>transaction</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str title=\"3 characters\">237</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => <span class=sf-dump-num>1</span>
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>30</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>sale</span>\" => <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>count</span>\" => \"<span class=sf-dump-str title=\"5 characters\">23.8K</span>\"
+    \"<span class=sf-dump-key>min_value</span>\" => <span class=sf-dump-num>1</span>
+    \"<span class=sf-dump-key>max_value</span>\" => <span class=sf-dump-num>20</span>
+    \"<span class=sf-dump-key>dailyCurrentMonth</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>30</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>dailyPreviousMonth</span>\" => <span class=sf-dump-note>array:30</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>0.0</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>0.0</span>
+    </samp>]
+    \"<span class=sf-dump-key>percentage</span>\" => \"<span class=sf-dump-str title=\"5 characters\">0.00%</span>\"
+    \"<span class=sf-dump-key>growth</span>\" => \"<span class=sf-dump-str>-</span>\"
+  </samp>]
+  \"<span class=sf-dump-key>extra</span>\" => <span class=sf-dump-note>array:1</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>labels</span>\" => <span class=sf-dump-note>array:31</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-num>1</span>
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-num>2</span>
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-num>3</span>
+      <span class=sf-dump-index>3</span> => <span class=sf-dump-num>4</span>
+      <span class=sf-dump-index>4</span> => <span class=sf-dump-num>5</span>
+      <span class=sf-dump-index>5</span> => <span class=sf-dump-num>6</span>
+      <span class=sf-dump-index>6</span> => <span class=sf-dump-num>7</span>
+      <span class=sf-dump-index>7</span> => <span class=sf-dump-num>8</span>
+      <span class=sf-dump-index>8</span> => <span class=sf-dump-num>9</span>
+      <span class=sf-dump-index>9</span> => <span class=sf-dump-num>10</span>
+      <span class=sf-dump-index>10</span> => <span class=sf-dump-num>11</span>
+      <span class=sf-dump-index>11</span> => <span class=sf-dump-num>12</span>
+      <span class=sf-dump-index>12</span> => <span class=sf-dump-num>13</span>
+      <span class=sf-dump-index>13</span> => <span class=sf-dump-num>14</span>
+      <span class=sf-dump-index>14</span> => <span class=sf-dump-num>15</span>
+      <span class=sf-dump-index>15</span> => <span class=sf-dump-num>16</span>
+      <span class=sf-dump-index>16</span> => <span class=sf-dump-num>17</span>
+      <span class=sf-dump-index>17</span> => <span class=sf-dump-num>18</span>
+      <span class=sf-dump-index>18</span> => <span class=sf-dump-num>19</span>
+      <span class=sf-dump-index>19</span> => <span class=sf-dump-num>20</span>
+      <span class=sf-dump-index>20</span> => <span class=sf-dump-num>21</span>
+      <span class=sf-dump-index>21</span> => <span class=sf-dump-num>22</span>
+      <span class=sf-dump-index>22</span> => <span class=sf-dump-num>23</span>
+      <span class=sf-dump-index>23</span> => <span class=sf-dump-num>24</span>
+      <span class=sf-dump-index>24</span> => <span class=sf-dump-num>25</span>
+      <span class=sf-dump-index>25</span> => <span class=sf-dump-num>26</span>
+      <span class=sf-dump-index>26</span> => <span class=sf-dump-num>27</span>
+      <span class=sf-dump-index>27</span> => <span class=sf-dump-num>28</span>
+      <span class=sf-dump-index>28</span> => <span class=sf-dump-num>29</span>
+      <span class=sf-dump-index>29</span> => <span class=sf-dump-num>30</span>
+      <span class=sf-dump-index>30</span> => <span class=sf-dump-num>31</span>
+    </samp>]
+  </samp>]
+</samp>]
+</pre><script>Sfdump(\"sf-dump-6918055\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","performanceOverviewList":"<pre class=sf-dump id=sf-dump-852434541 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Pagination\\LengthAwarePaginator</span> {<a class=sf-dump-ref>#561</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=\"sf-dump-note sf-dump-ellipsization\" title=\"Illuminate\\Support\\Collection
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Support</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span><span class=\"sf-dump-ellipsis-tail\">Collection</span></span> {<a class=sf-dump-ref>#657</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">items</span>: []
+    #<span class=sf-dump-protected title=\"Protected property\">escapeWhenCastingToString</span>: <span class=sf-dump-const>false</span>
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">perPage</span>: <span class=sf-dump-num>10</span>
+  #<span class=sf-dump-protected title=\"Protected property\">currentPage</span>: <span class=sf-dump-num>1</span>
+  #<span class=sf-dump-protected title=\"Protected property\">path</span>: \"<span class=sf-dump-str title=\"58 characters\">http://127.0.0.1:8000/partner/analytics/analytical-reports</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">query</span>: []
+  #<span class=sf-dump-protected title=\"Protected property\">fragment</span>: <span class=sf-dump-const>null</span>
+  #<span class=sf-dump-protected title=\"Protected property\">pageName</span>: \"<span class=sf-dump-str title=\"12 characters\">earning_page</span>\"
+  +<span class=sf-dump-public title=\"Public property\">onEachSide</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">options</span>: <span class=sf-dump-note>array:2</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>path</span>\" => \"<span class=sf-dump-str title=\"58 characters\">http://127.0.0.1:8000/partner/analytics/analytical-reports</span>\"
+    \"<span class=sf-dump-key>pageName</span>\" => \"<span class=sf-dump-str title=\"12 characters\">earning_page</span>\"
+  </samp>]
+  #<span class=sf-dump-protected title=\"Protected property\">total</span>: <span class=sf-dump-num>0</span>
+  #<span class=sf-dump-protected title=\"Protected property\">lastPage</span>: <span class=sf-dump-num>1</span>
+</samp>}
+</pre><script>Sfdump(\"sf-dump-852434541\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","performanceOverviewList2":"<pre class=sf-dump id=sf-dump-133834860 data-indent-pad=\"  \">[]
+</pre><script>Sfdump(\"sf-dump-133834860\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","total":"<pre class=sf-dump id=sf-dump-379139205 data-indent-pad=\"  \"><span class=sf-dump-num>0</span>
+</pre><script>Sfdump(\"sf-dump-379139205\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","total2":"<pre class=sf-dump id=sf-dump-917110087 data-indent-pad=\"  \"><span class=sf-dump-num>0</span>
+</pre><script>Sfdump(\"sf-dump-917110087\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","countries":"<pre class=sf-dump id=sf-dump-1561153809 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\Collection</span> {<a class=sf-dump-ref>#659</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note>array:7</span> [<samp data-depth=2 class=sf-dump-compact>
+    <span class=sf-dump-index>0</span> => {<a class=sf-dump-ref>#660</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": <span class=sf-dump-const>null</span>
+    </samp>}
+    <span class=sf-dump-index>1</span> => {<a class=sf-dump-ref>#662</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">AT</span>\"
+    </samp>}
+    <span class=sf-dump-index>2</span> => {<a class=sf-dump-ref>#663</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">DE</span>\"
+    </samp>}
+    <span class=sf-dump-index>3</span> => {<a class=sf-dump-ref>#549</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">FR</span>\"
+    </samp>}
+    <span class=sf-dump-index>4</span> => {<a class=sf-dump-ref>#553</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">GB</span>\"
+    </samp>}
+    <span class=sf-dump-index>5</span> => {<a class=sf-dump-ref>#546</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">NL</span>\"
+    </samp>}
+    <span class=sf-dump-index>6</span> => {<a class=sf-dump-ref>#669</a><samp data-depth=3 class=sf-dump-compact>
+      +\"<span class=sf-dump-public title=\"Runtime added dynamic property\">advertiser_country</span>\": \"<span class=sf-dump-str title=\"2 characters\">US</span>\"
+    </samp>}
+  </samp>]
+  #<span class=sf-dump-protected title=\"Protected property\">escapeWhenCastingToString</span>: <span class=sf-dump-const>false</span>
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1561153809\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","date":"<pre class=sf-dump id=sf-dump-214973144 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"19 characters\">2025-12-01 00:00:00</span>\"
+</pre><script>Sfdump(\"sf-dump-214973144\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","diff":"<pre class=sf-dump id=sf-dump-2084984930 data-indent-pad=\"  \"><span class=sf-dump-num>16</span>
+</pre><script>Sfdump(\"sf-dump-2084984930\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","startDate":"<pre class=sf-dump id=sf-dump-1961019983 data-indent-pad=\"  \"><span class=sf-dump-const>null</span>
+</pre><script>Sfdump(\"sf-dump-1961019983\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","endDate":"<pre class=sf-dump id=sf-dump-1222230336 data-indent-pad=\"  \"><span class=sf-dump-const>null</span>
+</pre><script>Sfdump(\"sf-dump-1222230336\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":"fbfbdfcb-6da4-4c68-941d-b91ca88aa098","exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Undefined variable $calculated at C:\\Users\\lenovo\\Downloads\\application\\resources\\views\\template\\publisher\\widgets\\section_performance_overview.blade.php:52)
+[stacktrace]
+#0 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Undefined varia...', 'C:\\\\Users\\\\lenovo...', 53)
+#1 C:\\Users\\lenovo\\Downloads\\application\\resources\\views\\template\\publisher\\widgets\\section_performance_overview.blade.php(52): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'Undefined varia...', 'C:\\\\Users\\\\lenovo...', 53)
+#2 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(109): require('C:\\\\Users\\\\lenovo...')
+#3 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(110): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\Users\\\\lenovo...', Array)
+#5 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\lenovo...', Array)
+#6 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('C:\\\\Users\\\\lenovo...', Array)
+#7 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(178): Illuminate\\View\\View->getContents()
+#8 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(147): Illuminate\\View\\View->renderContents()
+#9 C:\\Users\\lenovo\\Downloads\\application\\resources\\views\\template\\publisher\\reports\\performance\\transaction\\list.blade.php(608): Illuminate\\View\\View->render()
+#10 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(109): require('C:\\\\Users\\\\lenovo...')
+#11 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(110): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#12 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\Users\\\\lenovo...', Array)
+#13 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\lenovo...', Array)
+#14 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('C:\\\\Users\\\\lenovo...', Array)
+#15 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(178): Illuminate\\View\\View->getContents()
+#16 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(147): Illuminate\\View\\View->renderContents()
+#17 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#18 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#19 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(906): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#20 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(875): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(797): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\PublisherStatus.php(26): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\PublisherStatus->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\SetLocale.php(24): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\SetLocale->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\AuthGates.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\AuthGates->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#41 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#42 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#43 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#44 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#45 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(797): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#48 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#49 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(740): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#50 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#51 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(190): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#52 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#53 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#59 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#60 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#61 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#62 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#63 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#64 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#65 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#66 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#67 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#68 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#69 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#70 C:\\Users\\lenovo\\Downloads\\application\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#71 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\lenovo...')
+#72 {main}
+
+[previous exception] [object] (ErrorException(code: 0): Undefined variable $calculated at C:\\Users\\lenovo\\Downloads\\application\\storage\\framework\\views\\2c014508ef100c772591c608119a76a7e1aa08c6.php:53)
+[stacktrace]
+#0 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Undefined varia...', 'C:\\\\Users\\\\lenovo...', 53)
+#1 C:\\Users\\lenovo\\Downloads\\application\\storage\\framework\\views\\2c014508ef100c772591c608119a76a7e1aa08c6.php(53): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'Undefined varia...', 'C:\\\\Users\\\\lenovo...', 53)
+#2 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(109): require('C:\\\\Users\\\\lenovo...')
+#3 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(110): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\Users\\\\lenovo...', Array)
+#5 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\lenovo...', Array)
+#6 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('C:\\\\Users\\\\lenovo...', Array)
+#7 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(178): Illuminate\\View\\View->getContents()
+#8 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(147): Illuminate\\View\\View->renderContents()
+#9 C:\\Users\\lenovo\\Downloads\\application\\storage\\framework\\views\\5d3ae20afe1e7c5faa787c141a5251c85db807e3.php(592): Illuminate\\View\\View->render()
+#10 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(109): require('C:\\\\Users\\\\lenovo...')
+#11 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(110): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#12 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\Users\\\\lenovo...', Array)
+#13 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\lenovo...', Array)
+#14 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('C:\\\\Users\\\\lenovo...', Array)
+#15 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(178): Illuminate\\View\\View->getContents()
+#16 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(147): Illuminate\\View\\View->renderContents()
+#17 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#18 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#19 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(906): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#20 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(875): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(797): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\PublisherStatus.php(26): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\PublisherStatus->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\SetLocale.php(24): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\SetLocale->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\Users\\lenovo\\Downloads\\application\\app\\Http\\Middleware\\AuthGates.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): App\\Http\\Middleware\\AuthGates->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#41 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#42 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#43 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#44 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#45 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(797): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#48 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#49 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(740): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#50 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#51 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(190): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#52 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#53 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#59 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#60 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#61 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#62 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#63 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#64 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#65 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#66 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#67 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#68 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#69 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#70 C:\\Users\\lenovo\\Downloads\\application\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#71 C:\\Users\\lenovo\\Downloads\\application\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\lenovo...')
+#72 {main}
+"} 

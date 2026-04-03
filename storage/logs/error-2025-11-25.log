@@ -1,0 +1,135 @@
+[2025-11-25 07:20:10] production.ERROR: MODULE NAME: DELETE DEEPLINK.  
+[2025-11-25 07:20:10] production.ERROR: App\Models\DeeplinkTracking Object
+(
+    [connection:protected] => mysql
+    [table:protected] => deeplink_trackings
+    [primaryKey:protected] => id
+    [keyType:protected] => int
+    [incrementing] => 1
+    [with:protected] => Array
+        (
+        )
+
+    [withCount:protected] => Array
+        (
+        )
+
+    [preventsLazyLoading] => 
+    [perPage:protected] => 15
+    [exists] => 1
+    [wasRecentlyCreated] => 
+    [escapeWhenCastingToString:protected] => 
+    [attributes:protected] => Array
+        (
+            [id] => f019991a-3486-4ff0-ba88-a495beb87135
+            [advertiser_id] => 2863501a-b63b-4446-bf19-fbb7f67753f0
+            [publisher_id] => 03bac09d-332c-40ee-b10a-4044bd23baad
+            [website_id] => ea441a52-60d9-4350-878c-a23ab3a9b962
+            [landing_url] => https://itsmilla.com/
+            [click_through_url] => 
+            [tracking_url] => 
+            [tracking_url_long] => https://go.linkscircle.com/deeplink?linkmid=21957588&linkaffid=87186669&ued=https%3A%2F%2Fitsmilla.com%2F
+            [hits] => 1
+            [unique_visitor] => 1
+            [is_deleted] => 0
+            [is_checked] => 1
+            [sub_id] => 
+            [created_at] => 2025-11-25 07:17:07
+            [updated_at] => 2025-11-25 07:18:22
+        )
+
+    [original:protected] => Array
+        (
+            [id] => f019991a-3486-4ff0-ba88-a495beb87135
+            [advertiser_id] => 2863501a-b63b-4446-bf19-fbb7f67753f0
+            [publisher_id] => 03bac09d-332c-40ee-b10a-4044bd23baad
+            [website_id] => ea441a52-60d9-4350-878c-a23ab3a9b962
+            [landing_url] => https://itsmilla.com/
+            [click_through_url] => 
+            [tracking_url] => 
+            [tracking_url_long] => https://go.linkscircle.com/deeplink?linkmid=21957588&linkaffid=87186669&ued=https%3A%2F%2Fitsmilla.com%2F
+            [hits] => 1
+            [unique_visitor] => 1
+            [is_deleted] => 0
+            [is_checked] => 1
+            [sub_id] => 
+            [created_at] => 2025-11-25 07:17:07
+            [updated_at] => 2025-11-25 07:18:22
+        )
+
+    [changes:protected] => Array
+        (
+        )
+
+    [casts:protected] => Array
+        (
+        )
+
+    [classCastCache:protected] => Array
+        (
+        )
+
+    [attributeCastCache:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+            [0] => updated_at
+            [1] => created_at
+        )
+
+    [dateFormat:protected] => 
+    [appends:protected] => Array
+        (
+        )
+
+    [dispatchesEvents:protected] => Array
+        (
+        )
+
+    [observables:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+            [advertiser] => 
+        )
+
+    [touches:protected] => Array
+        (
+        )
+
+    [timestamps] => 1
+    [hidden:protected] => Array
+        (
+        )
+
+    [visible:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+            [0] => advertiser_id
+            [1] => publisher_id
+            [2] => website_id
+            [3] => landing_url
+            [4] => click_through_url
+            [5] => tracking_url
+            [6] => tracking_url_long
+            [7] => hits
+            [8] => unique_visitor
+            [9] => sub_id
+            [10] => is_new
+            [11] => is_checked
+        )
+
+    [guarded:protected] => Array
+        (
+            [0] => *
+        )
+
+)
+  

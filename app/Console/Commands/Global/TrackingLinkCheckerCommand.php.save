@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Console\Commands\Global;
+
+use App\Helper\Static\Methods;
+use App\Helper\Static\Vars;
+use App\Jobs\AppliedAdvertiserStatusChange;
+use App\Jobs\FixTrackingLinkJob;
+use App\Jobs\GenerateTrackingLinkJob;
+use App\Models\AdvertiserApply;
+use App\Traits\GenerateLink;
+use Illuminate\Console\Command;
+use Predis\Client;
+
+class TrackingLinkCheckerCommand extends Command
+{
+    use GenerateLink;
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'check-tracking-link';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Tracking Link Checker If Empty Then Regenerate.';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        $result = Methods::getQueueJobsWithCondition();
+
+dd($result);
+
+        $this->fixOwnTrackingURL();
+
+        if(count($result) == 0)
+        {
+            $this->checkNCreateTrackingURL();
+        }
+
+        $this->changeTrackingURLStatus();
+    }
+
+    private function checkNCreateTrackingURL()
+    {
+        $advertisers = AdvertiserApply::with('advertiser')->where('status', AdvertiserApply::STATUS_ACTIVE)
+                                    ->where(function($query) {
+                                        $query->orWhereNull("click_through_url");
+                                        $query->orWhere("click_through_url", "=", "");
+                                    })->get();
+        foreach ($advertisers as $advertiser)
+        {
+            if(empty($advertiser->publisher_id))
+            {
+                Methods::customError("Regenerate Tracking URL inside Advertiser Apply Publisher ID not exist.", $advertiser);
+            }
+
+            elseif(empty($advertiser->website_id))
+            {
+                Methods::customError("Regenerate Tracking URL inside Advertiser Apply Website ID not exist.", $advertiser);
+            }
+
+            else {
+
+                $queue = Methods::returnAdvertiserQueue($advertiser->source);
+                GenerateTrackingLinkJob::dispatch($advertiser->advertiser, $advertiser->publisher_id, $advertiser->website_id)->onQueue($queue);
+
+            }
+        }
+    }
+
+    private function fixOwnTrackingURL()
+    {
+        $advertisers = AdvertiserApply::where('status', AdvertiserApply::STATUS_ACTIVE)
+            ->where(function($query) {
+                $query->orWhereNull("tracking_url")
+                      ->orWhere("tracking_url", "=", "")
+                      ->orWhereNull("tracking_url_short")
+                      ->orWhere("tracking_url_short", "=", "");
+            })->get();
+
+//	dd($advertisers);
+        foreach ($advertisers as $advertiser)
+        {
+            if(empty($advertiser->publisher_id))
+            {
+                Methods::customError("Regenerate Tracking URL inside Advertiser Apply Publisher ID not exist.", $advertiser);
+            }
+
+            elseif(empty($advertiser->website_id))
+            {
+                Methods::customError("Regenerate Tracking URL inside Advertiser Apply Website ID not exist.", $advertiser);
+            }
+
+            else {
+
+                $queue = Methods::returnAdvertiserQueue($advertiser->source);
+                FixTrackingLinkJob::dispatch($advertiser)->onQueue($queue);
+
+            }
+        }
+    }
+
+    private function changeTrackingURLStatus()
+    {
+        AdvertiserApply::select('id')->whereIn('is_tracking_generate', [AdvertiserApply::GENERATE_LINK_EMPTY, AdvertiserApply::GENERATE_LINK_IN_PROCESS])
+                                    ->whereNotNull('click_through_url')
+                                    ->whereNotNull('tracking_url')
+                                    ->whereNotNull('tracking_url_short')
+                                    ->where('click_through_url', '!=', '')
+                                    ->where('tracking_url', '!=', '')
+                                    ->where('tracking_url_short', '!=', '')
+                                    ->where('status', AdvertiserApply::STATUS_ACTIVE)
+                                    ->chunk(100, function ($advertisers) {
+                                        AppliedAdvertiserStatusChange::dispatch($advertisers->pluck('id'))
+                                            ->onConnection("redis")
+                                            ->onQueue(Vars::ADMIN_WORK);
+                                    });
+
+    }
+}

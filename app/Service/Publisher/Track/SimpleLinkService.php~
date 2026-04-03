@@ -1,0 +1,385 @@
+<?php
+
+namespace App\Service\Publisher\Track;
+
+use App\Classes\RandomStringGenerator;
+use App\Helper\LinkGenerate;
+use App\Helper\Static\Vars;
+use App\Jobs\Sync\LinkJob;
+use App\Models\AdvertiserApply;
+use App\Models\DeeplinkTracking;
+use App\Models\FetchDailyData;
+use App\Models\Tracking;
+use App\Models\TrackingDetail;
+use App\Models\User;
+use App\Traits\GenerateLink;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Jenssegers\Agent\Agent;
+use Stevebauman\Location\Facades\Location;
+
+class SimpleLinkService
+{
+    use GenerateLink;
+
+    public function storeSimple(Request $request, $advertiser, $website)
+    {
+        $url = route("track.simple", ['advertiser' => $advertiser, 'website' => $website]);
+
+        $cacheKey = 'tracking_simple_tracking_' . md5($url);
+        $activeAdvertiser = Cache::get($cacheKey);
+
+        if (!$activeAdvertiser) {
+            $activeAdvertiser = AdvertiserApply::with('publisher:id,status')->where("tracking_url", $url)->first();
+
+            if ($activeAdvertiser && $activeAdvertiser->click_through_url) {
+                Cache::forever($cacheKey, $activeAdvertiser);
+            }
+        }
+
+        if($activeAdvertiser) {
+            if($activeAdvertiser->status == AdvertiserApply::STATUS_ACTIVE && $activeAdvertiser->publisher->status == User::ACTIVE)
+            {
+                if($activeAdvertiser->click_through_url)
+                {
+                    $this->storeTrackingData($request, $activeAdvertiser);
+                    return [
+                        "success" => true,
+                        "url" => $activeAdvertiser->click_through_url
+                    ];
+                } else
+                {
+                    return [
+                        "success" => false,
+                        "view" => view("template.publisher.advertisers.link-in-process", compact('advertiser'))
+                    ];
+                }
+            }
+
+        }
+
+        $advertiser = $activeAdvertiser->advertiser ?? [];
+
+        return [
+            "success" => false,
+            "view" => view("template.publisher.advertisers.link-dead", compact('advertiser'))
+        ];
+
+    }
+    public function storeCode(Request $request, string $code)
+    {
+        $url = route("track.short", $code);
+
+        $cacheKey = 'tracking_simple_tracking_' . md5($url);
+        $activeAdvertiser = Cache::get($cacheKey);
+
+        if (!$activeAdvertiser) {
+            $activeAdvertiser = AdvertiserApply::with(['publisher:id,status', 'advertiser'])->select(['id', 'publisher_id', 'internal_advertiser_id', 'status', 'click_through_url'])->where("tracking_url_short", $url)->first();
+
+            if ($activeAdvertiser && $activeAdvertiser->click_through_url) {
+                Cache::forever($cacheKey, $activeAdvertiser);
+            }
+        }
+
+        $advertiser = $activeAdvertiser->advertiser ?? [];
+
+        if($activeAdvertiser) {
+            if($activeAdvertiser->status == AdvertiserApply::STATUS_ACTIVE && $activeAdvertiser->publisher->status == User::ACTIVE)
+            {
+                if($activeAdvertiser->click_through_url)
+                {
+                    $this->storeTrackingData($request, $activeAdvertiser);
+                    return [
+                        "success" => true,
+                        "url" => $activeAdvertiser->click_through_url
+                    ];
+                } else
+                {
+                    return [
+                        "success" => false,
+                        "view" => view("template.publisher.advertisers.link-in-process", compact('advertiser'))
+                    ];
+                }
+            }
+        }
+
+        return [
+            "success" => false,
+            "view" => view("template.publisher.advertisers.link-dead", compact('advertiser'))
+        ];
+    }
+
+    public function storeURLTrackingWithSubId(Request $request, Tracking $tracking)
+    {
+        $activeAdvertiser = $this->getAdvertiserApply($tracking);
+
+        $advertiser = $activeAdvertiser->advertiser ?? [];
+
+        if($activeAdvertiser) {
+            if($activeAdvertiser->status == AdvertiserApply::STATUS_ACTIVE && $activeAdvertiser->publisher->status == User::ACTIVE)
+            {
+                if($tracking->click_through_url)
+                {
+                    $this->makeHistory($request, $activeAdvertiser, $tracking);
+                    return [
+                        "success" => true,
+                        "url" => $tracking->click_through_url
+                    ];
+                } else
+                {
+                    return [
+                        "success" => false,
+                        "view" => view("template.publisher.advertisers.link-in-process", compact('advertiser'))
+                    ];
+                }
+            }
+        }
+
+        return [
+            "success" => false,
+            "view" => view("template.publisher.advertisers.link-dead", compact('advertiser'))
+        ];
+    }
+
+    public function storeCodeTrackingWithSubId(Request $request, $code)
+    {
+        $url = route("track.simple.short", $code);
+
+        $cacheKey = 'tracking_simple_short_with_sub_id_tracking_' . md5($url);
+        $tracking = Cache::get($cacheKey);
+
+        if (!$tracking) {
+            $tracking = Tracking::select([
+                            'advertiser_id',
+                            'publisher_id',
+                            'website_id',
+                            'click_through_url',
+                            'hits',
+                            'id',
+                            'unique_visitor',
+                        ])->where("tracking_url_short", $url)->first();
+
+            if ($tracking && $tracking->click_through_url) {
+                Cache::forever($cacheKey, $tracking);
+            }
+        }
+
+        $activeAdvertiser = $this->getAdvertiserApply($tracking);
+
+        $advertiser = $activeAdvertiser->advertiser ?? [];
+
+        if($activeAdvertiser) {
+            if($activeAdvertiser->status == AdvertiserApply::STATUS_ACTIVE && $activeAdvertiser->publisher->status == User::ACTIVE)
+            {
+                if($tracking->click_through_url)
+                {
+                    $this->makeHistory($request, $activeAdvertiser, $tracking);
+                    return [
+                        "success" => true,
+                        "url" => $tracking->click_through_url
+                    ];
+                } else
+                {
+                    return [
+                        "success" => false,
+                        "view" => view("template.publisher.advertisers.link-in-process", compact('advertiser'))
+                    ];
+                }
+            }
+        }
+
+        return [
+            "success" => false,
+            "view" => view("template.publisher.advertisers.link-dead", compact('advertiser'))
+        ];
+    }
+
+
+    public function storeSimpleTracking(Request $request)
+    {
+        $url = route("track.simple.long", ["linkmid" => $request->linkmid, "linkaffid" => $request->linkaffid, "subid" => $request->subid]);
+
+        $cacheKey = 'tracking_simple_long_tracking_' . md5($url);
+        $tracking = Cache::get($cacheKey);
+
+        if (!$tracking) {
+
+            $tracking = Tracking::select([
+                'id',
+                'advertiser_id',
+                'publisher_id',
+                'website_id',
+                'click_through_url',
+                'hits',
+                'unique_visitor',
+            ])->where("tracking_url_long", $url)->first();
+
+            if ($tracking && $tracking->click_through_url) {
+                Cache::forever($cacheKey, $tracking);
+            }
+        }
+
+        if($tracking) {
+            $activeAdvertiser = $this->getAdvertiserApply($tracking);
+        }
+        else
+        {
+            $activeAdvertiser = AdvertiserApply::with('publisher:id,status')->where("advertiser_sid", $request->linkmid)->where("website_wid", $request->linkaffid)->where("status", AdvertiserApply::STATUS_ACTIVE)->first();
+            if(empty($activeAdvertiser) && $activeAdvertiser->publisher->status != User::ACTIVE)
+            {
+                return [
+                    "success" => false,
+                    "view" => view("template.publisher.advertisers.link-dead", compact('activeAdvertiser'))
+                ];
+            }
+
+            $link = new LinkGenerate();
+            $clickLink = $link->generate($activeAdvertiser->advertiser, $activeAdvertiser->publisher_id, $activeAdvertiser->website_id, $request->subid);
+
+            $tracking = Tracking::updateOrCreate(
+                [
+                    "advertiser_id" => $activeAdvertiser->internal_advertiser_id,
+                    "website_id" => $activeAdvertiser->website_id,
+                    "publisher_id" => $activeAdvertiser->publisher_id,
+                    "tracking_url_long" => $url,
+                    "sub_id" => $request->subid,
+                ],
+                [
+                    "click_through_url" => $clickLink,
+                ]
+            );
+
+//            if($tracking->wasRecentlyCreated){
+//                FetchDailyData::updateOrCreate([
+//                    "path" => "SyncLinkJob",
+//                    "process_date" => now()->format(Vars::CUSTOM_DATE_FORMAT_3),
+//                    "queue" => Vars::ADMIN_WORK,
+//                    "source" => Vars::GLOBAL,
+//                    "key" => $tracking->id,
+//                    "type" => Vars::ADVERTISER
+//                ], [
+//                    "name" => "Link Syncing",
+//                    "payload" => json_encode([
+//                        'type' => 'tracking',
+//                        'id' => $tracking->id
+//                    ]),
+//                    "date" => now()->format(Vars::CUSTOM_DATE_FORMAT_2),
+//                ]);
+//            }
+        }
+
+        $advertiser = $activeAdvertiser->advertiser ?? [];
+
+        if(isset($activeAdvertiser)) {
+            if($activeAdvertiser->status == AdvertiserApply::STATUS_ACTIVE && $activeAdvertiser->publisher->status == User::ACTIVE)
+            {
+                if($tracking->click_through_url)
+                {
+                    $this->makeHistory($request, $activeAdvertiser, $tracking);
+                    return [
+                        "success" => true,
+                        "url" => $tracking->click_through_url
+                    ];
+                } else
+                {
+                    return [
+                        "success" => false,
+                        "view" => view("template.publisher.advertisers.link-in-process", compact('advertiser'))
+                    ];
+                }
+            }
+        }
+
+        return [
+            "success" => false,
+            "view" => view("template.publisher.advertisers.link-dead", compact('advertiser'))
+        ];
+    }
+
+    private function storeTrackingData(Request $request, AdvertiserApply $activeAdvertiser)
+    {
+
+        $cacheKey = 'tracking_store_date_tracking_' . $activeAdvertiser->internal_advertiser_id . '_' . $activeAdvertiser->website_id . '_' . $activeAdvertiser->publisher_id . '_' . $activeAdvertiser->sub_id;
+        $tracking = Cache::get($cacheKey);
+
+        if (!$tracking) {
+
+            $tracking = Tracking::select([
+                "hits",
+                "unique_visitor",
+                "id",
+                "advertiser_id",
+                "publisher_id",
+                "website_id",
+            ])->where([
+                'advertiser_id' => $activeAdvertiser->internal_advertiser_id,
+                'website_id' => $activeAdvertiser->website_id,
+                'publisher_id' => $activeAdvertiser->publisher_id,
+                'sub_id' => $activeAdvertiser->sub_id,
+            ])->first();
+
+        }
+
+        if($tracking)
+            $this->makeHistory($request, $activeAdvertiser, $tracking);
+    }
+
+    private function makeHistory(Request $request, AdvertiserApply $activeAdvertiser, $tracking)
+    {
+        $agent = new Agent();
+
+        $device = null;
+
+        if($agent->isDesktop())
+        {
+            $device = "desktop";
+        }
+        elseif($agent->isTablet())
+        {
+            $device = "tablet";
+        }
+        elseif($agent->isPhone())
+        {
+            $device = "phone";
+        }
+
+        $ip = $request->ip();
+        $ip = ($ip == "::1" || $ip == "127.0.0.1") ? "110.93.196.117" : $ip;
+        $location = Location::get($ip);
+
+        $tracking->increment('hits');
+
+        $checkUniqueVisitor = TrackingDetail::where("ip_address", $ip)->where('tracking_id', $tracking->id)->count();
+
+        if($checkUniqueVisitor == 0)
+            $tracking->increment('unique_visitor');
+
+        $referer = request()->headers->get('referer');
+
+        TrackingDetail::create([
+            'advertiser_id' => $activeAdvertiser->internal_advertiser_id,
+            'website_id' => $activeAdvertiser->website_id,
+            'publisher_id' => $activeAdvertiser->publisher_id,
+            'tracking_id' => $tracking->id,
+            'ip_address' => $ip,
+            'operating_system' => $agent->platform(),
+            'browser' => $agent->browser(),
+            'device' => $device,
+            'referer_url' => $referer,
+            'country' => isset($location->countryName) && is_string($location->countryName) ? $location->countryName : null,
+            'iso2' => isset($location->countryCode) && is_string($location->countryCode) ? $location->countryCode : null,
+            'region' => isset($location->regionName) && is_string($location->regionName) ? $location->regionName : null,
+            'city' => isset($location->cityName) && is_string($location->cityName) ? $location->cityName : null,
+            'zipcode' => $location->zipCode ?? null
+        ]);
+    }
+
+    protected function getAdvertiserApply($tracking)
+    {
+        return AdvertiserApply::with('publisher:id,status')
+                ->where("internal_advertiser_id", $tracking->advertiser_id ?? null)
+                ->where("publisher_id", $tracking->publisher_id ?? null)
+                ->where("website_id", $tracking->website_id ?? null)
+                ->first();
+    }
+}

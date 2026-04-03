@@ -1,0 +1,284 @@
+<?php
+
+namespace App\Console\Commands\Global;
+
+use App\Helper\Static\Methods;
+use App\Helper\Static\Vars;
+use App\Jobs\Admitad\CategoryJob as AdmitadCategoryJob;
+use App\Jobs\Admitad\MultiStatusCheckJob as AdmitadMultiStatusCheckJob;
+use App\Jobs\Admitad\StatusCheckJob as AdmitadStatusCheckJob;
+use App\Jobs\Admitad\PromotionalMethodJob as AdmitadPromotionalMethodJob;
+use App\Jobs\Admitad\AdvertiserJob as AdmitadAdvertiserJob;
+use App\Jobs\Admitad\CouponJob as AdmitadCouponJob;
+use App\Jobs\Admitad\TransactionJob as AdmitadTransactionJob;
+use App\Jobs\Admitad\CreateWebsite as AdmitadCreateWebsite;
+use App\Jobs\AdvertiserDeleteFromNetwork;
+use App\Jobs\AdvertiserNotFoundToPending;
+use App\Jobs\Awin\AdvertiserJob as AwinAdvertiserJob;
+use App\Jobs\Awin\AdvertiserDetailJob as AwinAdvertiserDetailJob;
+use App\Jobs\Awin\AdvertiserImageUploadJob as AwinAdvertiserImageUploadFetchJob;
+use App\Jobs\Awin\CouponJob as AwinCouponJob;
+use App\Jobs\Awin\TransactionJob as AwinTransactionJob;
+use App\Jobs\ImpactRadius\AdvertiserJob as ImpactAdvertiserJob;
+use App\Jobs\ImpactRadius\AdvertiserDetailJob as ImpactAdvertiserDetailJob;
+use App\Jobs\ImpactRadius\AdvertiserImageUploadJob as ImpactAdvertiserImageUploadJob;
+use App\Jobs\ImpactRadius\FetchCouponJob as ImpactFetchCouponJob;
+use App\Jobs\ImpactRadius\CouponJob as ImpactCouponJob;
+use App\Jobs\ImpactRadius\TransactionJob as ImpactTransactionJob;
+use App\Jobs\ManualApprovalNetworkActiveAdvertiser;
+use App\Jobs\ManualApprovalNetworkCancelAdvertiser;
+use App\Jobs\ManualApprovalNetworkHoldAdvertiser;
+use App\Jobs\NetworkAdvertiserExtraFetchStatusUpdateJob;
+use App\Jobs\NetworkOfferFetchStatusUpdateJob;
+use App\Jobs\Rakuten\AdvertiserJob as RakutenAdvertiserJob;
+use App\Jobs\Rakuten\ReCheckIsAvailableJob as RakutenReCheckIsAvailableJob;
+use App\Jobs\Rakuten\AdvertiserRelatedInfoJob as RakutenAdvertiserRelatedInfoJob;
+use App\Jobs\Rakuten\CouponJob as RakutenCouponJob;
+use App\Jobs\Rakuten\TransactionJob as RakutenTransactionJob;
+use App\Jobs\Tradedoubler\AdvertiserJob as TradedoublerAdvertiserJob;
+use App\Jobs\Tradedoubler\AdvertiserDetailJob as TradedoublerAdvertiserDetailJob;
+use App\Jobs\Tradedoubler\CouponJob as TradedoublerCouponJob;
+use App\Jobs\Tradedoubler\TransactionJob as TradedoublerTransactionJob;
+use App\Jobs\NetworkAdvertiserFetchStatusUpdateJob;
+use App\Jobs\Temp\Transaction as TempTransaction;
+use App\Jobs\Temp\Transaction2 as TempTransaction2;
+use App\Models\FetchDailyData;
+use App\Models\GenerateLink;
+use Illuminate\Console\Command;
+
+class DailyDataFetchCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'daily-data-fetch';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Generate Tracking / Deep Link.';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+//        $result = Methods::getQueueJobsWithCondition();
+        $jobCheck = FetchDailyData::where('is_processing', Vars::JOB_IN_PROCESS)->count();
+        $linkCheck = GenerateLink::where(function($query) {
+            $query->orWhere("is_processing", 0);
+            $query->orWhere("is_processing", 2);
+            $query->orWhereNull("is_processing");
+        })->count();
+
+     
+dd($linkCheck, $jobCheck);
+   if($linkCheck == 0 && $jobCheck == 0)// && count($result) == 0)
+        {
+            $sources = [
+                Vars::GLOBAL,
+                Vars::ADMITAD,
+                Vars::AWIN,
+                Vars::IMPACT_RADIUS,
+                Vars::RAKUTEN,
+                Vars::TRADEDOUBLER
+            ];
+            $count = 1;
+            $loop = true;
+            $countSource = COUNT($sources);
+            $key = 0;
+            while ($loop)
+            {
+
+                $job = FetchDailyData::where("date", "<=", now()->format(Vars::CUSTOM_DATE_FORMAT_2))
+                                        ->where("status", Vars::JOB_STATUS_IN_PROCESS)
+                                        ->where("source", $sources[$key])
+                                        ->orderBy("date", "ASC")
+                                        ->orderBy("sort", "ASC")
+                                        ->first();
+
+                if(isset($job->id))
+                {
+                    $loop = false;
+
+                    $isStatusChange = false;
+                    if (($count-1) == $key)
+                    {
+                        $isStatusChange = true;
+                    }
+
+                    $payload = json_decode($job->payload, true);
+                    $payload['job_id'] = $job->id;
+                    $payload['is_status_change'] = $isStatusChange;
+
+                    $job->update([
+                        'is_processing' => Vars::JOB_IN_PROCESS
+                    ]);
+
+                    $queue = $job->queue;
+                    switch ($job->path)
+                    {
+                        case "AdmitadCategoryJob":
+                            AdmitadCategoryJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadPromotionalMethodJob":
+                            AdmitadPromotionalMethodJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadAdvertiserJob":
+                            AdmitadAdvertiserJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadMultiStatusCheckJob":
+                            AdmitadMultiStatusCheckJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadStatusCheckJob":
+                            AdmitadStatusCheckJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadCouponJob":
+                            AdmitadCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadTransactionJob":
+                            AdmitadTransactionJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdmitadCreateWebsite":
+                            AdmitadCreateWebsite::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AwinAdvertiserJob":
+                            AwinAdvertiserJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AwinAdvertiserDetailJob":
+                            AwinAdvertiserDetailJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AwinAdvertiserImageUploadFetchJob":
+                            AwinAdvertiserImageUploadFetchJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AwinCouponJob":
+                            AwinCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AwinTransactionJob":
+                            AwinTransactionJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactAdvertiserJob":
+                            ImpactAdvertiserJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactAdvertiserDetailJob":
+                            ImpactAdvertiserDetailJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactAdvertiserImageUploadJob":
+                            ImpactAdvertiserImageUploadJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactFetchCouponJob":
+                            ImpactFetchCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactCouponJob":
+                            ImpactCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ImpactTransactionJob":
+                            ImpactTransactionJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "RakutenAdvertiserJob":
+                            RakutenAdvertiserJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "RakutenReCheckIsAvailableJob":
+                            RakutenReCheckIsAvailableJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "RakutenAdvertiserRelatedInfoJob":
+                            RakutenAdvertiserRelatedInfoJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "RakutenCouponJob":
+                            RakutenCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "RakutenTransactionJob":
+                            RakutenTransactionJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "TradedoublerAdvertiserJob":
+                            TradedoublerAdvertiserJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "TradedoublerAdvertiserDetailJob":
+                            TradedoublerAdvertiserDetailJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "TradedoublerCouponJob":
+                            TradedoublerCouponJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "TradedoublerTransactionJob":
+                            TradedoublerTransactionJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdvertiserNotFoundToPending":
+                            AdvertiserNotFoundToPending::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "AdvertiserDeleteFromNetwork":
+                            AdvertiserDeleteFromNetwork::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "NetworkAdvertiserFetchStatusUpdateJob":
+                            NetworkAdvertiserFetchStatusUpdateJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "NetworkAdvertiserExtraFetchStatusUpdateJob":
+                            NetworkAdvertiserExtraFetchStatusUpdateJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "NetworkOfferFetchStatusUpdateJob":
+                            NetworkOfferFetchStatusUpdateJob::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ManualApprovalNetworkHoldAdvertiser":
+                            ManualApprovalNetworkHoldAdvertiser::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ManualApprovalNetworkActiveAdvertiser":
+                            ManualApprovalNetworkActiveAdvertiser::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        case "ManualApprovalNetworkCancelAdvertiser":
+                            ManualApprovalNetworkCancelAdvertiser::dispatch($payload)->onQueue($queue);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                if(($key+1) == $countSource)
+                    $loop = false;
+
+                $key++;
+            }
+
+        }
+    }
+}

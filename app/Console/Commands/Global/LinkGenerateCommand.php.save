@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Console\Commands\Global;
+
+use App\Helper\Static\Methods;
+use App\Helper\Static\Vars;
+use App\Jobs\DeeplinkGenerateJob;
+use App\Jobs\GenerateTrackingLinkJob;
+use App\Models\GenerateLink;
+use Illuminate\Console\Command;
+
+class LinkGenerateCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'generate:link';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Generate Tracking / Deep Link.';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        $result = Methods::getQueueJobsWithCondition();
+        $jobCheck = GenerateLink::where('is_processing', 2)->count();
+        if($jobCheck == 0 && count($result) == 0)
+        {
+            $queues = [
+                Vars::ADMITAD_ON_QUEUE,
+                Vars::AWIN_ON_QUEUE,
+                Vars::IMPACT_RADIUS_ON_QUEUE,
+                Vars::RAKUTEN_ON_QUEUE,
+                Vars::TRADEDOUBLER_ON_QUEUE
+            ];
+            $count = COUNT($queues);
+            foreach ($queues as $key => $queue)
+            {
+                $jobs = GenerateLink::where("date", "<=", now()->format(Vars::CUSTOM_DATE_FORMAT_2))
+                    ->where("status", 1)
+                    ->where("queue", $queue)
+                    ->take(5)
+                    ->get();
+
+
+                $isStatusChange = false;
+                if (($count-1) == $key)
+                {
+                    $isStatusChange = true;
+                }
+
+                foreach ($jobs as $job)
+                {
+                    if(isset($job->id))
+                    {
+                        $job->update([
+                            'is_processing' => 2
+                        ]);
+                        $payload = json_decode($job->payload);
+                        $queue = $job->queue;
+                        switch ($job->path)
+                        {
+                            case "GenerateTrackingLinkJob":
+                                if(isset($payload->advertiser))
+                                {
+                                    GenerateTrackingLinkJob::dispatch($job->id, $payload->advertiser, $payload->publisher_id, $payload->website_id, $isStatusChange)->onQueue($queue);
+                                }
+                                else
+                                {
+                                    Methods::customError("LinkGenerateCommand (Generate Tracking Link Job)", "PAYLOAD ADVERTISER EMPTY");
+                                    Methods::customError("LinkGenerateCommand (Generate Tracking Link Job)", $payload);
+                                }
+                                break;
+
+                            case "DeeplinkGenerateJob":
+                                $payload = json_decode($job->payload, true);
+                                $payload['job_id'] = $job->id;
+                                DeeplinkGenerateJob::dispatch($payload, $isStatusChange)->onQueue($queue);
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
