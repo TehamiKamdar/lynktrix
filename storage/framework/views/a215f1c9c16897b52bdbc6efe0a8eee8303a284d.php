@@ -22,7 +22,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-envelope-paper"></i> Messages
+            <i class="bi bi-envelope-paper"></i> Campaigns
           </a>
         </li>
       </ul>
@@ -32,12 +32,12 @@
       <ul class="list-unstyled">
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-people"></i> Users
+            <i class="bi bi-people"></i> Payments
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-folder2-open"></i> Projects
+            <i class="bi bi-folder2-open"></i> Messages
           </a>
         </li>
         <li class="nav-item">

@@ -128,7 +128,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-folder2-open"></i> 
+            <i class="bi bi-folder2-open"></i> Messages
           </a>
         </li>
         <li class="nav-item">
