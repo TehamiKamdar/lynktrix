@@ -47,33 +47,6 @@
         font-weight: 600;
         white-space: nowrap;
     }
-
-    .tooltip-wrapper {
-        position: relative;
-        display: inline-block;
-    }
-
-    .tooltip-text {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #000;
-        color: #fff;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        white-space: nowrap;
-        z-index: 999;
-    }
-
-    .tooltip-wrapper:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-    }
 </style>
 <!-- Minimal Modern Advertisers Table -->
 <div class="container py-5">

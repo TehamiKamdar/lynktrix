@@ -3,60 +3,58 @@
 <aside class="dashboard-sidebar" id="dashboardSidebar">
     <div class="sidebar-brand">
       <div class="brand-logo">
-        <img src="./logo.webp" class="img-fluid" alt="">
+        <img src="<?php echo e(asset("new/logo.jpg")); ?>" class="img-fluid" alt="">
       </div>
     </div>
 
     <div class="sidebar-nav">
-      <div class="nav-section-label">MAIN</div>
       <ul class="list-unstyled">
         <li class="nav-item">
           <a href="#" class="nav-link active" id="navDashboard">
-            <i class="bi bi-speedometer2"></i> Dashboard
+            <i class="bi bi-speedometer2"></i>
+            <span class="tooltip-text-nav">Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-bar-chart-line"></i> Partners
+            <i class="bi bi-bar-chart-line"></i>
+            <span class="tooltip-text-nav">Partners</span>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-envelope-paper"></i> Campaigns
-          </a>
-        </li>
-      </ul>
-
-
-      <div class="nav-section-label">MANAGEMENT</div>
-      <ul class="list-unstyled">
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-people"></i> Payments
+            <i class="bi bi-envelope-paper"></i>
+            <span class="tooltip-text-nav">Campaigns</span>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-folder2-open"></i> Messages
+            <i class="bi bi-people"></i>
+            <span class="tooltip-text-nav">Payments</span>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-gear"></i> Settings
-          </a>
-        </li>
-      </ul>
-
-
-      <ul class="list-unstyled">
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-question-circle"></i> Help Center
+            <i class="bi bi-folder2-open"></i>
+            <span class="tooltip-text-nav">Messages</span>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="bi bi-box-arrow-right"></i> Logout
+            <i class="bi bi-gear"></i>
+            <span class="tooltip-text-nav">Settings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-question-circle"></i>
+            <span class="tooltip-text-nav">Help</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="tooltip-text-nav">Logout</span>
           </a>
         </li>
       </ul>

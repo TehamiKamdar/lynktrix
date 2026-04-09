@@ -4,6 +4,7 @@
   --white-color: #ffffff;
   --body-bg: #f8fafc;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -20,14 +21,14 @@ body {
 /* Sidebar Container */
 .dashboard-sidebar {
   background: var(--white-color);
-  width: 200px;
+  width: 80px;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1030;
   transition: all 0.25s ease;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 /* Custom scroll for sidebar */
@@ -66,20 +67,9 @@ body {
   margin-bottom: 0.25rem;
 }
 /* Custom nav link - no Bootstrap link override */
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-  color: var(--primary-color);
-  font-size: 0.8rem;
-  transition: all 0.2s;
-  text-decoration: none;
-  background: transparent;
-}
+
 .nav-link i {
-  font-size: 01rem;
+  font-size: 1.3rem;
   width: 28px;
   text-align: center;
   color: #c22437d9;
@@ -105,7 +95,7 @@ body {
 
 /* ----- MAIN CONTENT AREA (pushes right) ----- */
 .dashboard-main {
-  margin-left: 200px;
+  margin-left: 80px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -480,4 +470,69 @@ body {
 }
 .text-primary{
     color: var(--primary-color) !important;
+}
+
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 999;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.55rem 0.5rem;
+  border-radius: 8px;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  background: transparent;
+  justify-content: center;
+  position: relative;
+}
+
+.tooltip-text-nav {
+  position: absolute;
+  left: 110%; /* sidebar ke right side pe show hoga */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #c22437;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover .tooltip-text-nav {
+  opacity: 1;
+  visibility: visible;
+  left: 120%;
 }
