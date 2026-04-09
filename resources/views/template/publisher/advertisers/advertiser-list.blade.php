@@ -49,98 +49,96 @@
     }
 </style>
 <!-- Minimal Modern Advertisers Table -->
-<div class="container py-5">
-    <div class="table-responsive">
-        <table class="table table-hover align-middle modern-table">
-            <thead style="background-color: #c22437; color: white;">
+<div class="table-responsive">
+    <table class="table table-hover align-middle modern-table">
+        <thead style="background-color: #c22437; color: white;">
+            <tr>
+                <th>Advertiser</th>
+                <th class="text-center">Commission</th>
+                <th class="text-center">APC Days</th>
+                <th class="text-center">Region</th>
+                @if($checkAdmin)
+                    <th class="text-center">Status</th>
+                @endif
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($advertisers as $advertiser)
                 <tr>
-                    <th>Advertiser</th>
-                    <th class="text-center">Commission</th>
-                    <th class="text-center">APC Days</th>
-                    <th class="text-center">Region</th>
+                    <!-- Advertiser Name -->
+                    <td>
+                        <span class="fw-semibold" style="font-size: 14px;">{{ $advertiser->name }}</span>
+                    </td>
+
+                    <!-- Commission -->
+                    <td class="text-center">
+                        <span class="commission-pill" style="font-size: 12px;">
+                            <i class="fas fa-crown"></i>
+                            {{ $advertiser->commission }}{{ $advertiser->commission_type == "percentage" ? '%' : '' }}
+                        </span>
+                    </td>
+
+                    <!-- APC Days -->
+                    <td class="text-center fw-medium" style="font-size: 14px;">
+                        {{ $advertiser->average_payment_time ?? 30 }} Days
+                    </td>
+
+                    <!-- Region -->
+                    <td class="text-center" style="font-size: 14px;">
+                        @php
+                            $regions = [];
+                            if (is_string($advertiser->primary_regions)) {
+                                $regions = json_decode($advertiser->primary_regions, true) ?? [];
+                            } elseif (is_array($advertiser->primary_regions)) {
+                                $regions = $advertiser->primary_regions;
+                            }
+                            $regionText = count($regions) > 1 ? "Multi" : (count($regions) == 1 ? $regions[0] : "All");
+                        @endphp
+                        {{ $regionText }}
+                    </td>
+
+                    <!-- Status (Only for Admin) -->
                     @if($checkAdmin)
-                        <th class="text-center">Status</th>
-                    @endif
-                    <th class="text-center">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($advertisers as $advertiser)
-                    <tr>
-                        <!-- Advertiser Name -->
-                        <td>
-                            <span class="fw-semibold" style="font-size: 14px;">{{ $advertiser->name }}</span>
-                        </td>
-
-                        <!-- Commission -->
                         <td class="text-center">
-                            <span class="commission-pill" style="font-size: 12px;">
-                                <i class="fas fa-crown"></i>
-                                {{ $advertiser->commission }}{{ $advertiser->commission_type == "percentage" ? '%' : '' }}
-                            </span>
-                        </td>
-
-                        <!-- APC Days -->
-                        <td class="text-center fw-medium" style="font-size: 14px;">
-                            {{ $advertiser->average_payment_time ?? 30 }} Days
-                        </td>
-
-                        <!-- Region -->
-                        <td class="text-center" style="font-size: 14px;">
                             @php
-                                $regions = [];
-                                if (is_string($advertiser->primary_regions)) {
-                                    $regions = json_decode($advertiser->primary_regions, true) ?? [];
-                                } elseif (is_array($advertiser->primary_regions)) {
-                                    $regions = $advertiser->primary_regions;
-                                }
-                                $regionText = count($regions) > 1 ? "Multi" : (count($regions) == 1 ? $regions[0] : "All");
+                                $status = $advertiser->advertiser_applies->status ??
+                                    $advertiser->advertiser_applies_status ?? null;
                             @endphp
-                            {{ $regionText }}
+                            @if($status == \App\Models\AdvertiserApply::STATUS_ACTIVE)
+                                <span class="badge bg-success">Joined</span>
+                            @elseif($status == \App\Models\AdvertiserApply::STATUS_PENDING)
+                                <span class="badge bg-warning">Pending</span>
+                            @elseif($status == \App\Models\AdvertiserApply::STATUS_REJECTED)
+                                <span class="badge bg-danger">Rejected</span>
+                            @elseif($status == \App\Models\AdvertiserApply::STATUS_HOLD || $status == \App\Models\AdvertiserApply::STATUS_ADMITAD_HOLD)
+                                <span class="badge bg-info">Hold</span>
+                            @else
+                                <span class="badge bg-secondary">Not Joined</span>
+                            @endif
                         </td>
+                    @endif
 
-                        <!-- Status (Only for Admin) -->
-                        @if($checkAdmin)
-                            <td class="text-center">
-                                @php
-                                    $status = $advertiser->advertiser_applies->status ??
-                                        $advertiser->advertiser_applies_status ?? null;
-                                @endphp
-                                @if($status == \App\Models\AdvertiserApply::STATUS_ACTIVE)
-                                    <span class="badge bg-success">Joined</span>
-                                @elseif($status == \App\Models\AdvertiserApply::STATUS_PENDING)
-                                    <span class="badge bg-warning">Pending</span>
-                                @elseif($status == \App\Models\AdvertiserApply::STATUS_REJECTED)
-                                    <span class="badge bg-danger">Rejected</span>
-                                @elseif($status == \App\Models\AdvertiserApply::STATUS_HOLD || $status == \App\Models\AdvertiserApply::STATUS_ADMITAD_HOLD)
-                                    <span class="badge bg-info">Hold</span>
-                                @else
-                                    <span class="badge bg-secondary">Not Joined</span>
-                                @endif
-                            </td>
-                        @endif
+                    <!-- Website Link -->
+                    <td>
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <a href="{{ $advertiser->url }}" target="_blank" class="website-link tooltip-wrapper"
+                                style="font-size: 16px;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span class="tooltip-text">Visit</span>
+                            </a>
 
-                        <!-- Website Link -->
-                        <td>
-                            <div class="d-flex justify-content-center align-items-center gap-2">
-                                <a href="{{ $advertiser->url }}" target="_blank" class="website-link tooltip-wrapper"
-                                    style="font-size: 16px;">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    <span class="tooltip-text">Visit</span>
-                                </a>
-
-                                <a href="{{ route('publisher.view-advertiser', ['sid' => $advertiser->sid]) }}"
-                                    class="website-link tooltip-wrapper" style="font-size: 22px;">
-                                    <i class="ri-information-line"></i>
-                                    <span class="tooltip-text">Information</span>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                            <a href="{{ route('publisher.view-advertiser', ['sid' => $advertiser->sid]) }}"
+                                class="website-link tooltip-wrapper" style="font-size: 22px;">
+                                <i class="ri-information-line"></i>
+                                <span class="tooltip-text">Information</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
 {{-- <div class="projectDatatable project-table  global-shadow border p-10 bg-white radius-xl w-100 mx-0">

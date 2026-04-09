@@ -49,7 +49,6 @@
     }
 </style>
 <!-- Minimal Modern Advertisers Table -->
-<div class="container py-5">
     <div class="table-responsive">
         <table class="table table-hover align-middle modern-table">
             <thead style="background-color: #c22437; color: white;">
@@ -143,7 +142,6 @@
             </tbody>
         </table>
     </div>
-</div>
 
 
 
