@@ -1,10 +1,10 @@
-<?php if (! $__env->hasRenderedOnce('c920a9af-b42a-4832-9437-5c3f5a8f78c2')): $__env->markAsRenderedOnce('c920a9af-b42a-4832-9437-5c3f5a8f78c2');
+<?php if (! $__env->hasRenderedOnce('b093588f-de1b-40b0-8f45-c7fcb4f5aff3')): $__env->markAsRenderedOnce('b093588f-de1b-40b0-8f45-c7fcb4f5aff3');
 $__env->startPush('styles'); ?>
 
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
 <style>
     :root {
-        --primary-color: #5b47fb;
+        --primary-color: #c22437;
         --primary-light: rgba(91, 71, 251, 0.1);
         --border-color: #eef1f7;
     }
@@ -243,7 +243,7 @@ $__env->startPush('styles'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('2351fbb1-a50c-4dfe-ac85-d91b9718c070')): $__env->markAsRenderedOnce('2351fbb1-a50c-4dfe-ac85-d91b9718c070');
+<?php if (! $__env->hasRenderedOnce('ccf80118-4fcc-426b-a072-075315b9e6e3')): $__env->markAsRenderedOnce('ccf80118-4fcc-426b-a072-075315b9e6e3');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>
@@ -605,172 +605,8 @@ $__env->startPush('scripts'); ?>
                     
                 </div>
                 <div class="row justify-content-between">
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card shadow-sm border-0 rounded-3 sticky-lg-top" style="top: 10px;">
-                            <!-- Header -->
-                            <div class="card-header bg-primary text-white py-3 px-4">
-                                <h5 class="mb-0 d-flex align-items-center fw-semibold">
-                                    <i class="fas fa-sliders-h me-2"></i> Filters
-                                </h5>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body p-4">
-                                <!-- Search Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-search me-2 text-muted"></i> Search
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByName"
-                                            onclick="clearFilter('clearSearchByName')"
-                                            class="text-danger <?php echo e(request()->search_by_name ? '' : 'd-none'); ?>">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="input-group input-group-sm">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="fas fa-search text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control border-start-0" id="SearchByName"
-                                            placeholder="Search by name..." value="<?php echo e(request()->search_by_name); ?>">
-                                    </div>
-                                </div>
-
-                                <!-- Country Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-globe-americas me-2 text-muted"></i> Country
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByCountry"
-                                            onclick="clearFilter('clearSearchByCountry')"
-                                            class="text-danger <?php echo e(request()->search_by_country ? '' : 'd-none'); ?>">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByCountry" class="form-select" multiple>
-                                            <?php
-    $countriesArr = [];
-    if (str_contains(request()->search_by_country, ',')) {
-        $countriesArr = explode(',', request()->search_by_country);
-    } else {
-        $countriesArr = [request()->search_by_country];
-    }
-                                            ?>
-                                            <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option <?php if(in_array($country['iso2'], $countriesArr)): ?> selected <?php endif; ?>
-                                                    value="<?php echo e($country['iso2']); ?>">
-                                                    <i class="fas fa-flag me-1"></i> <?php echo e($country['name']); ?>
-
-                                                </option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
-
-                                <!-- Advertiser Type Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <h6 class="mb-3 fw-semibold d-flex align-items-center">
-                                        <i class="fas fa-users me-2 text-muted"></i> Advertiser Type
-                                    </h6>
-                                    <div class="form-check form-check-inline d-block mb-2">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserAll" value="all" <?php echo e(request()->type == "third_party_advertiser" || empty(request()->type) ? "checked" : ""); ?>>
-                                        <label class="form-check-label" for="advertiserAll">
-                                            <i class="fas fa-layer-group me-1 text-primary"></i> All Advertisers
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline d-block mb-2">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserThirdParty" value="third_party_advertiser" <?php echo e(request()->type == "third_party_advertiser" ? "checked" : ""); ?>>
-                                        <label class="form-check-label" for="advertiserThirdParty">
-                                            <i class="fas fa-user-friends me-1 text-warning"></i> Third-Party Advertisers
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline d-block">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserManaged" value="managed_by_linksCircle" <?php echo e(request()->type == "managed_by_linksCircle" ? "checked" : ""); ?>>
-                                        <label class="form-check-label" for="advertiserManaged">
-                                            <i class="fas fa-cog me-1 text-success"></i> Managed by LinksCircle
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <!-- Categories Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-tags me-2 text-muted"></i> Categories
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByCategory"
-                                            onclick="clearFilter('clearSearchByCategory')"
-                                            class="text-danger <?php echo e(request()->search_by_category ? '' : 'd-none'); ?>">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByCategory" class="form-select form-select-sm" multiple size="4">
-                                            <?php
-    $categoryArr = [];
-    if (str_contains(request()->search_by_category, ',')) {
-        $categoryArr = explode(',', request()->search_by_category);
-    } else {
-        $categoryArr = [request()->search_by_category];
-    }
-                                            ?>
-                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option <?php if(in_array($category['id'], $categoryArr)): ?> selected <?php endif; ?>
-                                                    value="<?php echo e($category['id']); ?>">
-                                                    <i class="fas fa-folder me-1"></i> <?php echo e($category['name']); ?>
-
-                                                </option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
-
-                                <!-- Promotional Methods Filter -->
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-bullhorn me-2 text-muted"></i> Promotional Methods
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByPromotionalMethod"
-                                            onclick="clearFilter('clearSearchByPromotionalMethod')"
-                                            class="text-danger <?php echo e(request()->search_by_promotional_method ? '' : 'd-none'); ?>">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByPromotionalMethod" class="form-select form-select-sm" multiple
-                                            size="4">
-                                            <?php
-    $promotionalArr = [];
-    if (str_contains(request()->search_by_promotional_method, ',')) {
-        $promotionalArr = explode(',', request()->search_by_promotional_method);
-    } else {
-        $promotionalArr = [request()->search_by_promotional_method];
-    }
-                                            ?>
-                                            <?php $__currentLoopData = $methods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $method): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option <?php if(in_array($method['id'], $promotionalArr)): ?> selected <?php endif; ?>
-                                                    value="<?php echo e($method['id']); ?>">
-                                                    <i class="fas fa-rocket me-1"></i> <?php echo e($method['name']); ?>
-
-                                                </option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-4 col-sm-12">
+                    
+                    <div class="col-lg-12 col-md-4 col-sm-12">
                         <!-- Start: Top Bar -->
 
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">

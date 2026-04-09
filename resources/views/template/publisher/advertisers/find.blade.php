@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css") }}" />
 <style>
     :root {
-        --primary-color: #5b47fb;
+        --primary-color: #c22437;
         --primary-light: rgba(91, 71, 251, 0.1);
         --border-color: #eef1f7;
     }
@@ -620,7 +620,7 @@
                     </div> --}}
                 </div>
                 <div class="row justify-content-between">
-                    <div class="col-lg-3 col-md-4 col-sm-12">
+                    {{-- <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card shadow-sm border-0 rounded-3 sticky-lg-top" style="top: 10px;">
                             <!-- Header -->
                             <div class="card-header bg-primary text-white py-3 px-4">
@@ -781,8 +781,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-9 col-md-4 col-sm-12">
+                    </div> --}}
+                    <div class="col-lg-12 col-md-4 col-sm-12">
                         <!-- Start: Top Bar -->
 
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
