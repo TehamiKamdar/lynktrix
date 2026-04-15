@@ -5,35 +5,31 @@
 
         <!-- Start Table Responsive -->
         <div class="table-responsive">
-            <table class="table table-hover table-primary">
-                <thead>
+            <table class="table table-hover align-middle modern-table">
+                <thead style="background-color: #c22437; color: white;">
+
                     <tr>
-                        <th scope="col" colspan="6" class="text-center">
-                            <h5 class="fw-bold">Earnings</h5>
+                        <th>
+                            <span>Advertiser</span>
+                        </th>
+                        <th>
+                            <span>Transactions</span>
+                        </th>
+                        <th>
+                            <span>Sale Amount</span>
+                        </th>
+                        <th>
+                            <span>Commission</span>
+                        </th>
+                        <th>
+                            <span>Commission Payout</span>
+                        </th>
+                        <th>
+                            <span>Avg. Payout</span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Advertiser</span>
-                    </td>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Transactions</span>
-                    </td>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Sale Amount</span>
-                    </td>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Commission</span>
-                    </td>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Commission Payout</span>
-                    </td>
-                    <td>
-                        <span class="userDatatable-title font-weight-bold text-black">Avg. Payout</span>
-                    </td>
-                </tr>
                 <?php if($performanceOverviewList && count($performanceOverviewList)): ?>
                     <?php $__currentLoopData = $performanceOverviewList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php

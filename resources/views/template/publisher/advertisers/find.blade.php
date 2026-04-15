@@ -21,7 +21,7 @@
 
 
     .select2-container--default .select2-selection--multiple{
-        border: 1px solid #a71d2d !important;
+        border: 2px solid #a71d2d !important;
     }
 
     .select2-container .select2-search--inline .select2-search__field{

@@ -1,4 +1,4 @@
-<?php if (! $__env->hasRenderedOnce('51c9b79b-58de-44c1-b484-967223d81640')): $__env->markAsRenderedOnce('51c9b79b-58de-44c1-b484-967223d81640');
+<?php if (! $__env->hasRenderedOnce('0027ff9f-1b3d-46b2-86be-c6bd667d6ed8')): $__env->markAsRenderedOnce('0027ff9f-1b3d-46b2-86be-c6bd667d6ed8');
 $__env->startPush('styles'); ?>
 
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
@@ -20,7 +20,7 @@ $__env->startPush('styles'); ?>
 
 
     .select2-container--default .select2-selection--multiple{
-        border: 1px solid #a71d2d !important;
+        border: 2px solid #a71d2d !important;
     }
 
     .select2-container .select2-search--inline .select2-search__field{
@@ -311,7 +311,7 @@ $__env->startPush('styles'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('601c8551-720a-412f-b900-c26fbf11ee07')): $__env->markAsRenderedOnce('601c8551-720a-412f-b900-c26fbf11ee07');
+<?php if (! $__env->hasRenderedOnce('74533176-7dd3-4032-999b-4cfc79fc07fe')): $__env->markAsRenderedOnce('74533176-7dd3-4032-999b-4cfc79fc07fe');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>
