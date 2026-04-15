@@ -588,6 +588,10 @@ body {
     position: relative;
 }
 
+.dashboard-sidebar .nav-link{
+    padding: 1rem 0.5rem;
+}
+
 .tooltip-text-nav {
     position: absolute;
     left: 110%;
