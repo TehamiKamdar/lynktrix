@@ -119,8 +119,14 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route("publisher.reports.performance-by-transactions.list") }}" class="nav-link">
-            <i class="bi bi-graph-up-arrow"></i>
+          <a href="{{ route("publisher.creatives.text-links.list") }}" class="nav-link {{ Route::is("publisher.creatives.text-links.list") ? 'active' : '' }}">
+            <i class="fas fa-link"></i>
+            <span class="tooltip-text-nav">Links Promotion</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route("publisher.reports.performance-by-transactions.list") }}" class="nav-link {{ Route::is("publisher.reports.performance-by-transactions.list") ? 'active' : '' }}">
+            <i class="fas fa-chart-line"></i>
             <span class="tooltip-text-nav">Analytics</span>
           </a>
         </li>
