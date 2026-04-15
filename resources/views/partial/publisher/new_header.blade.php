@@ -137,6 +137,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route("publisher.payments.index") }}" class="nav-link {{ Route::is("publisher.payments.index") ? 'active' : '' }}">
+            <i class="fas fa-hand-holding-dollar"></i>
+            <span class="tooltip-text-nav">Payments</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="bi bi-folder2-open"></i>
             <span class="tooltip-text-nav">Messages</span>

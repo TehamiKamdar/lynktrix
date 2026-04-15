@@ -1,13 +1,13 @@
-@extends("layouts.publisher.publisher_panel")
+<?php if (! $__env->hasRenderedOnce('1ace95b4-5fed-44ba-9d13-44e5c65b960c')): $__env->markAsRenderedOnce('1ace95b4-5fed-44ba-9d13-44e5c65b960c');
+$__env->startPush('styles'); ?>
+    <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css")); ?>">
+<?php $__env->stopPush(); endif; ?>
+<?php $__env->startPush('title', 'Payments'); ?>
 
-@pushonce('styles')
-    <link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css") }}">
-@endpushonce
-@push('title', 'Payments')
+<?php if (! $__env->hasRenderedOnce('c1d43ced-89b1-43a8-806b-14f09ab5c6e8')): $__env->markAsRenderedOnce('c1d43ced-89b1-43a8-806b-14f09ab5c6e8');
+$__env->startPush('scripts'); ?>
 
-@pushonce('scripts')
-
-    @php
+    <?php
         $date = \Carbon\Carbon::now()->format("Y-m-01 00:00:00");
         $diff = now()->diffInDays(\Carbon\Carbon::parse($date));
 
@@ -20,15 +20,15 @@
         if($endDate)
             $endDate = \Carbon\Carbon::parse($endDate)->format("M d, Y");
 
-    @endphp
+    ?>
 
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js") }}"></script>
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js") }}"></script>
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment.js") }}"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js")); ?>"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js")); ?>"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment.js")); ?>"></script>
     <script>
         function sendAjaxRequest(dataObj) {
             $.ajax({
-                url: '{{ route("publisher.reports.transactions.list") }}',
+                url: '<?php echo e(route("publisher.reports.transactions.list")); ?>',
                 type: 'GET',
                 data: dataObj,
                 success: function (response) {
@@ -91,8 +91,8 @@
 
         document.addEventListener("DOMContentLoaded", function () {
 
-            let startDate = "{{ $startDate }}";
-            let endDate = "{{ $endDate }}";
+            let startDate = "<?php echo e($startDate); ?>";
+            let endDate = "<?php echo e($endDate); ?>";
 
             let start;
             let end;
@@ -126,17 +126,17 @@
                 },
             });
 
-            {{--let setDate = "{{ $setDate }}";--}}
-            {{--if(setDate) {--}}
-            {{--    $('input[name="date-ranger"]').val(setDate);--}}
-            {{--}--}}
-            {{--else {--}}
-            {{--}--}}
+            
+            
+            
+            
+            
+            
             $('input[name="date-ranger"]').val(start.format('MMM D, YYYY') + ' - ' + end.format('MMM D, YYYY'));
             $('input[name="date-ranger"]').on('apply.daterangepicker', function (ev, picker) {
 
-                let exportXLSXURL = "{{ route("publisher.reports.transactions.export", ['type' => 'xlsx']) }}";
-                let exportCSVURL = "{{ route("publisher.reports.transactions.export", ['type' => 'csv']) }}";
+                let exportXLSXURL = "<?php echo e(route("publisher.reports.transactions.export", ['type' => 'xlsx'])); ?>";
+                let exportCSVURL = "<?php echo e(route("publisher.reports.transactions.export", ['type' => 'csv'])); ?>";
 
                 $(this).val(picker.startDate.format('MMM D, YYYY') + ' - ' + picker.endDate.format('MMM D, YYYY'));
 
@@ -190,7 +190,7 @@
                 $("#ap-tabContent").addClass("spin-active");
                 $("#gridLoader").removeClass("display-hidden");
                 $.ajax({
-                    url: '{{ route("publisher.set-limit") }}',
+                    url: '<?php echo e(route("publisher.set-limit")); ?>',
                     type: 'GET',
                     data: {"limit": $("#limit").val(), "type": "transaction"},
                     success: function (response) {
@@ -262,18 +262,20 @@
 
         });
     </script>
-@endpushonce
+<?php $__env->stopPush(); endif; ?>
 
-@section("content")
+<?php $__env->startSection("content"); ?>
 
     <div class="container-fluid">
         <div class="col-12 px-0">
-            @include("partial.admin.alert")
+            <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <div id="ap-overview">
-                @include("template.publisher.payments.list_view", compact('payments'))
+                <?php echo $__env->make("template.publisher.payments.list_view", compact('payments'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make("layouts.publisher.publisher_panel", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/template/publisher/payments/list.blade.php ENDPATH**/ ?>
