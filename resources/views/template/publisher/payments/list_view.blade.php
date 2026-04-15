@@ -2,7 +2,7 @@
 
     <!-- Start Table Responsive -->
     <div class="table-responsive">
-        <table class="table mb-0 table-hover modern-table">
+        <table class="table table-hover modern-table">
             <thead>
                 <tr>
                     <th>
