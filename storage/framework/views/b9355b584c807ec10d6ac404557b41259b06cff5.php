@@ -4,7 +4,6 @@
 <style>
     .modern-table {
         font-size: 14px;
-        border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     }
@@ -49,99 +48,99 @@
     }
 </style>
 <!-- Minimal Modern Advertisers Table -->
-    <div class="table-responsive">
-        <table class="table table-hover align-middle modern-table">
-            <thead style="background-color: #c22437; color: white;">
+<div class="table-responsive">
+    <table class="table table-hover align-middle modern-table">
+        <thead style="background-color: #c22437; color: white;">
+            <tr>
+                <th>Advertiser</th>
+                <th class="text-center">Commission</th>
+                <th class="text-center">APC Days</th>
+                <th class="text-center">Region</th>
+                <?php if($checkAdmin): ?>
+                    <th class="text-center">Status</th>
+                <?php endif; ?>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__currentLoopData = $advertisers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $advertiser): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <th>Advertiser</th>
-                    <th class="text-center">Commission</th>
-                    <th class="text-center">APC Days</th>
-                    <th class="text-center">Region</th>
+                    <!-- Advertiser Name -->
+                    <td>
+                        <span class="fw-semibold" style="font-size: 14px;"><?php echo e($advertiser->name); ?></span>
+                    </td>
+
+                    <!-- Commission -->
+                    <td class="text-center">
+                        <span class="commission-pill" style="font-size: 12px;">
+                            <i class="fas fa-crown"></i>
+                            <?php echo e($advertiser->commission); ?><?php echo e($advertiser->commission_type == "percentage" ? '%' : ''); ?>
+
+                        </span>
+                    </td>
+
+                    <!-- APC Days -->
+                    <td class="text-center fw-medium" style="font-size: 14px;">
+                        <?php echo e($advertiser->average_payment_time ?? 30); ?> Days
+                    </td>
+
+                    <!-- Region -->
+                    <td class="text-center" style="font-size: 14px;">
+                        <?php
+                            $regions = [];
+                            if (is_string($advertiser->primary_regions)) {
+                                $regions = json_decode($advertiser->primary_regions, true) ?? [];
+                            } elseif (is_array($advertiser->primary_regions)) {
+                                $regions = $advertiser->primary_regions;
+                            }
+                            $regionText = count($regions) > 1 ? "Multi" : (count($regions) == 1 ? $regions[0] : "All");
+                        ?>
+                        <?php echo e($regionText); ?>
+
+                    </td>
+
+                    <!-- Status (Only for Admin) -->
                     <?php if($checkAdmin): ?>
-                        <th class="text-center">Status</th>
-                    <?php endif; ?>
-                    <th class="text-center">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $__currentLoopData = $advertisers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $advertiser): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <!-- Advertiser Name -->
-                        <td>
-                            <span class="fw-semibold" style="font-size: 14px;"><?php echo e($advertiser->name); ?></span>
-                        </td>
-
-                        <!-- Commission -->
                         <td class="text-center">
-                            <span class="commission-pill" style="font-size: 12px;">
-                                <i class="fas fa-crown"></i>
-                                <?php echo e($advertiser->commission); ?><?php echo e($advertiser->commission_type == "percentage" ? '%' : ''); ?>
-
-                            </span>
-                        </td>
-
-                        <!-- APC Days -->
-                        <td class="text-center fw-medium" style="font-size: 14px;">
-                            <?php echo e($advertiser->average_payment_time ?? 30); ?> Days
-                        </td>
-
-                        <!-- Region -->
-                        <td class="text-center" style="font-size: 14px;">
                             <?php
-                                $regions = [];
-                                if (is_string($advertiser->primary_regions)) {
-                                    $regions = json_decode($advertiser->primary_regions, true) ?? [];
-                                } elseif (is_array($advertiser->primary_regions)) {
-                                    $regions = $advertiser->primary_regions;
-                                }
-                                $regionText = count($regions) > 1 ? "Multi" : (count($regions) == 1 ? $regions[0] : "All");
+                                $status = $advertiser->advertiser_applies->status ??
+                                    $advertiser->advertiser_applies_status ?? null;
                             ?>
-                            <?php echo e($regionText); ?>
-
+                            <?php if($status == \App\Models\AdvertiserApply::STATUS_ACTIVE): ?>
+                                <span class="badge bg-success">Joined</span>
+                            <?php elseif($status == \App\Models\AdvertiserApply::STATUS_PENDING): ?>
+                                <span class="badge bg-warning">Pending</span>
+                            <?php elseif($status == \App\Models\AdvertiserApply::STATUS_REJECTED): ?>
+                                <span class="badge bg-danger">Rejected</span>
+                            <?php elseif($status == \App\Models\AdvertiserApply::STATUS_HOLD || $status == \App\Models\AdvertiserApply::STATUS_ADMITAD_HOLD): ?>
+                                <span class="badge bg-info">Hold</span>
+                            <?php else: ?>
+                                <span class="badge bg-secondary">Not Joined</span>
+                            <?php endif; ?>
                         </td>
+                    <?php endif; ?>
 
-                        <!-- Status (Only for Admin) -->
-                        <?php if($checkAdmin): ?>
-                            <td class="text-center">
-                                <?php
-                                    $status = $advertiser->advertiser_applies->status ??
-                                        $advertiser->advertiser_applies_status ?? null;
-                                ?>
-                                <?php if($status == \App\Models\AdvertiserApply::STATUS_ACTIVE): ?>
-                                    <span class="badge bg-success">Joined</span>
-                                <?php elseif($status == \App\Models\AdvertiserApply::STATUS_PENDING): ?>
-                                    <span class="badge bg-warning">Pending</span>
-                                <?php elseif($status == \App\Models\AdvertiserApply::STATUS_REJECTED): ?>
-                                    <span class="badge bg-danger">Rejected</span>
-                                <?php elseif($status == \App\Models\AdvertiserApply::STATUS_HOLD || $status == \App\Models\AdvertiserApply::STATUS_ADMITAD_HOLD): ?>
-                                    <span class="badge bg-info">Hold</span>
-                                <?php else: ?>
-                                    <span class="badge bg-secondary">Not Joined</span>
-                                <?php endif; ?>
-                            </td>
-                        <?php endif; ?>
+                    <!-- Website Link -->
+                    <td>
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <a href="<?php echo e($advertiser->url); ?>" target="_blank" class="website-link tooltip-wrapper"
+                                style="font-size: 16px;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span class="tooltip-text">Visit</span>
+                            </a>
 
-                        <!-- Website Link -->
-                        <td>
-                            <div class="d-flex justify-content-center align-items-center gap-2">
-                                <a href="<?php echo e($advertiser->url); ?>" target="_blank" class="website-link tooltip-wrapper"
-                                    style="font-size: 16px;">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    <span class="tooltip-text">Visit</span>
-                                </a>
-
-                                <a href="<?php echo e(route('publisher.view-advertiser', ['sid' => $advertiser->sid])); ?>"
-                                    class="website-link tooltip-wrapper" style="font-size: 22px;">
-                                    <i class="ri-information-line"></i>
-                                    <span class="tooltip-text">Information</span>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tbody>
-        </table>
-    </div>
+                            <a href="<?php echo e(route('publisher.view-advertiser', ['sid' => $advertiser->sid])); ?>"
+                                class="website-link tooltip-wrapper" style="font-size: 22px;">
+                                <i class="ri-information-line"></i>
+                                <span class="tooltip-text">Information</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
+</div>
 
 
 

@@ -1,4 +1,4 @@
-<?php if (! $__env->hasRenderedOnce('b093588f-de1b-40b0-8f45-c7fcb4f5aff3')): $__env->markAsRenderedOnce('b093588f-de1b-40b0-8f45-c7fcb4f5aff3');
+<?php if (! $__env->hasRenderedOnce('51c9b79b-58de-44c1-b484-967223d81640')): $__env->markAsRenderedOnce('51c9b79b-58de-44c1-b484-967223d81640');
 $__env->startPush('styles'); ?>
 
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
@@ -9,16 +9,69 @@ $__env->startPush('styles'); ?>
         --border-color: #eef1f7;
     }
 
+    .select2-container--default .select2-selection--multiple {
+        max-height: 32px;
+        overflow-x: auto;
+        overflow-y: visible;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+
+    .select2-container--default .select2-selection--multiple{
+        border: 1px solid #a71d2d !important;
+    }
+
+    .select2-container .select2-search--inline .select2-search__field{
+        font-size: 90%;
+    }
+
+    .select2-container .select2-results__option {
+        font-size: 80%;
+    }
+
+    /* Dropdown container background */
+    .select2-dropdown {
+        background-color: #fff;
+        border: none;
+    }
+
+    /* Option text color (important warna visible nahi hoga) */
+    .select2-container .select2-results__option {
+        color: #a71d2d;
+    }
+
+    /* Hover / highlighted option */
+    .select2-container .select2-results__option--highlighted {
+        background-color: #a71d2d !important;
+        color: #fff;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+        background-color: rgb(252, 209, 209);
+        border: 0;
+        border-radius: 4px;
+        color: var(--primary-color);
+        font-size: 80%;
+    }
+
+    /* Selected option */
+    .select2-container .select2-results__option[aria-selected="true"] {
+        background-color: #8e1826;
+        color: #fff;
+    }
+
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
         display: none;
     }
 
     .select2-container {
-        z-index: 9999 !important;
+        z-index: 888 !important;
     }
 
     .select2-dropdown {
-        z-index: 999999 !important;
+        z-index: 888 !important;
     }
 
     /* Brand Tabs Styling */
@@ -239,11 +292,26 @@ $__env->startPush('styles'); ?>
         margin: 20% 50%;
         position: absolute;
     }
+    .filter-bar-wrapper .card {
+        transition: all 0.3s ease;
+    }
+    .filter-bar-wrapper .form-label {
+        font-size: 10px;
+        color: #ccc
+    }
+    .filter-bar-wrapper .form-select[multiple] {
+        min-height: 80px;
+    }
+    @media (max-width: 768px) {
+        .filter-bar-wrapper .form-select[multiple] {
+            min-height: 60px;
+        }
+    }
 </style>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('ccf80118-4fcc-426b-a072-075315b9e6e3')): $__env->markAsRenderedOnce('ccf80118-4fcc-426b-a072-075315b9e6e3');
+<?php if (! $__env->hasRenderedOnce('601c8551-720a-412f-b900-c26fbf11ee07')): $__env->markAsRenderedOnce('601c8551-720a-412f-b900-c26fbf11ee07');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>
@@ -380,6 +448,13 @@ $__env->startPush('scripts'); ?>
                 filterAdvertiser("search_by_promotional_method", "SearchByPromotionalMethod");
             }
         }
+        else if (key === "type") {
+            $("#type").val("").trigger("change");
+            if (urlParams.has(`type`)) {
+                urlParams.delete(`type`);
+                filterAdvertiser("type", "advertiserAll");
+            }
+        }
         history.pushState({}, null, url.href);
         $(`#${key}`).hide();
     }
@@ -488,8 +563,8 @@ $__env->startPush('scripts'); ?>
         $("#SearchByCountry, #SearchByPromotionalMethod, #SearchByCategory").select2({
             placeholder: "Please Select",
             dropdownCssClass: "tag",
-            allowClear: false,
-
+            allowClear: true,
+            tags: true
         });
         $("#SearchByName").keyup(() => {
             console.log("Keyword");
@@ -574,131 +649,289 @@ $__env->startPush('scripts'); ?>
             $("#applyAdvertiserBttn").prop('disabled', true);
         });
     });
+
+    function resetAllFilters() {
+        // Clear all inputs
+        document.getElementById('SearchByName').value = '';
+        document.getElementById('SearchByCountry').selectedIndex = -1;
+        document.getElementById('SearchByCategory').selectedIndex = -1;
+        document.getElementById('SearchByPromotionalMethod').selectedIndex = -1;
+        document.querySelector('input[name="advertiserType"][value="all"]').checked = true;
+
+        // Clear URL params except section
+        const params = new URLSearchParams();
+        const section = document.querySelector('#brandTabs .nav-link.active')?.dataset.section;
+        if (section && section !== 'all') params.set('section', section);
+
+        window.location.href = window.location.pathname + '?' + params.toString();
+    }
 </script>
 <?php $__env->stopPush(); endif; ?>
 
 <?php $__env->startSection("content"); ?>
     <div class="az-content az-content-dashboard">
         <div class="container-fluid">
-            <div class="az-content-body">
-                <div class="az-dashboard-one-title">
-                    <div>
-                        <h2 class="az-dashboard-title">Brands</h2>
-                        <p class="az-dashboard-text">
-                            Total <span id="totalAdvertiser">0</span> brands found
-                        </p>
+            <div class="row justify-content-between">
+                <div class="filter-bar-wrapper mb-4">
+                    <div class="card shadow-sm border-0 rounded-3">
+                        <!-- Filter Header - Collapsible on mobile -->
+                        <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-semibold d-flex align-items-center">
+                                <i class="fas fa-sliders-h me-2 text-primary"></i> Filters
+                            </h5>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="resetAllFilters()">
+                                <i class="fas fa-undo-alt me-1"></i> Reset
+                            </button>
+                        </div>
+
+                        <!-- Filter Content - Collapsible -->
+                        <div class="collapse show" id="filterCollapse">
+                            <div class="card-body px-4 py-0">
+                                <!-- Row 1: Search & Quick Actions -->
+                                <div class="row g-3 mb-4">
+
+
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-tags me-1"></i> Categories
+                                        </label>
+                                        <select id="SearchByCategory" class="form-select form-select-sm" multiple>
+                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option <?php if(in_array($category['id'], explode(',', request()->search_by_category ?? ''))): ?> selected <?php endif; ?>
+                                                    value="<?php echo e($category['id']); ?>">
+                                                    <?php echo e($category['name']); ?>
+
+                                                </option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-bullhorn me-1"></i> Promotional Methods
+                                        </label>
+                                        <select id="SearchByPromotionalMethod" class="form-select form-select-sm" multiple>
+                                            <?php $__currentLoopData = $methods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $method): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option <?php if(in_array($method['id'], explode(',', request()->search_by_promotional_method ?? ''))): ?> selected <?php endif; ?>
+                                                    value="<?php echo e($method['id']); ?>">
+                                                    <?php echo e($method['name']); ?>
+
+                                                </option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-globe-americas me-1"></i> Country
+                                        </label>
+                                        <select id="SearchByCountry" class="form-select form-select-sm" multiple>
+                                            <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option <?php if(in_array($country['iso2'], explode(',', request()->search_by_country ?? ''))): ?> selected <?php endif; ?>
+                                                    value="<?php echo e($country['iso2']); ?>">
+                                                    <?php echo e($country['name']); ?>
+
+                                                </option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-users me-1"></i> Advertiser Type
+                                        </label>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserAll" value="all"
+                                                    <?php echo e(request()->type == "third_party_advertiser" || empty(request()->type) ? "checked" : ""); ?>>
+                                                <label class="form-check-label small" for="advertiserAll">All</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserThirdParty" value="third_party_advertiser"
+                                                    <?php echo e(request()->type == "third_party_advertiser" ? "checked" : ""); ?>>
+                                                <label class="form-check-label small" for="advertiserThirdParty">Third-Party</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserManaged" value="managed_by_linksCircle"
+                                                    <?php echo e(request()->type == "managed_by_linksCircle" ? "checked" : ""); ?>>
+                                                <label class="form-check-label small" for="advertiserManaged">Managed by LinksCircle</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="d-flex gap-2 justify-content-md-end">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Active Filter Tags -->
+                                <?php
+                                    $hasActiveFilters = request()->search_by_name || request()->search_by_country ||
+                                                        request()->search_by_category || request()->search_by_promotional_method ||
+                                                        (request()->type && request()->type != 'third_party_advertiser');
+                                ?>
+                                <?php if($hasActiveFilters): ?>
+                                    <div class="mt-3 pt-2 border-top">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="small text-muted me-2">Active filters:</span>
+                                            <?php if(request()->search_by_name): ?>
+                                                <span class="badge bg-light text-dark border">
+                                                    Search: <?php echo e(request()->search_by_name); ?>
+
+                                                    <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('clearSearchByName')"></i>
+                                                </span>
+                                            <?php endif; ?>
+                                            <?php if(request()->type && request()->type != 'third_party_advertiser'): ?>
+                                                <span class="badge bg-light text-dark border">
+                                                    Type: <?php echo e(request()->type == 'managed_by_linksCircle' ? 'Managed by LinksCircle' : 'Third-Party'); ?>
+
+                                                    <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('type')"></i>
+                                                </span>
+                                            <?php endif; ?>
+                                            <?php $__currentLoopData = explode(',', request()->search_by_category ?? ''); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $catId): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($catId): ?>
+                                                    <span class="badge bg-light text-dark border">
+                                                        Category: <?php echo e(collect($categories)->where('id', $catId)->first()['name'] ?? $catId); ?>
+
+                                                        <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="removeCategoryFilter('<?php echo e($catId); ?>')"></i>
+                                                    </span>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="az-dashboard-nav">
-                    <nav class="nav">
-                        <a class="nav-link active" data-toggle="tab" href="#">Our Brands</a>
-                    </nav>
 
-                    <nav class="nav">
-                        <?php
-                            $queryParams = request()->all();
-                        ?>
-                        <a class="nav-link text-success" href="<?php echo e(route("publisher.export-advertisers", array_merge(['type' => 'xlsx'], $queryParams))); ?>" id="exportXLSX"><i class="fa-solid fa-file-excel"></i> Export to Excel</a>
-                        <a class="nav-link text-success" href="<?php echo e(route("publisher.export-advertisers", array_merge(['type' => 'csv'], $queryParams))); ?>" id="exportCSV"><i class="fa-solid fa-file-csv"></i> Export to CSV</a>
-                        <a class="nav-link" href="#"><i class="fas fa-ellipsis-h"></i></a>
-                    </nav>
-                    
+                
+                <div class="col-lg-2 col-md-4 col-sm-12">
+
+                    <div class="card shadow-sm border-0 rounded-3">
+
+                        <!-- Header -->
+                        
+
+                        <!-- Body -->
+                        <div class="card-body p-2">
+
+                            <div class="nav flex-column nav-pills gap-2" id="brandTabs">
+
+                                <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
+
+                                    <button class="nav-link text-start <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" id="allBrands">
+                                        <span>All Brands</span>
+                                        
+                                    </button>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'new' ? 'active' : ''); ?>" data-section="new" id="newBrands">
+                                        New
+                                    </button>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'not-joined' ? 'active' : ''); ?>" data-section="not-joined" id="notJoinedBrands">
+                                        Not Joined
+                                    </button>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" id="pendingBrands">
+                                        Pending
+                                    </button>
+
+                                <?php endif; ?>
+
+                                <?php if(request()->route()->getName() == "publisher.own-advertisers"): ?>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'joined' || empty(request()->section) ? 'active' : ''); ?>" data-section="joined" id="joinedBrands">
+                                        Joined
+                                    </button>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" id="holdBrands">
+                                        Hold
+                                    </button>
+
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'rejected' ? 'active' : ''); ?>" data-section="rejected" id="rejectedBrands">
+                                        Rejected
+                                    </button>
+
+                                <?php endif; ?>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                <div class="row justify-content-between">
-                    
-                    <div class="col-lg-12 col-md-4 col-sm-12">
-                        <!-- Start: Top Bar -->
 
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
-                            <!-- Brand Status Tabs -->
-                            <div class="brand-tabs-container">
-                                <div class="d-flex align-items-center">
-                                    <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
-                                        <div class="border-end pe-3 me-3">
-                                            <h6 class="mb-0 text-muted fw-semibold small">Brand Status:</h6>
-                                        </div>
-                                    <?php endif; ?>
+                
+                <div class="col-lg-10 col-md-4 col-sm-12">
+                    <!-- Start: Top Bar -->
 
-                                    <div class="nav-tabs-wrapper">
-                                        <ul class="nav nav-tabs border-0" id="brandTabs" role="tablist">
-                                            <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(!request()->section || request()->section == "all" ? "active" : ""); ?> px-3 py-2" data-section="all" id="allBrands">
 
-                                                            All Brands
+                    <!-- View Toggle -->
+                    <div class="card shadow-sm" style="border-radius: 0;">
+                        <div class="card-body py-1">
+                            <div class="d-flex justify-content-between align-items-center gap-3 py-3">
+                                <div class="col-12 col-lg-4">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control" id="SearchByName" placeholder="Search advertisers..." value="<?php echo e(request()->search_by_name); ?>">
+                                        <?php if(request()->search_by_name): ?>
+                                            <button class="btn btn-outline-danger" onclick="clearFilter('clearSearchByName')" type="button">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 d-flex justify-content-end">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-success btn-sm dropdown-toggle d-flex align-items-center"
+                                            type="button"
+                                            data-bs-toggle="dropdown">
+                                            <i class="fas fa-download me-2"></i> Export
+                                        </button>
 
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "new" ? "active" : ""); ?> px-3 py-2" data-section="new" id="newBrands">
-                                                            New
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "not-joined" ? "active" : ""); ?> px-3 py-2" data-section="not-joined" id="notJoinedBrands">
-                                                            Not Joined
-                                                    </button>
-                                                </li>
-                                            <?php endif; ?>
+                                        <?php
+                                            $queryParams = request()->all();
+                                        ?>
 
-                                            <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "pending" ? "active" : ""); ?> px-3 py-2" data-section="pending" id="pendingBrands">
-                                                            Pending
-                                                    </button>
-                                                </li>
-                                            <?php endif; ?>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
 
-                                            <?php if(request()->route()->getName() == "publisher.own-advertisers"): ?>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "joined" || (request()->route()->getName() == "publisher.own-advertisers" && empty(request()->section)) ? "active" : ""); ?> px-3 py-2" data-section="joined" id="joinedBrands">
-                                                            Joined
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "hold" ? "active" : ""); ?> px-3 py-2" data-section="hold" id="holdBrands">
-                                                            Hold
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link <?php echo e(request()->section == "rejected" ? "active" : ""); ?> px-3 py-2" data-section="rejected" id="rejectedBrands">
-                                                            Rejected
-                                                    </button>
-                                                </li>
-                                            <?php endif; ?>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                href="<?php echo e(route('publisher.export-advertisers', array_merge(['type' => 'xlsx'], $queryParams))); ?>">
+                                                    <i class="fa-solid fa-file-excel text-success me-2"></i>
+                                                    Export to Excel
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                href="<?php echo e(route('publisher.export-advertisers', array_merge(['type' => 'csv'], $queryParams))); ?>">
+                                                    <i class="fa-solid fa-file-csv text-success me-2"></i>
+                                                    Export to CSV
+                                                </a>
+                                            </li>
+
                                         </ul>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- View Toggle -->
-                            <div class="view-toggle-container">
-                                <div class="d-flex align-items-center">
-                                    <span class="me-2 fw-medium text-muted small">View:</span>
-                                    <div class="btn-group view-tabs" role="group" style="border-bottom: none;">
-                                        <input type="radio" class="btn-check" name="viewOption" id="viewList"
-                                            value="<?php echo e(\App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW); ?>"
-                                            <?php echo e($view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW ? 'checked' : ''); ?>>
-                                        <label class="btn btn-sm py-2 mb-0 d-flex align-items-center" for="viewList"
-                                            onclick="view('<?php echo e(\App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW); ?>')">
-                                            <i class="fas fa-list me-2"></i>
-                                            <span>List</span>
-                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End: Top Bar -->
-                        <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                        <div class="tab-content mt-25" id="ap-tabContent">
-                            <?php echo $__env->make("template.publisher.widgets.loader-3", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                            <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
-                                aria-labelledby="ap-overview-tab">
-                                
-                            </div>
+                    </div>
+                    <!-- End: Top Bar -->
+                    <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <div class="tab-content" id="ap-tabContent">
+                        <?php echo $__env->make("template.publisher.widgets.loader-3", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                            aria-labelledby="ap-overview-tab">
+                            
                         </div>
-                    </div><!-- End: .columns-2 -->
-                </div>
+                    </div>
+                </div><!-- End: .columns-2 -->
             </div>
         </div>
 

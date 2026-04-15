@@ -101,27 +101,27 @@
     <div class="sidebar-nav">
       <ul class="list-unstyled">
         <li class="nav-item">
-          <a href="#" class="nav-link active" id="navDashboard">
+          <a href="#" class="nav-link {{ Route::is("dashboard", ["type" => "publisher"]) ? "active" : "" }}" id="navDashboard">
             <i class="bi bi-speedometer2"></i>
             <span class="tooltip-text-nav">Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-bar-chart-line"></i>
+          <a href="{{ route("publisher.find-advertisers") }}" class="nav-link {{ Route::is("publisher.find-advertisers") ? 'active' : '' }}">
+            <i class="far fa-handshake"></i>
             <span class="tooltip-text-nav">Partners</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-envelope-paper"></i>
+          <a href="{{ route("publisher.creatives.coupons.list") }}" class="nav-link">
+            <i class="bi bi-bag-heart"></i>
             <span class="tooltip-text-nav">Campaigns</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-people"></i>
-            <span class="tooltip-text-nav">Payments</span>
+          <a href="{{ route("publisher.reports.performance-by-transactions.list") }}" class="nav-link">
+            <i class="bi bi-graph-up-arrow"></i>
+            <span class="tooltip-text-nav">Analytics</span>
           </a>
         </li>
         <li class="nav-item">

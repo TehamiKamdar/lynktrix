@@ -4,7 +4,6 @@
 <style>
     .modern-table {
         font-size: 14px;
-        border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     }

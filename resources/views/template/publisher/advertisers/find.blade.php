@@ -10,16 +10,69 @@
         --border-color: #eef1f7;
     }
 
+    .select2-container--default .select2-selection--multiple {
+        max-height: 32px;
+        overflow-x: auto;
+        overflow-y: visible;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+
+    .select2-container--default .select2-selection--multiple{
+        border: 1px solid #a71d2d !important;
+    }
+
+    .select2-container .select2-search--inline .select2-search__field{
+        font-size: 90%;
+    }
+
+    .select2-container .select2-results__option {
+        font-size: 80%;
+    }
+
+    /* Dropdown container background */
+    .select2-dropdown {
+        background-color: #fff;
+        border: none;
+    }
+
+    /* Option text color (important warna visible nahi hoga) */
+    .select2-container .select2-results__option {
+        color: #a71d2d;
+    }
+
+    /* Hover / highlighted option */
+    .select2-container .select2-results__option--highlighted {
+        background-color: #a71d2d !important;
+        color: #fff;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+        background-color: rgb(252, 209, 209);
+        border: 0;
+        border-radius: 4px;
+        color: var(--primary-color);
+        font-size: 80%;
+    }
+
+    /* Selected option */
+    .select2-container .select2-results__option[aria-selected="true"] {
+        background-color: #8e1826;
+        color: #fff;
+    }
+
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
         display: none;
     }
 
     .select2-container {
-        z-index: 9999 !important;
+        z-index: 888 !important;
     }
 
     .select2-dropdown {
-        z-index: 999999 !important;
+        z-index: 888 !important;
     }
 
     /* Brand Tabs Styling */
@@ -240,6 +293,21 @@
         margin: 20% 50%;
         position: absolute;
     }
+    .filter-bar-wrapper .card {
+        transition: all 0.3s ease;
+    }
+    .filter-bar-wrapper .form-label {
+        font-size: 10px;
+        color: #ccc
+    }
+    .filter-bar-wrapper .form-select[multiple] {
+        min-height: 80px;
+    }
+    @media (max-width: 768px) {
+        .filter-bar-wrapper .form-select[multiple] {
+            min-height: 60px;
+        }
+    }
 </style>
 
 @endpushonce
@@ -380,6 +448,13 @@
                 filterAdvertiser("search_by_promotional_method", "SearchByPromotionalMethod");
             }
         }
+        else if (key === "type") {
+            $("#type").val("").trigger("change");
+            if (urlParams.has(`type`)) {
+                urlParams.delete(`type`);
+                filterAdvertiser("type", "advertiserAll");
+            }
+        }
         history.pushState({}, null, url.href);
         $(`#${key}`).hide();
     }
@@ -488,8 +563,8 @@
         $("#SearchByCountry, #SearchByPromotionalMethod, #SearchByCategory").select2({
             placeholder: "Please Select",
             dropdownCssClass: "tag",
-            allowClear: false,
-
+            allowClear: true,
+            tags: true
         });
         $("#SearchByName").keyup(() => {
             console.log("Keyword");
@@ -574,311 +649,293 @@
             $("#applyAdvertiserBttn").prop('disabled', true);
         });
     });
+
+    function resetAllFilters() {
+        // Clear all inputs
+        document.getElementById('SearchByName').value = '';
+        document.getElementById('SearchByCountry').selectedIndex = -1;
+        document.getElementById('SearchByCategory').selectedIndex = -1;
+        document.getElementById('SearchByPromotionalMethod').selectedIndex = -1;
+        document.querySelector('input[name="advertiserType"][value="all"]').checked = true;
+
+        // Clear URL params except section
+        const params = new URLSearchParams();
+        const section = document.querySelector('#brandTabs .nav-link.active')?.dataset.section;
+        if (section && section !== 'all') params.set('section', section);
+
+        window.location.href = window.location.pathname + '?' + params.toString();
+    }
 </script>
 @endpushonce
 
 @section("content")
     <div class="az-content az-content-dashboard">
         <div class="container-fluid">
-            <div class="az-content-body">
-                <div class="az-dashboard-one-title">
-                    <div>
-                        <h2 class="az-dashboard-title">Brands</h2>
-                        <p class="az-dashboard-text">
-                            Total <span id="totalAdvertiser">0</span> brands found
-                        </p>
+            <div class="row justify-content-between">
+                <div class="filter-bar-wrapper mb-4">
+                    <div class="card shadow-sm border-0 rounded-3">
+                        <!-- Filter Header - Collapsible on mobile -->
+                        <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-semibold d-flex align-items-center">
+                                <i class="fas fa-sliders-h me-2 text-primary"></i> Filters
+                            </h5>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="resetAllFilters()">
+                                <i class="fas fa-undo-alt me-1"></i> Reset
+                            </button>
+                        </div>
+
+                        <!-- Filter Content - Collapsible -->
+                        <div class="collapse show" id="filterCollapse">
+                            <div class="card-body px-4 py-0">
+                                <!-- Row 1: Search & Quick Actions -->
+                                <div class="row g-3 mb-4">
+
+
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-tags me-1"></i> Categories
+                                        </label>
+                                        <select id="SearchByCategory" class="form-select form-select-sm" multiple>
+                                            @foreach($categories as $category)
+                                                <option @if(in_array($category['id'], explode(',', request()->search_by_category ?? ''))) selected @endif
+                                                    value="{{ $category['id'] }}">
+                                                    {{ $category['name'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-bullhorn me-1"></i> Promotional Methods
+                                        </label>
+                                        <select id="SearchByPromotionalMethod" class="form-select form-select-sm" multiple>
+                                            @foreach($methods as $method)
+                                                <option @if(in_array($method['id'], explode(',', request()->search_by_promotional_method ?? ''))) selected @endif
+                                                    value="{{ $method['id'] }}">
+                                                    {{ $method['name'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-globe-americas me-1"></i> Country
+                                        </label>
+                                        <select id="SearchByCountry" class="form-select form-select-sm" multiple>
+                                            @foreach($countries as $country)
+                                                <option @if(in_array($country['iso2'], explode(',', request()->search_by_country ?? ''))) selected @endif
+                                                    value="{{ $country['iso2'] }}">
+                                                    {{ $country['name'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold small text-muted mb-1">
+                                            <i class="fas fa-users me-1"></i> Advertiser Type
+                                        </label>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserAll" value="all"
+                                                    {{ request()->type == "third_party_advertiser" || empty(request()->type) ? "checked" : "" }}>
+                                                <label class="form-check-label small" for="advertiserAll">All</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserThirdParty" value="third_party_advertiser"
+                                                    {{ request()->type == "third_party_advertiser" ? "checked" : "" }}>
+                                                <label class="form-check-label small" for="advertiserThirdParty">Third-Party</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="advertiserType"
+                                                    id="advertiserManaged" value="managed_by_linksCircle"
+                                                    {{ request()->type == "managed_by_linksCircle" ? "checked" : "" }}>
+                                                <label class="form-check-label small" for="advertiserManaged">Managed by LinksCircle</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="d-flex gap-2 justify-content-md-end">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Active Filter Tags -->
+                                @php
+                                    $hasActiveFilters = request()->search_by_name || request()->search_by_country ||
+                                                        request()->search_by_category || request()->search_by_promotional_method ||
+                                                        (request()->type && request()->type != 'third_party_advertiser');
+                                @endphp
+                                @if($hasActiveFilters)
+                                    <div class="mt-3 pt-2 border-top">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="small text-muted me-2">Active filters:</span>
+                                            @if(request()->search_by_name)
+                                                <span class="badge bg-light text-dark border">
+                                                    Search: {{ request()->search_by_name }}
+                                                    <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('clearSearchByName')"></i>
+                                                </span>
+                                            @endif
+                                            @if(request()->type && request()->type != 'third_party_advertiser')
+                                                <span class="badge bg-light text-dark border">
+                                                    Type: {{ request()->type == 'managed_by_linksCircle' ? 'Managed by LinksCircle' : 'Third-Party' }}
+                                                    <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('type')"></i>
+                                                </span>
+                                            @endif
+                                            @foreach(explode(',', request()->search_by_category ?? '') as $catId)
+                                                @if($catId)
+                                                    <span class="badge bg-light text-dark border">
+                                                        Category: {{ collect($categories)->where('id', $catId)->first()['name'] ?? $catId }}
+                                                        <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="removeCategoryFilter('{{ $catId }}')"></i>
+                                                    </span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="az-dashboard-nav">
-                    <nav class="nav">
-                        <a class="nav-link active" data-toggle="tab" href="#">Our Brands</a>
-                    </nav>
 
-                    <nav class="nav">
-                        @php
-                            $queryParams = request()->all();
-                        @endphp
-                        <a class="nav-link text-success" href="{{ route("publisher.export-advertisers", array_merge(['type' => 'xlsx'], $queryParams)) }}" id="exportXLSX"><i class="fa-solid fa-file-excel"></i> Export to Excel</a>
-                        <a class="nav-link text-success" href="{{ route("publisher.export-advertisers", array_merge(['type' => 'csv'], $queryParams)) }}" id="exportCSV"><i class="fa-solid fa-file-csv"></i> Export to CSV</a>
-                        <a class="nav-link" href="#"><i class="fas fa-ellipsis-h"></i></a>
-                    </nav>
-                    {{-- <div class="dropdown action-btn">
-                        <button class="btn btn-sm btn-default btn-white dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="la la-download"></i> Export
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <span class="dropdown-item">Export With</span>
-                            <div class="dropdown-divider"></div>
-                            @php
-                                $queryParams = request()->all();
-                            @endphp
-                            <a href="{{ route("publisher.export-advertisers", array_merge(['type' => 'xlsx'], $queryParams)) }}" class="dropdown-item" id="exportXLSX">
-                                <i class="la la-file-excel"></i> Excel (XLSX)</a>
-                            <a href="{{ route("publisher.export-advertisers", array_merge(['type' => 'csv'], $queryParams)) }}" class="dropdown-item" id="exportCSV">
-                                <i class="la la-file-csv"></i> CSV</a>
-                        </div>
-                    </div> --}}
-                </div>
-                <div class="row justify-content-between">
-                    {{-- <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card shadow-sm border-0 rounded-3 sticky-lg-top" style="top: 10px;">
-                            <!-- Header -->
-                            <div class="card-header bg-primary text-white py-3 px-4">
-                                <h5 class="mb-0 d-flex align-items-center fw-semibold">
-                                    <i class="fas fa-sliders-h me-2"></i> Filters
-                                </h5>
+                {{-- Brands Status --}}
+                <div class="col-lg-2 col-md-4 col-sm-12">
+
+                    <div class="card shadow-sm border-0 rounded-3">
+
+                        <!-- Header -->
+                        {{-- @if(request()->route()->getName() != "publisher.own-advertisers")
+                            <div class="card-header bg-light py-2 px-3">
+                                <h6 class="mb-0 fw-semibold small text-muted">
+                                    Brand Status
+                                </h6>
+                            </div>
+                        @endif --}}
+
+                        <!-- Body -->
+                        <div class="card-body p-2">
+
+                            <div class="nav flex-column nav-pills gap-2" id="brandTabs">
+
+                                @if(request()->route()->getName() != "publisher.own-advertisers")
+
+                                    <button class="nav-link text-start {{ !request()->section || request()->section == 'all' ? 'active' : '' }}" data-section="all" id="allBrands">
+                                        <span>All Brands</span>
+                                        {{-- <span class="badge">{{ count($advertisers) }}</span> --}}
+                                    </button>
+
+                                    <button class="nav-link text-start {{ request()->section == 'new' ? 'active' : '' }}" data-section="new" id="newBrands">
+                                        New
+                                    </button>
+
+                                    <button class="nav-link text-start {{ request()->section == 'not-joined' ? 'active' : '' }}" data-section="not-joined" id="notJoinedBrands">
+                                        Not Joined
+                                    </button>
+
+                                    <button class="nav-link text-start {{ request()->section == 'pending' ? 'active' : '' }}" data-section="pending" id="pendingBrands">
+                                        Pending
+                                    </button>
+
+                                @endif
+
+                                @if(request()->route()->getName() == "publisher.own-advertisers")
+
+                                    <button class="nav-link text-start {{ request()->section == 'joined' || empty(request()->section) ? 'active' : '' }}" data-section="joined" id="joinedBrands">
+                                        Joined
+                                    </button>
+
+                                    <button class="nav-link text-start {{ request()->section == 'hold' ? 'active' : '' }}" data-section="hold" id="holdBrands">
+                                        Hold
+                                    </button>
+
+                                    <button class="nav-link text-start {{ request()->section == 'rejected' ? 'active' : '' }}" data-section="rejected" id="rejectedBrands">
+                                        Rejected
+                                    </button>
+
+                                @endif
+
                             </div>
 
-                            <!-- Body -->
-                            <div class="card-body p-4">
-                                <!-- Search Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-search me-2 text-muted"></i> Search
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByName"
-                                            onclick="clearFilter('clearSearchByName')"
-                                            class="text-danger {{ request()->search_by_name ? '' : 'd-none' }}">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {{-- Brands Table --}}
+                <div class="col-lg-10 col-md-4 col-sm-12">
+                    <!-- Start: Top Bar -->
+
+
+                    <!-- View Toggle -->
+                    <div class="card shadow-sm" style="border-radius: 0;">
+                        <div class="card-body py-1">
+                            <div class="d-flex justify-content-between align-items-center gap-3 py-3">
+                                <div class="col-12 col-lg-4">
                                     <div class="input-group input-group-sm">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="fas fa-search text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control border-start-0" id="SearchByName"
-                                            placeholder="Search by name..." value="{{ request()->search_by_name }}">
+                                        <input type="text" class="form-control" id="SearchByName" placeholder="Search advertisers..." value="{{ request()->search_by_name }}">
+                                        @if(request()->search_by_name)
+                                            <button class="btn btn-outline-danger" onclick="clearFilter('clearSearchByName')" type="button">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
+                                <div class="col-12 col-lg-6 d-flex justify-content-end">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-success btn-sm dropdown-toggle d-flex align-items-center"
+                                            type="button"
+                                            data-bs-toggle="dropdown">
+                                            <i class="fas fa-download me-2"></i> Export
+                                        </button>
 
-                                <!-- Country Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-globe-americas me-2 text-muted"></i> Country
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByCountry"
-                                            onclick="clearFilter('clearSearchByCountry')"
-                                            class="text-danger {{ request()->search_by_country ? '' : 'd-none' }}">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByCountry" class="form-select" multiple>
-                                            <?php
-    $countriesArr = [];
-    if (str_contains(request()->search_by_country, ',')) {
-        $countriesArr = explode(',', request()->search_by_country);
-    } else {
-        $countriesArr = [request()->search_by_country];
-    }
-                                            ?>
-                                            @foreach($countries as $country)
-                                                <option @if(in_array($country['iso2'], $countriesArr)) selected @endif
-                                                    value="{{ $country['iso2'] }}">
-                                                    <i class="fas fa-flag me-1"></i> {{ $country['name'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
+                                        @php
+                                            $queryParams = request()->all();
+                                        @endphp
 
-                                <!-- Advertiser Type Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <h6 class="mb-3 fw-semibold d-flex align-items-center">
-                                        <i class="fas fa-users me-2 text-muted"></i> Advertiser Type
-                                    </h6>
-                                    <div class="form-check form-check-inline d-block mb-2">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserAll" value="all" {{ request()->type == "third_party_advertiser" || empty(request()->type) ? "checked" : "" }}>
-                                        <label class="form-check-label" for="advertiserAll">
-                                            <i class="fas fa-layer-group me-1 text-primary"></i> All Advertisers
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline d-block mb-2">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserThirdParty" value="third_party_advertiser" {{ request()->type == "third_party_advertiser" ? "checked" : "" }}>
-                                        <label class="form-check-label" for="advertiserThirdParty">
-                                            <i class="fas fa-user-friends me-1 text-warning"></i> Third-Party Advertisers
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline d-block">
-                                        <input class="form-check-input" type="radio" name="advertiserType"
-                                            id="advertiserManaged" value="managed_by_linksCircle" {{ request()->type == "managed_by_linksCircle" ? "checked" : "" }}>
-                                        <label class="form-check-label" for="advertiserManaged">
-                                            <i class="fas fa-cog me-1 text-success"></i> Managed by LinksCircle
-                                        </label>
-                                    </div>
-                                </div>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
 
-                                <!-- Categories Filter -->
-                                <div class="mb-4 pb-3 border-bottom">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-tags me-2 text-muted"></i> Categories
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByCategory"
-                                            onclick="clearFilter('clearSearchByCategory')"
-                                            class="text-danger {{ request()->search_by_category ? '' : 'd-none' }}">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByCategory" class="form-select form-select-sm" multiple size="4">
-                                            <?php
-    $categoryArr = [];
-    if (str_contains(request()->search_by_category, ',')) {
-        $categoryArr = explode(',', request()->search_by_category);
-    } else {
-        $categoryArr = [request()->search_by_category];
-    }
-                                            ?>
-                                            @foreach($categories as $category)
-                                                <option @if(in_array($category['id'], $categoryArr)) selected @endif
-                                                    value="{{ $category['id'] }}">
-                                                    <i class="fas fa-folder me-1"></i> {{ $category['name'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                href="{{ route('publisher.export-advertisers', array_merge(['type' => 'xlsx'], $queryParams)) }}">
+                                                    <i class="fa-solid fa-file-excel text-success me-2"></i>
+                                                    Export to Excel
+                                                </a>
+                                            </li>
 
-                                <!-- Promotional Methods Filter -->
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0 fw-semibold d-flex align-items-center">
-                                            <i class="fas fa-bullhorn me-2 text-muted"></i> Promotional Methods
-                                        </h6>
-                                        <a href="javascript:void(0)" id="clearSearchByPromotionalMethod"
-                                            onclick="clearFilter('clearSearchByPromotionalMethod')"
-                                            class="text-danger {{ request()->search_by_promotional_method ? '' : 'd-none' }}">
-                                            <i class="fas fa-times me-1"></i> Clear
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <select id="SearchByPromotionalMethod" class="form-select form-select-sm" multiple
-                                            size="4">
-                                            <?php
-    $promotionalArr = [];
-    if (str_contains(request()->search_by_promotional_method, ',')) {
-        $promotionalArr = explode(',', request()->search_by_promotional_method);
-    } else {
-        $promotionalArr = [request()->search_by_promotional_method];
-    }
-                                            ?>
-                                            @foreach($methods as $method)
-                                                <option @if(in_array($method['id'], $promotionalArr)) selected @endif
-                                                    value="{{ $method['id'] }}">
-                                                    <i class="fas fa-rocket me-1"></i> {{ $method['name'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <small class="text-muted mt-1 d-block">Hold Ctrl/Cmd to select multiple</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <div class="col-lg-12 col-md-4 col-sm-12">
-                        <!-- Start: Top Bar -->
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                href="{{ route('publisher.export-advertisers', array_merge(['type' => 'csv'], $queryParams)) }}">
+                                                    <i class="fa-solid fa-file-csv text-success me-2"></i>
+                                                    Export to CSV
+                                                </a>
+                                            </li>
 
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
-                            <!-- Brand Status Tabs -->
-                            <div class="brand-tabs-container">
-                                <div class="d-flex align-items-center">
-                                    @if(request()->route()->getName() != "publisher.own-advertisers")
-                                        <div class="border-end pe-3 me-3">
-                                            <h6 class="mb-0 text-muted fw-semibold small">Brand Status:</h6>
-                                        </div>
-                                    @endif
-
-                                    <div class="nav-tabs-wrapper">
-                                        <ul class="nav nav-tabs border-0" id="brandTabs" role="tablist">
-                                            @if(request()->route()->getName() != "publisher.own-advertisers")
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ !request()->section || request()->section == "all" ? "active" : "" }} px-3 py-2" data-section="all" id="allBrands">
-
-                                                            All Brands
-
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "new" ? "active" : "" }} px-3 py-2" data-section="new" id="newBrands">
-                                                            New
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "not-joined" ? "active" : "" }} px-3 py-2" data-section="not-joined" id="notJoinedBrands">
-                                                            Not Joined
-                                                    </button>
-                                                </li>
-                                            @endif
-
-                                            @if(request()->route()->getName() != "publisher.own-advertisers")
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "pending" ? "active" : "" }} px-3 py-2" data-section="pending" id="pendingBrands">
-                                                            Pending
-                                                    </button>
-                                                </li>
-                                            @endif
-
-                                            @if(request()->route()->getName() == "publisher.own-advertisers")
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "joined" || (request()->route()->getName() == "publisher.own-advertisers" && empty(request()->section)) ? "active" : "" }} px-3 py-2" data-section="joined" id="joinedBrands">
-                                                            Joined
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item me-1" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "hold" ? "active" : "" }} px-3 py-2" data-section="hold" id="holdBrands">
-                                                            Hold
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link {{ request()->section == "rejected" ? "active" : "" }} px-3 py-2" data-section="rejected" id="rejectedBrands">
-                                                            Rejected
-                                                    </button>
-                                                </li>
-                                            @endif
                                         </ul>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- View Toggle -->
-                            <div class="view-toggle-container">
-                                <div class="d-flex align-items-center">
-                                    <span class="me-2 fw-medium text-muted small">View:</span>
-                                    <div class="btn-group view-tabs" role="group" style="border-bottom: none;">
-                                        <input type="radio" class="btn-check" name="viewOption" id="viewList"
-                                            value="{{ \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW }}"
-                                            {{ $view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW ? 'checked' : '' }}>
-                                        <label class="btn btn-sm py-2 mb-0 d-flex align-items-center" for="viewList"
-                                            onclick="view('{{ \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW }}')">
-                                            <i class="fas fa-list me-2"></i>
-                                            <span>List</span>
-                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End: Top Bar -->
-                        @include("partial.admin.alert")
-                        <div class="tab-content mt-25" id="ap-tabContent">
-                            @include("template.publisher.widgets.loader-3")
-                            <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
-                                aria-labelledby="ap-overview-tab">
-                                {{--@if($view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW)
-                                @include("template.publisher.advertisers.advertiser-list", compact('advertisers'))
-                                @elseif($view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_BOX_VIEW)
-                                @include("template.publisher.advertisers.advertiser-grid", compact('advertisers'))
-                                @endif--}}
-                            </div>
+                    </div>
+                    <!-- End: Top Bar -->
+                    @include("partial.admin.alert")
+                    <div class="tab-content" id="ap-tabContent">
+                        @include("template.publisher.widgets.loader-3")
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                            aria-labelledby="ap-overview-tab">
+                            {{--@if($view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_LIST_VIEW)
+                            @include("template.publisher.advertisers.advertiser-list", compact('advertisers'))
+                            @elseif($view == \App\Helper\Static\Vars::PUBLISHER_ADVERTISER_BOX_VIEW)
+                            @include("template.publisher.advertisers.advertiser-grid", compact('advertisers'))
+                            @endif--}}
                         </div>
-                    </div><!-- End: .columns-2 -->
-                </div>
+                    </div>
+                </div><!-- End: .columns-2 -->
             </div>
         </div>
 
