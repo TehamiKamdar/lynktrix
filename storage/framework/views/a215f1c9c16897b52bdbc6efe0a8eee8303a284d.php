@@ -22,8 +22,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo e(route("publisher.creatives.coupons.list")); ?>" class="nav-link">
-            <i class="bi bi-bag-heart"></i>
+          <a href="<?php echo e(route("publisher.creatives.coupons.list")); ?>" class="nav-link <?php echo e(Route::is("publisher.creatives.coupons.list") ? 'active' : ''); ?>">
+            <i class="fas fa-bullhorn"></i>
             <span class="tooltip-text-nav">Campaigns</span>
           </a>
         </li>

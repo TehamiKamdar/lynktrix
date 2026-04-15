@@ -113,8 +113,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route("publisher.creatives.coupons.list") }}" class="nav-link">
-            <i class="bi bi-bag-heart"></i>
+          <a href="{{ route("publisher.creatives.coupons.list") }}" class="nav-link {{ Route::is("publisher.creatives.coupons.list") ? 'active' : '' }}">
+            <i class="fas fa-bullhorn"></i>
             <span class="tooltip-text-nav">Campaigns</span>
           </a>
         </li>
