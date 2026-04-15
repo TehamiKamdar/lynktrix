@@ -1,4 +1,6 @@
-<?php if (! $__env->hasRenderedOnce('686333df-277f-42c5-87ed-18fb1e8456ac')): $__env->markAsRenderedOnce('686333df-277f-42c5-87ed-18fb1e8456ac');
+<?php $__env->startPush('title', 'Campaign Offers'); ?>
+
+<?php if (! $__env->hasRenderedOnce('e78fd94b-589d-45bb-8d79-313c554f0511')): $__env->markAsRenderedOnce('e78fd94b-589d-45bb-8d79-313c554f0511');
 $__env->startPush('styles'); ?>
 <style>
     .user-member__form .form-control {
@@ -7,7 +9,7 @@ $__env->startPush('styles'); ?>
 </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('26232777-da0f-4dba-96bf-dcd5cc2118e1')): $__env->markAsRenderedOnce('26232777-da0f-4dba-96bf-dcd5cc2118e1');
+<?php if (! $__env->hasRenderedOnce('ee448a51-52a9-42f4-8e98-03f0e720495e')): $__env->markAsRenderedOnce('ee448a51-52a9-42f4-8e98-03f0e720495e');
 $__env->startPush('scripts'); ?>
 <script>
     function changeLimit() {

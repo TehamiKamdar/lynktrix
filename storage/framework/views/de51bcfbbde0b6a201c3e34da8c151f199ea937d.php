@@ -1,4 +1,5 @@
-<?php if (! $__env->hasRenderedOnce('0027ff9f-1b3d-46b2-86be-c6bd667d6ed8')): $__env->markAsRenderedOnce('0027ff9f-1b3d-46b2-86be-c6bd667d6ed8');
+<?php $__env->startPush('title', 'Partners'); ?>
+<?php if (! $__env->hasRenderedOnce('e81b0618-fc6a-470a-82e3-80ade4ed4186')): $__env->markAsRenderedOnce('e81b0618-fc6a-470a-82e3-80ade4ed4186');
 $__env->startPush('styles'); ?>
 
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
@@ -311,7 +312,7 @@ $__env->startPush('styles'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('74533176-7dd3-4032-999b-4cfc79fc07fe')): $__env->markAsRenderedOnce('74533176-7dd3-4032-999b-4cfc79fc07fe');
+<?php if (! $__env->hasRenderedOnce('0c9c9bef-7f5b-44e5-95b1-66da86e54998')): $__env->markAsRenderedOnce('0c9c9bef-7f5b-44e5-95b1-66da86e54998');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>

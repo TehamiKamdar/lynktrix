@@ -1,4 +1,6 @@
-<?php if (! $__env->hasRenderedOnce('7b484b0e-76cc-400b-9a2e-340e0ca7dcea')): $__env->markAsRenderedOnce('7b484b0e-76cc-400b-9a2e-340e0ca7dcea');
+<?php $__env->startPush('title', 'Links Promotion'); ?>
+
+<?php if (! $__env->hasRenderedOnce('da353eeb-5d2a-44c5-af4f-9f1c3ed8c98c')): $__env->markAsRenderedOnce('da353eeb-5d2a-44c5-af4f-9f1c3ed8c98c');
 $__env->startPush('styles'); ?>
 <script>
     function changeLimit() {
@@ -117,7 +119,7 @@ $__env->startPush('styles'); ?>
 </script>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('0c3fb9ed-87e7-4a03-b2ea-c46f40300779')): $__env->markAsRenderedOnce('0c3fb9ed-87e7-4a03-b2ea-c46f40300779');
+<?php if (! $__env->hasRenderedOnce('b1da5b94-388f-4401-b5e9-7ee6069f7bf9')): $__env->markAsRenderedOnce('b1da5b94-388f-4401-b5e9-7ee6069f7bf9');
 $__env->startPush('scripts'); ?>
 
 <?php $__env->stopPush(); endif; ?>

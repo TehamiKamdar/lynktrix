@@ -21,21 +21,21 @@
             <input type="text" class="search-input" placeholder="Search dashboard...">
         </div>
     </div>
+    <div class="header-title">
+        <h6><?php echo $__env->yieldPushContent('title'); ?></h6>
+    </div>
     <div class="header-actions">
         <div class="action-icon">
             <i class="bi bi-bell"></i>
             <span class="badge-notify">3</span>
         </div>
-        <div class="action-icon">
-            <i class="bi bi-chat-dots"></i>
-        </div>
         <div class="user-profile">
             <div class="user-avatar">
-                <i class="bi bi-person-fill" style="font-size: 1.1rem;"></i>
+                <img src="<?php echo e(asset('publisher_dashboard/img/faces/face1.jpg')); ?>" style="width: 40px;" class="rounded-circle shadow-4" alt="">
             </div>
             <div class="user-info">
-                <div class="user-name">Alex Morgan</div>
-                <div class="user-role">Admin</div>
+                <div class="user-name"><?php echo e(auth()->user()->full_name); ?></div>
+                <div class="user-role"><?php echo e(auth()->user()->getRoleName()); ?> | ID: <?php echo e(auth()->user()->sid); ?></div>
             </div>
         </div>
     </div>

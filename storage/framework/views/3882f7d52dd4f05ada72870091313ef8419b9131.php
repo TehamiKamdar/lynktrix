@@ -1,4 +1,6 @@
-<?php if (! $__env->hasRenderedOnce('51b3de68-35e3-430c-aad1-f7a17c64a679')): $__env->markAsRenderedOnce('51b3de68-35e3-430c-aad1-f7a17c64a679');
+<?php $__env->startPush('title', 'Transactions'); ?>
+
+<?php if (! $__env->hasRenderedOnce('dcab24ed-33aa-4b52-909c-510e3856e255')): $__env->markAsRenderedOnce('dcab24ed-33aa-4b52-909c-510e3856e255');
 $__env->startPush('styles'); ?>
     <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css")); ?>">
     <style>
@@ -45,7 +47,7 @@ $__env->startPush('styles'); ?>
 </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('af73b006-1a4c-4d67-9aa9-a16d9f873c7a')): $__env->markAsRenderedOnce('af73b006-1a4c-4d67-9aa9-a16d9f873c7a');
+<?php if (! $__env->hasRenderedOnce('673d7e34-d925-46b9-ae53-76a062401789')): $__env->markAsRenderedOnce('673d7e34-d925-46b9-ae53-76a062401789');
 $__env->startPush('scripts'); ?>
 
     <?php

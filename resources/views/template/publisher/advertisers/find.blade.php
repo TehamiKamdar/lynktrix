@@ -1,5 +1,5 @@
 @extends("layouts.publisher.publisher_panel")
-
+@push('title', 'Partners')
 @pushonce('styles')
 
 <link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css") }}" />

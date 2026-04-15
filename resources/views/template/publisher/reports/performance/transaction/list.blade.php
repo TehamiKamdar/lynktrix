@@ -1,5 +1,5 @@
 @extends("layouts.publisher.publisher_panel")
-
+@push('title', 'Analytics')
 @pushonce('styles')
 <link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css") }}">
 <style>

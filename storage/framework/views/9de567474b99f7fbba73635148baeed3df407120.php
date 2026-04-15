@@ -1,4 +1,5 @@
-<?php if (! $__env->hasRenderedOnce('112eec1f-e706-4c39-8999-e71ae1a0c7a9')): $__env->markAsRenderedOnce('112eec1f-e706-4c39-8999-e71ae1a0c7a9');
+<?php $__env->startPush('title', 'Analytics'); ?>
+<?php if (! $__env->hasRenderedOnce('ca19d0f0-f03a-4c56-a8d4-904eb0f0495e')): $__env->markAsRenderedOnce('ca19d0f0-f03a-4c56-a8d4-904eb0f0495e');
 $__env->startPush('styles'); ?>
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css")); ?>">
 <style>
@@ -45,7 +46,7 @@ $__env->startPush('styles'); ?>
 </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('e93b8f2e-b7f9-4e35-a8ba-212e842f0163')): $__env->markAsRenderedOnce('e93b8f2e-b7f9-4e35-a8ba-212e842f0163');
+<?php if (! $__env->hasRenderedOnce('7881b022-96d4-43a1-a304-4b093e0aa4c5')): $__env->markAsRenderedOnce('7881b022-96d4-43a1-a304-4b093e0aa4c5');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js")); ?>"></script>

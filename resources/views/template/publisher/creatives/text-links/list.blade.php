@@ -1,4 +1,5 @@
 @extends("layouts.publisher.publisher_panel")
+@push('title', 'Links Promotion')
 
 @pushonce('styles')
 <script>
