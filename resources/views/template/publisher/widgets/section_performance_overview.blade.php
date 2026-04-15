@@ -419,7 +419,7 @@
                             </div>
                             <ul class="legend-static" id="commissionPeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #c22437;"></span>Current Period
                                 </li>
                             </ul>
                         </div>
@@ -432,10 +432,10 @@
                             </div>
                             <ul class="legend-static" id="pendingcommissionPeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #C22437;"></span>Current Period
                                 </li>
                                 <li class="custom-label">
-                                    <span style="background-color: #C6D0DC"></span>Previous Period
+                                    <span style="background-color: #FCD1D1"></span>Previous Period
                                 </li>
                             </ul>
                         </div>
@@ -449,10 +449,10 @@
                             </div>
                             <ul class="legend-static" id="declinedcommissionPeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #C22437;"></span>Current Period
                                 </li>
                                 <li class="custom-label">
-                                    <span style="background-color: #C6D0DC"></span>Previous Period
+                                    <span style="background-color: #FCD1D1;"></span>Previous Period
                                 </li>
                             </ul>
                         </div>
@@ -465,10 +465,10 @@
                             </div>
                             <ul class="legend-static" id="approvedcommissionPeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #C22437;"></span>Current Period
                                 </li>
                                 <li class="custom-label">
-                                    <span style="background-color: #C6D0DC"></span>Previous Period
+                                    <span style="background-color: #FCD1D1;"></span>Previous Period
                                 </li>
                             </ul>
                         </div>
@@ -480,10 +480,10 @@
                             </div>
                             <ul class="legend-static" id="transactionPeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #C22437;"></span>Current Period
                                 </li>
                                 <li class="custom-label">
-                                    <span style="background-color: #C6D0DC"></span>Previous Period
+                                    <span style="background-color: #FCD1D1;"></span>Previous Period
                                 </li>
                             </ul>
                         </div>
@@ -495,10 +495,10 @@
                             </div>
                             <ul class="legend-static" id="salePeriodContent">
                                 <li class="custom-label">
-                                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                                    <span style="background-color: #C22437;"></span>Current Period
                                 </li>
                                 <li class="custom-label">
-                                    <span style="background-color: #C6D0DC"></span>Previous Period
+                                    <span style="background-color: #FCD1D1;"></span>Previous Period
                                 </li>
                             </ul>
                         </div>
@@ -533,7 +533,7 @@
             );
             $("#commissionPeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else
@@ -570,7 +570,7 @@
             );
             $("#approvedcommissionPeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else
@@ -607,7 +607,7 @@
             );
             $("#pendingcommissionPeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else
@@ -644,7 +644,7 @@
             );
             $("#declinedcommissionPeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else
@@ -681,7 +681,7 @@
             );
             $("#transactionPeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else
@@ -718,7 +718,7 @@
             );
             $("#salePeriodContent").html(`
                 <li class="custom-label">
-                    <span style="background-color: rgb(91, 71, 251);"></span>Current Period
+                    <span style="background-color: #C22437;"></span>Current Period
                 </li>
             `)
         @else

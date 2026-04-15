@@ -1,4 +1,4 @@
-<?php if (! $__env->hasRenderedOnce('a4549851-a152-47e8-a544-2876cf2af774')): $__env->markAsRenderedOnce('a4549851-a152-47e8-a544-2876cf2af774');
+<?php if (! $__env->hasRenderedOnce('73eff2e5-eaae-49a7-89e0-7dba4062e151')): $__env->markAsRenderedOnce('73eff2e5-eaae-49a7-89e0-7dba4062e151');
 $__env->startPush('styles'); ?>
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css")); ?>">
 <style>
@@ -45,7 +45,7 @@ $__env->startPush('styles'); ?>
 </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('0091c0f8-6fdf-480b-af45-c0beb2ed1292')): $__env->markAsRenderedOnce('0091c0f8-6fdf-480b-af45-c0beb2ed1292');
+<?php if (! $__env->hasRenderedOnce('bebc59db-4a2a-4d4f-95ed-74e7613635f2')): $__env->markAsRenderedOnce('bebc59db-4a2a-4d4f-95ed-74e7613635f2');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js")); ?>"></script>
@@ -725,7 +725,6 @@ $__env->startPush('scripts'); ?>
                     </div>
                 </div>
                 <div class="row mt-3" id="listingContentWrapper">
-                    
                     <div class="col-lg-12 col-12">
                         <div class="card shadow-sm" style="border-radius: 0;">
                             <div class="card-body py-1">
