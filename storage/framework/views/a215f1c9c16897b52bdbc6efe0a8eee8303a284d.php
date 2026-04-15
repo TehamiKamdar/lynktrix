@@ -52,27 +52,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-folder2-open"></i>
-            <span class="tooltip-text-nav">Messages</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-gear"></i>
-            <span class="tooltip-text-nav">Settings</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-question-circle"></i>
-            <span class="tooltip-text-nav">Help</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-box-arrow-right"></i>
+          <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logoutform').submit();" class="nav-link">
+            <i class="fas fa-right-from-bracket"></i>
             <span class="tooltip-text-nav">Logout</span>
+            <form id="logoutform" action="<?php echo e(route('logout')); ?>" method="POST" class="display-hidden">
+                <?php echo e(csrf_field()); ?>
+
+            </form>
           </a>
         </li>
       </ul>

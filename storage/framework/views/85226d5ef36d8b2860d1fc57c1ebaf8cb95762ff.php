@@ -26,9 +26,8 @@
 
     /* Hover */
     .pagination .page-link:hover {
-        background-color: #C22437;
-        color: #fff;
-        border-color: #C22437;
+        background-color: #FCD1D1;
+        color: #C22437;
     }
 
     /* Active page */
@@ -57,7 +56,7 @@
         border: 1px solid #eee;
         height: 34px;
         font-size: 13px;
-        color: #333;
+        color: #C22437;
     }
 
     .page-selection:focus {
