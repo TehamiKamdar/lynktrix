@@ -2,49 +2,49 @@
 
     <!-- Start Table Responsive -->
     <div class="table-responsive">
-        <table class="table mb-0 table-hover table-primary border-0">
+        <table class="table table-hover align-middle modern-table">
             <thead>
-                <tr class="userDatatable-header">
+                <tr>
                     <th>
-                        <span class="userDatatable-title float-right font-weight-bold text-black">Date</span>
+                        <span>Date</span>
                     </th>
                     <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Advertiser</span>
+                        <span>Advertiser</span>
                     </th>
                     <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Transaction ID</span>
-                    </th>
-
-                    <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Sale Amount</span>
+                        <span>Transaction ID</span>
                     </th>
 
                     <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Commission</span>
+                        <span>Sale Amount</span>
                     </th>
 
                     <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Last Commission</span>
+                        <span>Commission</span>
                     </th>
 
                     <th>
-                        <span class="userDatatable-title font-weight-bold text-black">Status</span>
+                        <span>Last Commission</span>
+                    </th>
+
+                    <th>
+                        <span>Status</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="userDatatable-header">
+                <tr>
                     <th>
                     </th>
                     <th>
                     </th>
                     <th>
                     </th>
-                    <th class="text-center">
-                        <span class="userDatatable-title font-weight-bold text-black">@if(count($transactions)){{ implode(', ', array_unique($transactions->pluck("sale_amount_currency")->toArray())) }} {{ number_format($totalSaleAmount, 2) }} @else $0 @endif</span>
+                    <th>
+                        <span>@if(count($transactions)){{ implode(', ', array_unique($transactions->pluck("sale_amount_currency")->toArray())) }} {{ number_format($totalSaleAmount, 2) }} @else $0 @endif</span>
                     </th>
-                    <th class="text-center">
-                        <span class="userDatatable-title font-weight-bold text-black">@if(count($transactions)){{ implode(', ', array_unique($transactions->pluck("commission_amount_currency")->toArray())) }} {{ number_format($totalCommissionAmount, 2) }} @else $0 @endif</span>
+                    <th>
+                        <span>@if(count($transactions)){{ implode(', ', array_unique($transactions->pluck("commission_amount_currency")->toArray())) }} {{ number_format($totalCommissionAmount, 2) }} @else $0 @endif</span>
                     </th>
                     <th>
 
@@ -59,42 +59,42 @@
 
                         <tr>
                             <td>
-                                <div class="orderDatatable-title float-right">
+                                <div>
                                     {{ \Carbon\Carbon::parse($transaction->transaction_date)->format("F d, Y") }}
                                 </div>
                             </td>
                             <td>
-                                <div class="orderDatatable-title">
+                                <div>
                                     {{ $transaction->advertiser_name }} <br>
                                     <span class="fs-12 color-gray">({{ $transaction->external_advertiser_id }})</span>
                                 </div>
                             </td>
                             <td>
                                 @if($transaction->sub_id)
-                                    <div class="orderDatatable-title">
+                                    <div>
                                         {{ $transaction->transaction_id }}<br>
                                         <a href="javascript:void(0)" onclick="showSubID('{{ $key }}')"><i class="fas fa-plus-circle fs-12"></i></a><br>
                                         <span class="fs-12 display-hidden" id="subID{{ $key }}">Sub ID: {{ $transaction->sub_id }}</span>
                                     </div>
                                 @else
-                                    <div class="orderDatatable-title">
+                                    <div>
                                         {{ $transaction->transaction_id }}
                                     </div>
                                 @endif
                             </td>
                             <td>
-                                <div class="orderDatatable-title">
+                                <div>
                                     {{ $transaction->sale_amount_currency . " " . number_format($transaction->sale_amount, 2)  }}
                                 </div>
                             </td>
                             <td>
-                                <div class="orderDatatable-title">
+                                <div>
                                     {{ $transaction->commission_amount_currency . " " . number_format($transaction->commission_amount, 2)  }}
                                 </div>
                             </td>
 
                             <td>
-                                <div class="orderDatatable-title">
+                                <div>
                                     @if(!empty($transaction->old_commission_amount) || $transaction->old_commission_amount != 0)
                                     {{ $transaction->commission_amount_currency . " " . number_format($transaction->old_commission_amount, 2)  }}
                                     @else

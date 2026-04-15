@@ -131,6 +131,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route("publisher.reports.transactions.list") }}" class="nav-link {{ Route::is("publisher.reports.transactions.list") ? 'active' : '' }}">
+            <i class="fas fa-money-bill-transfer"></i>
+            <span class="tooltip-text-nav">Transactions</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="bi bi-folder2-open"></i>
             <span class="tooltip-text-nav">Messages</span>

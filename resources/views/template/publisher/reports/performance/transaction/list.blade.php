@@ -651,7 +651,7 @@
 
                                     <div class="col-md-2">
                                         <label class="form-label mb-1">
-                                            <i class="fas fa-tags me-1"></i> Date
+                                            <i class="fas fa-calendar me-1"></i> Date
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-default date-ranger"
@@ -663,7 +663,7 @@
 
                                     <div class="col-md-2">
                                         <label class="form-label mb-1">
-                                            <i class="fas fa-bullhorn me-1"></i> Region
+                                            <i class="fas fa-earth-americas me-1"></i> Region
                                         </label>
                                         <select class="form-control" id="region">
                                             <option {{ request()->region == "all" || empty(request()->region) ? "selected" : "" }} value="all">All Regions</option>

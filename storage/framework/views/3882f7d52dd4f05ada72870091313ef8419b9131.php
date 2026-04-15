@@ -1,7 +1,6 @@
-@extends("layouts.publisher.publisher_panel")
-
-@pushonce('styles')
-    <link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css") }}">
+<?php if (! $__env->hasRenderedOnce('51b3de68-35e3-430c-aad1-f7a17c64a679')): $__env->markAsRenderedOnce('51b3de68-35e3-430c-aad1-f7a17c64a679');
+$__env->startPush('styles'); ?>
+    <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/daterangepicker.css")); ?>">
     <style>
     .loaded-spin {
         margin: 40%;
@@ -44,11 +43,12 @@
         }
     }
 </style>
-@endpushonce
+<?php $__env->stopPush(); endif; ?>
 
-@pushonce('scripts')
+<?php if (! $__env->hasRenderedOnce('af73b006-1a4c-4d67-9aa9-a16d9f873c7a')): $__env->markAsRenderedOnce('af73b006-1a4c-4d67-9aa9-a16d9f873c7a');
+$__env->startPush('scripts'); ?>
 
-    @php
+    <?php
         $date = \Carbon\Carbon::now()->format("Y-m-01 00:00:00");
         $diff = now()->diffInDays(\Carbon\Carbon::parse($date));
 
@@ -73,15 +73,15 @@
 
         $xslx = route("publisher.reports.transactions.export", array_merge($routeData, ['type' => 'xlsx']));
         $csv = route("publisher.reports.transactions.export", array_merge($routeData, ['type' => 'csv']));
-    @endphp
+    ?>
 
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js") }}"></script>
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js") }}"></script>
-    <script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment.js") }}"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment/moment.min.js")); ?>"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/daterangepicker.js")); ?>"></script>
+    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/moment.js")); ?>"></script>
     <script>
         function sendAjaxRequest(dataObj) {
             $.ajax({
-                url: '{{ route("publisher.reports.transactions.list") }}',
+                url: '<?php echo e(route("publisher.reports.transactions.list")); ?>',
                 type: 'GET',
                 data: dataObj,
                 success: function (response) {
@@ -154,7 +154,7 @@
                 $("#ap-tabContent").addClass("spin-active");
                 $("#gridLoader").removeClass("display-hidden");
                 $.ajax({
-                    url: '{{ route("publisher.set-limit") }}',
+                    url: '<?php echo e(route("publisher.set-limit")); ?>',
                     type: 'GET',
                     data: {"limit": $("#limit").val(), "type": "transaction"},
                     success: function (response) {
@@ -172,10 +172,10 @@
 
         document.addEventListener("DOMContentLoaded", function () {
 
-            @if(!request()->payment_id)
+            <?php if(!request()->payment_id): ?>
 
-                let startDate = "{{ $startDate }}";
-                let endDate = "{{ $endDate }}";
+                let startDate = "<?php echo e($startDate); ?>";
+                let endDate = "<?php echo e($endDate); ?>";
 
                 let start;
                 let end;
@@ -211,17 +211,17 @@
                     },
                 });
 
-                {{--let setDate = "{{ $setDate }}";--}}
-                {{--if(setDate) {--}}
-                {{--    $('input[name="date-ranger"]').val(setDate);--}}
-                {{--}--}}
-                {{--else {--}}
-                {{--}--}}
+                
+                
+                
+                
+                
+                
                 $('input[name="date-ranger"]').val(start.format('MMM D, YYYY') + ' - ' + end.format('MMM D, YYYY'));
                 $('input[name="date-ranger"]').on('apply.daterangepicker', function (ev, picker) {
 
-                    let exportXLSXURL = "{{ route("publisher.reports.transactions.export", ['type' => 'xlsx']) }}";
-                    let exportCSVURL = "{{ route("publisher.reports.transactions.export", ['type' => 'csv']) }}";
+                    let exportXLSXURL = "<?php echo e(route("publisher.reports.transactions.export", ['type' => 'xlsx'])); ?>";
+                    let exportCSVURL = "<?php echo e(route("publisher.reports.transactions.export", ['type' => 'csv'])); ?>";
 
                     $(this).val(picker.startDate.format('MMM D, YYYY') + ' - ' + picker.endDate.format('MMM D, YYYY'));
 
@@ -266,7 +266,7 @@
                     $(this).val('');
                 });
 
-            @endif
+            <?php endif; ?>
 
             changeLimit();
 
@@ -337,9 +337,9 @@
 
         });
     </script>
-@endpushonce
+<?php $__env->stopPush(); endif; ?>
 
-@section("content")
+<?php $__env->startSection("content"); ?>
 
     <div class="az-content az-content-dashboard">
 
@@ -367,132 +367,136 @@
                                             <label class="form-label fw-semibold small text-muted mb-1">
                                                 <i class="fas fa-calendar me-1"></i> Date
                                             </label>
-                                            @if(!request()->payment_id)
+                                            <?php if(!request()->payment_id): ?>
                                                 <div class="action-btn">
                                                     <div class="form-group mb-0">
                                                         <div class="input-container icon-left position-relative">
                                                             <span class="input-icon icon-left">
                                                                 <span data-feather="calendar"></span>
                                                             </span>
-                                                            <input type="text" class="form-control form-control-default date-ranger" name="date-ranger" placeholder="Jan 01, {{ now()->format("Y") }} - {{ now()->format("M d, Y") }}"/>
+                                                            <input type="text" class="form-control form-control-default date-ranger" name="date-ranger" placeholder="Jan 01, <?php echo e(now()->format("Y")); ?> - <?php echo e(now()->format("M d, Y")); ?>"/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
                                         <div class="col-md-2">
                                             <label class="form-label fw-semibold small text-muted mb-1">
                                                 <i class="fas fa-earth-americas me-1"></i> Region
                                             </label>
                                             <select class="form-control" id="region">
-                                                <option value="all" {{ request()->region == 'all' || empty(request()->region) ? 'selected' : '' }}>
+                                                <option value="all" <?php echo e(request()->region == 'all' || empty(request()->region) ? 'selected' : ''); ?>>
                                                     All Regions
                                                 </option>
 
-                                                @foreach($countries ?? [] as $country)
-                                                    @if($country->advertiser_country)
-                                                        <option value="{{ $country->advertiser_country }}"
-                                                            {{ request()->region == $country->advertiser_country ? 'selected' : '' }}>
-                                                            {{ $country->advertiser_country }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
+                                                <?php $__currentLoopData = $countries ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($country->advertiser_country): ?>
+                                                        <option value="<?php echo e($country->advertiser_country); ?>"
+                                                            <?php echo e(request()->region == $country->advertiser_country ? 'selected' : ''); ?>>
+                                                            <?php echo e($country->advertiser_country); ?>
 
-                                                <option value="unknown" {{ request()->region == 'unknown' ? 'selected' : '' }}>
+                                                        </option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                                <option value="unknown" <?php echo e(request()->region == 'unknown' ? 'selected' : ''); ?>>
                                                     Unknown
                                                 </option>
                                             </select>
                                         </div>
                                         <div class="col-8">
-                                            @if(!request()->payment_id)
+                                            <?php if(!request()->payment_id): ?>
 
                                                 <div class="mb-4">
                                                     <label class="form-label fw-semibold mb-2"> <i class="far fa-circle-check"></i> Status</label>
 
                                                     <ul class="nav nav-pills flex-wrap gap-2" id="transactionStatus">
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ !request()->section || request()->section == 'all' ? 'active' : '' }}" data-section="all" href="javascript:void(0)" id="allTransactions">
+                                                            <a class="nav-link <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" href="javascript:void(0)" id="allTransactions">
                                                                 All
                                                             </a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ request()->section == 'pending' ? 'active' : '' }}" data-section="pending" href="javascript:void(0)" id="pendingTransactions">
+                                                            <a class="nav-link <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" href="javascript:void(0)" id="pendingTransactions">
                                                                 Pending
                                                             </a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ request()->section == 'hold' ? 'active' : '' }}" data-section="hold" href="javascript:void(0)" id="holdTransactions">
+                                                            <a class="nav-link <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" href="javascript:void(0)" id="holdTransactions">
                                                                 Hold
                                                             </a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ request()->section == 'approved' ? 'active' : '' }}" data-section="approved" href="javascript:void(0)" id="approvedTransactions">
+                                                            <a class="nav-link <?php echo e(request()->section == 'approved' ? 'active' : ''); ?>" data-section="approved" href="javascript:void(0)" id="approvedTransactions">
                                                                 Approved
                                                             </a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ request()->section == 'declined' ? 'active' : '' }}" data-section="declined" href="javascript:void(0)" id="declinedTransactions">
+                                                            <a class="nav-link <?php echo e(request()->section == 'declined' ? 'active' : ''); ?>" data-section="declined" href="javascript:void(0)" id="declinedTransactions">
                                                                 Declined
                                                             </a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link {{ request()->section == 'paid' ? 'active' : '' }}" data-section="paid" href="javascript:void(0)" id="paidTransactions">
+                                                            <a class="nav-link <?php echo e(request()->section == 'paid' ? 'active' : ''); ?>" data-section="paid" href="javascript:void(0)" id="paidTransactions">
                                                                 Paid
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
                                     </div>
 
                                     <!-- Active Filter Tags -->
-                                    @php
+                                    <?php
                                         $hasActiveFilters = request()->search_by_name || request()->search_by_country ||
                                                             request()->search_by_category || request()->search_by_promotional_method ||
                                                             (request()->type && request()->type != 'third_party_advertiser');
-                                    @endphp
-                                    @if($hasActiveFilters)
+                                    ?>
+                                    <?php if($hasActiveFilters): ?>
                                         <div class="mt-3 pt-2 border-top">
                                             <div class="d-flex flex-wrap gap-2 align-items-center">
                                                 <span class="small text-muted me-2">Active filters:</span>
-                                                @if(request()->search_by_name)
+                                                <?php if(request()->search_by_name): ?>
                                                     <span class="badge bg-light text-dark border">
-                                                        Search: {{ request()->search_by_name }}
+                                                        Search: <?php echo e(request()->search_by_name); ?>
+
                                                         <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('clearSearchByName')"></i>
                                                     </span>
-                                                @endif
-                                                @if(request()->type && request()->type != 'third_party_advertiser')
+                                                <?php endif; ?>
+                                                <?php if(request()->type && request()->type != 'third_party_advertiser'): ?>
                                                     <span class="badge bg-light text-dark border">
-                                                        Type: {{ request()->type == 'managed_by_linksCircle' ? 'Managed by LinksCircle' : 'Third-Party' }}
+                                                        Type: <?php echo e(request()->type == 'managed_by_linksCircle' ? 'Managed by LinksCircle' : 'Third-Party'); ?>
+
                                                         <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="clearFilter('type')"></i>
                                                     </span>
-                                                @endif
-                                                @foreach(explode(',', request()->search_by_category ?? '') as $catId)
-                                                    @if($catId)
+                                                <?php endif; ?>
+                                                <?php $__currentLoopData = explode(',', request()->search_by_category ?? ''); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $catId): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($catId): ?>
                                                         <span class="badge bg-light text-dark border">
-                                                            Category: {{ collect($categories)->where('id', $catId)->first()['name'] ?? $catId }}
-                                                            <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="removeCategoryFilter('{{ $catId }}')"></i>
+                                                            Category: <?php echo e(collect($categories)->where('id', $catId)->first()['name'] ?? $catId); ?>
+
+                                                            <i class="fas fa-times ms-1 text-danger" style="cursor: pointer;" onclick="removeCategoryFilter('<?php echo e($catId); ?>')"></i>
                                                         </span>
-                                                    @endif
-                                                @endforeach
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </div>
                                         </div>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
 
-                        @include("partial.admin.alert")
+                        <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <div id="ap-overview">
-                            @include("template.publisher.reports.transaction.list_view", compact('transactions'))
+                            <?php echo $__env->make("template.publisher.reports.transaction.list_view", compact('transactions'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         </div>
 
                     </div><!-- End: .userDatatable -->
@@ -502,4 +506,6 @@
 
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make("layouts.publisher.publisher_panel", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/template/publisher/reports/transaction/list.blade.php ENDPATH**/ ?>
