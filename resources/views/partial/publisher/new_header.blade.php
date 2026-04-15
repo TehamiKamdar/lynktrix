@@ -102,7 +102,7 @@
       <ul class="list-unstyled">
         <li class="nav-item">
           <a href="#" class="nav-link {{ Route::is("dashboard", ["type" => "publisher"]) ? "active" : "" }}" id="navDashboard">
-            <i class="bi bi-speedometer2"></i>
+            <i class="fas fa-gauge-high"></i>
             <span class="tooltip-text-nav">Dashboard</span>
           </a>
         </li>

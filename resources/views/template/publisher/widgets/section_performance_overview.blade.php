@@ -37,7 +37,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item @if(!request()->start_date || !request()->end_date) active @endif" id="commission-tab" data-bs-toggle="tab" data-bs-target="#commission" type="button" role="tab" aria-controls="commission" aria-selected="true">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-primary bg-opacity-10 text-primary rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-primary text-primary rounded-2 p-1 me-2">
                                         <i class="fa-solid fa-money-bill-1-wave text-white"></i>
                                     </div>
                                     <div class="text-start">
@@ -46,7 +46,7 @@
                                             {{ $performanceOverview['commission']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['commission']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['commission']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['commission']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid text-small @if($performanceOverview['commission']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['commission']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['commission']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -60,7 +60,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="commission-revenue-tab" data-bs-toggle="tab" data-bs-target="#commission" type="button" role="tab" aria-controls="commission-revenue" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-success bg-opacity-10 text-success rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-success text-success rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-chart-line"></i>
                                     </div>
                                     <div class="text-start">
@@ -69,7 +69,7 @@
                                             {{ $calculated }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['commission']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['commission']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['commission']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['commission']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['commission']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['commission']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -83,7 +83,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="approved-commission-tab" data-bs-toggle="tab" data-bs-target="#approvedcommission" type="button" role="tab" aria-controls="approved-commission" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-info bg-opacity-10 text-info rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-info text-info rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-check-circle"></i>
                                     </div>
                                     <div class="text-start">
@@ -92,7 +92,7 @@
                                             {{ $performanceOverview['approved']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['approved']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['approved']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['approved']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['approved']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['approved']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['approved']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -106,7 +106,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="pending-commission-tab" data-bs-toggle="tab" data-bs-target="#pendingcommission" type="button" role="tab" aria-controls="pending-commission" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-warning bg-opacity-10 text-warning rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-warning text-warning rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-clock"></i>
                                     </div>
                                     <div class="text-start">
@@ -115,7 +115,7 @@
                                             {{ $performanceOverview['pending']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['pending']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['pending']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['pending']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['pending']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['pending']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['pending']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -129,7 +129,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="declined-commission-tab" data-bs-toggle="tab" data-bs-target="#declinedcommission" type="button" role="tab" aria-controls="declined-commission" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-danger bg-opacity-10 text-danger rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-danger text-danger rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-times-circle"></i>
                                     </div>
                                     <div class="text-start">
@@ -138,7 +138,7 @@
                                             {{ $performanceOverview['declined']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['declined']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['declined']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['declined']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['declined']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['declined']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['declined']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -152,7 +152,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="transaction-tab" data-bs-toggle="tab" data-bs-target="#transaction" type="button" role="tab" aria-controls="transaction" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-purple bg-opacity-10 text-purple rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-purple text-purple rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-exchange-alt"></i>
                                     </div>
                                     <div class="text-start">
@@ -161,7 +161,7 @@
                                             {{ $performanceOverview['transaction']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['transaction']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['transaction']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['transaction']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['transaction']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['transaction']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['transaction']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -175,7 +175,7 @@
                         <div class="nav-item">
                             <button class="nav-link performance-tab-item" id="sale-tab" data-bs-toggle="tab" data-bs-target="#sale" type="button" role="tab" aria-controls="sale" aria-selected="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="performance-icon bg-orange bg-opacity-10 text-orange rounded-2 p-1 me-2">
+                                    <div class="performance-icon bg-orange text-orange rounded-2 p-1 me-2">
                                         <i class="fa-solid text-white fa-shopping-cart"></i>
                                     </div>
                                     <div class="text-start">
@@ -184,7 +184,7 @@
                                             {{ $performanceOverview['sale']['count'] ?? 0 }}
                                             @if(!request()->start_date && !request()->end_date && isset($performanceOverview['sale']['percentage']))
                                                 <span class="performance-change x-small ms-1 @if($performanceOverview['sale']['growth'] == "up") text-success @else text-danger @endif">
-                                                    <i class="fa-solid text-white @if($performanceOverview['sale']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
+                                                    <i class="fa-solid @if($performanceOverview['sale']['growth'] == "up") text-success @else text-danger @endif @if($performanceOverview['sale']['growth'] == "up") fa-arrow-up @else fa-arrow-down @endif"></i>
                                                     {{ $performanceOverview['sale']['percentage'] ?? 0 }}
                                                 </span>
                                             @endif
@@ -214,7 +214,7 @@
                     }
 
                     .performance-tab-item {
-                        border: 1px solid #dee2e6 !important;
+                        border: 2px solid #dee2e6 !important;
                         border-radius: 8px !important;
                         padding: 0.5rem 0.75rem !important;
                         min-width: 160px;
@@ -226,14 +226,14 @@
                     }
 
                     .performance-tab-item:hover {
-                        border-color: rgb(91, 71, 251) !important;
+                        border-color: #c22437 !important;
                         transform: translateY(-2px);
                         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
                     }
 
                     .performance-tab-item.active {
-                        border-color: #5b47fb !important;
-                        background-color: rgba(13, 110, 253, 0.05) !important;
+                        border-color: #c22437 !important;
+                        background-color: rgba(255, 255, 255, 0.05) !important;
                         box-shadow: 0 3px 8px rgba(13, 110, 253, 0.15);
                     }
 
@@ -417,7 +417,7 @@
                                     <canvas id="commissionChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="commissionPeriodContent">
+                            <ul class="legend-static mt-3" id="commissionPeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #c22437;"></span>Current Period
                                 </li>
@@ -430,7 +430,7 @@
                                     <canvas id="pendingcommissionChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="pendingcommissionPeriodContent">
+                            <ul class="legend-static mt-3" id="pendingcommissionPeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #C22437;"></span>Current Period
                                 </li>
@@ -447,7 +447,7 @@
                                     <canvas id="declinedcommissionChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="declinedcommissionPeriodContent">
+                            <ul class="legend-static mt-3" id="declinedcommissionPeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #C22437;"></span>Current Period
                                 </li>
@@ -463,7 +463,7 @@
                                     <canvas id="approvedcommissionChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="approvedcommissionPeriodContent">
+                            <ul class="legend-static mt-3" id="approvedcommissionPeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #C22437;"></span>Current Period
                                 </li>
@@ -478,7 +478,7 @@
                                     <canvas id="transactionChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="transactionPeriodContent">
+                            <ul class="legend-static mt-3" id="transactionPeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #C22437;"></span>Current Period
                                 </li>
@@ -493,7 +493,7 @@
                                     <canvas id="saleChart"></canvas>
                                 </div>
                             </div>
-                            <ul class="legend-static" id="salePeriodContent">
+                            <ul class="legend-static mt-3" id="salePeriodContent">
                                 <li class="custom-label">
                                     <span style="background-color: #C22437;"></span>Current Period
                                 </li>

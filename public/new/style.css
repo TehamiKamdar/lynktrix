@@ -656,3 +656,93 @@ body {
     font-weight: 600;
     white-space: nowrap;
 }
+
+/* Parent container (IMPORTANT) */
+.parentContainer {
+  position: relative;
+}
+
+/* Tooltip container */
+.chartjs-tooltip {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  max-width: 220px;
+  z-index: 1000;
+  transform: translateY(0);
+}
+
+/* Table reset */
+.chartjs-tooltip table {
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Title */
+.chartjs-tooltip .tooltip-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  text-align: left;
+  padding-bottom: 6px;
+}
+
+/* Rows */
+.chartjs-tooltip td {
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+/* Dot (color indicator) */
+.chartjs-tooltip-key {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* Value */
+.chartjs-tooltip .chart-data {
+  font-weight: 600;
+  color: #000;
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+/* Label */
+.chartjs-tooltip .data-label {
+  color: #888;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* Arrow (default: tooltip above point) */
+.chartjs-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* Optional: smooth fade + lift */
+.chartjs-tooltip {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.chartjs-tooltip[style*="opacity: 1"] {
+  opacity: 1;
+  transform: translateY(0);
+}
