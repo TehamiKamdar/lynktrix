@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="icon" type="image/png" href="{{ asset("img/favicon.png") }}">
-
+        <title>Lynktrix | @stack('title')</title>
         {!! SEOMeta::generate() !!}
         {!! OpenGraph::generate() !!}
         {!! Twitter::generate() !!}

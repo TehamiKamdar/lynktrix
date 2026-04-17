@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
         <link rel="icon" type="image/png" href="<?php echo e(asset("img/favicon.png")); ?>">
-
+        <title>Lynktrix | <?php echo $__env->yieldPushContent('title'); ?></title>
         <?php echo SEOMeta::generate(); ?>
 
         <?php echo OpenGraph::generate(); ?>

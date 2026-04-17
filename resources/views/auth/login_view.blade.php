@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="verify-admitad" content="67b8b56253">
     <link rel="icon" type="image/png" href="{{ asset("img/favicon.png") }}">
-
+    <title>Get Started with Lynktrix</title>
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
@@ -140,7 +140,7 @@
             min-width: 280px;
             max-width: 400px;
             background: var(--bs-card-bg);
-            border-radius: 40px;
+            border-radius: 20px;
             padding: 2rem 1.8rem;
             text-decoration: none;
             display: flex;
@@ -345,7 +345,7 @@
             offset: 20
         });
     </script>
-    
+
     @if(env("APP_ENV") == "production" && empty(request()->search))
         <!-- Hotjar Tracking Code for https://app.linkscircle.com/ -->
         <script>

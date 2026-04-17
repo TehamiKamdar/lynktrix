@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="verify-admitad" content="67b8b56253">
     <link rel="icon" type="image/png" href="<?php echo e(asset("img/favicon.png")); ?>">
-
+    <title>Get Started with Lynktrix</title>
     <?php echo SEOMeta::generate(); ?>
 
     <?php echo OpenGraph::generate(); ?>
@@ -144,7 +144,7 @@
             min-width: 280px;
             max-width: 400px;
             background: var(--bs-card-bg);
-            border-radius: 40px;
+            border-radius: 20px;
             padding: 2rem 1.8rem;
             text-decoration: none;
             display: flex;
@@ -345,53 +345,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-        once: true,
-        offset: 20
-        });
-    </script>
-    <script>
-        // Preloader
-        window.addEventListener('load', function () {
-            $(".loader-overlay").delay(500).fadeOut("slow");
-            $("#overlayer").fadeOut(500, function () {
-                $('body').removeClass('overlayScroll');
-            });
-
-            document.querySelector('body').classList.add("loaded");
-
-            /* feather icon */
-            feather.replace();
-
-            // Add hover effects with mouse tracking
-            const cards = document.querySelectorAll('.selection-card');
-
-            cards.forEach(card => {
-                card.addEventListener('mousemove', function (e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    const rotateY = (x - centerX) / 25;
-                    const rotateX = (centerY - y) / 25;
-
-                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
-                });
-            });
-
-            // Set active state based on URL
-            const currentPath = window.location.pathname;
-            if (currentPath.includes('register')) {
-                cards[0].style.zIndex = '10';
-            } else if (currentPath.includes('login')) {
-                cards[1].style.zIndex = '10';
-            }
+            once: true,
+            offset: 20
         });
     </script>
 

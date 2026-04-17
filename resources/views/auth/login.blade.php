@@ -1,5 +1,7 @@
 @extends("layouts.panel_guest")
 
+@push('title', 'Publisher Login')
+
 @push('styles')
     <style>
         :root {
@@ -344,152 +346,120 @@
 
 @section("content")
     <div class="container-fluid auth-wrapper">
-    <div class="row g-0 auth-box align-items-center">
+        <div class="row g-0 auth-box align-items-center">
 
-        <!-- LEFT SIDE -->
-        <div class="col-lg-6"
-             data-aos="zoom-out-right"
-             data-aos-duration="1400">
-            <div class="brand-section">
+            <!-- LEFT SIDE -->
+            <div class="col-lg-6" data-aos="zoom-out-right" data-aos-duration="1400">
+                <div class="brand-section">
 
-                <div class="brand-content">
+                    <div class="brand-content">
 
-                    <div class="mb-4"
-                         data-aos="flip-left"
-                         data-aos-delay="250"
-                         data-aos-duration="1200">
-                        <img src="{{ asset('new/logo.webp') }}" alt="" class="img-fluid">
+                        <div class="mb-4" data-aos="flip-left" data-aos-delay="250" data-aos-duration="1200">
+                            <img src="{{ asset('new/logo.webp') }}" alt="" class="img-fluid">
+                        </div>
+
+                        <p class="brand-tagline" data-aos="fade-right" data-aos-delay="450" data-aos-duration="1000">
+                            The performance marketing network trusted by advertisers & publishers worldwide.
+                        </p>
+
+                        <ul class="perks-list">
+
+                            <li data-aos="fade-right" data-aos-delay="650">
+                                <i class="ri-checkbox-circle-fill"></i>
+                                High-converting offers across 15+ verticals
+                            </li>
+
+                            <li data-aos="fade-right" data-aos-delay="800">
+                                <i class="ri-checkbox-circle-fill"></i>
+                                Weekly payouts with zero minimum threshold
+                            </li>
+
+                            <li data-aos="fade-right" data-aos-delay="950">
+                                <i class="ri-checkbox-circle-fill"></i>
+                                AI-powered smartlink optimization
+                            </li>
+
+                            <li data-aos="fade-right" data-aos-delay="1100">
+                                <i class="ri-checkbox-circle-fill"></i>
+                                24/7 dedicated account support
+                            </li>
+
+                        </ul>
+
                     </div>
-
-                    <p class="brand-tagline"
-                       data-aos="fade-right"
-                       data-aos-delay="450"
-                       data-aos-duration="1000">
-                        The performance marketing network trusted by advertisers & publishers worldwide.
-                    </p>
-
-                    <ul class="perks-list">
-
-                        <li data-aos="fade-right" data-aos-delay="650">
-                            <i class="ri-checkbox-circle-fill"></i>
-                            High-converting offers across 15+ verticals
-                        </li>
-
-                        <li data-aos="fade-right" data-aos-delay="800">
-                            <i class="ri-checkbox-circle-fill"></i>
-                            Weekly payouts with zero minimum threshold
-                        </li>
-
-                        <li data-aos="fade-right" data-aos-delay="950">
-                            <i class="ri-checkbox-circle-fill"></i>
-                            AI-powered smartlink optimization
-                        </li>
-
-                        <li data-aos="fade-right" data-aos-delay="1100">
-                            <i class="ri-checkbox-circle-fill"></i>
-                            24/7 dedicated account support
-                        </li>
-
-                    </ul>
 
                 </div>
-
             </div>
-        </div>
 
 
-        <!-- RIGHT SIDE -->
-        <div class="col-lg-6"
-             data-aos="zoom-out-left"
-             data-aos-duration="1400">
-            <div class="login-section">
+            <!-- RIGHT SIDE -->
+            <div class="col-lg-6" data-aos="zoom-out-left" data-aos-duration="1400">
+                <div class="login-section">
 
-                <div class="login-card"
-                     data-aos="fade-up"
-                     data-aos-delay="250"
-                     data-aos-duration="1200">
+                    <div class="login-card" data-aos="fade-up" data-aos-delay="250" data-aos-duration="1200">
 
-                    <div class="login-header"
-                         data-aos="fade-down"
-                         data-aos-delay="400">
-                        <h2 class="login-title">Welcome back</h2>
-                        <p class="login-subtitle">Sign in to your account</p>
-                    </div>
-
-                    @include("partial.admin.alert")
-
-                    <form method="POST" action="{{ route('login', ['type' => $type]) }}" id="loginForm">
-                        @csrf
-
-                        <div class="mb-3"
-                             data-aos="fade-up"
-                             data-aos-delay="550">
-                            <label class="form-label">Email address</label>
-                            <input type="email" name="email"
-                                   value="{{ old('email') }}"
-                                   class="form-control"
-                                   placeholder="Email Address"
-                                   required autofocus>
+                        <div class="login-header" data-aos="fade-down" data-aos-delay="400">
+                            <h2 class="login-title">Welcome back</h2>
+                            <p class="login-subtitle">Sign in to your account</p>
                         </div>
 
-                        <div class="mb-3"
-                             data-aos="fade-up"
-                             data-aos-delay="700">
-                            <label class="form-label">Password</label>
+                        @include("partial.admin.alert")
 
-                            <div class="position-relative">
-                                <input type="password"
-                                       id="password"
-                                       name="password"
-                                       class="form-control"
-                                       placeholder="Enter your password">
+                        <form method="POST" action="{{ route('login', ['type' => $type]) }}" id="loginForm">
+                            @csrf
 
-                                <i class="ri-eye-line field-icon text-muted"
-                                   id="password-icon"
-                                   onclick="showPassword('password')"></i>
-                            </div>
-                        </div>
-
-                        <div class="remember-forgot"
-                             data-aos="fade-up"
-                             data-aos-delay="850">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember">
-                                <label class="form-check-label" for="remember">
-                                    Remember me
-                                </label>
+                            <div class="mb-3" data-aos="fade-up" data-aos-delay="550">
+                                <label class="form-label">Email address</label>
+                                <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                                    placeholder="Email Address" required autofocus>
                             </div>
 
-                            <a href="{{ route('password.request') }}" class="forgot-link">
-                                Forgot password?
-                            </a>
-                        </div>
+                            <div class="mb-3" data-aos="fade-up" data-aos-delay="700">
+                                <label class="form-label">Password</label>
 
-                        <button type="submit"
-                                class="btn btn-accent login-btn"
-                                data-aos="zoom-in-up"
+                                <div class="position-relative">
+                                    <input type="password" id="password" name="password" class="form-control"
+                                        placeholder="Enter your password">
+
+                                    <i class="ri-eye-line field-icon text-muted" id="password-icon"
+                                        onclick="showPassword('password')"></i>
+                                </div>
+                            </div>
+
+                            <div class="remember-forgot" data-aos="fade-up" data-aos-delay="850">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember">
+                                    <label class="form-check-label" for="remember">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                <a href="{{ route('password.request') }}" class="forgot-link">
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <button type="submit" class="btn btn-accent login-btn" data-aos="zoom-in-up"
                                 data-aos-delay="1000">
-                            Sign in <i class="ri-arrow-right-line ms-1"></i>
-                        </button>
-                    </form>
+                                Sign in <i class="ri-arrow-right-line ms-1"></i>
+                            </button>
+                        </form>
 
-                    @if($admin != $type)
-                    <div class="signup-link"
-                         data-aos="fade-up"
-                         data-aos-delay="1150">
-                        Don't have an account?
-                        <a href="{{ route('register', ['type' => $type]) }}">
-                            Create an account
-                        </a>
+                        @if($admin != $type)
+                            <div class="signup-link" data-aos="fade-up" data-aos-delay="1150">
+                                Don't have an account?
+                                <a href="{{ route('register', ['type' => $type]) }}">
+                                    Create an account
+                                </a>
+                            </div>
+                        @endif
+
                     </div>
-                    @endif
 
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
 @endsection
