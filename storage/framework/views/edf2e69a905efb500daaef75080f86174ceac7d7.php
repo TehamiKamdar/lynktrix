@@ -22,6 +22,7 @@
         <!-- inject:css-->
         <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/bootstrap/bootstrap.css")); ?>">
         <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/remixicon.css")); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/style.css")); ?>">
         <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
         <?php echo $__env->yieldPushContent('styles'); ?>
 

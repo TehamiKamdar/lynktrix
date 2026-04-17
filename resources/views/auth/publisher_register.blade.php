@@ -1,7 +1,9 @@
 @extends("layouts.panel_guest")
 
+@push('title' , 'Publisher Register')
+
 @section("content")
-    
+
     <div class="checkout wizard8 global-shadow border px-sm-50 px-20 mx-auto my-30 bg-gray radius-xl w-100" id="signUpForm">
         <div class="notification-wrapper top-right"></div>
 

@@ -1,5 +1,7 @@
+<?php $__env->startPush('title' , 'Publisher Register'); ?>
+
 <?php $__env->startSection("content"); ?>
-    
+
     <div class="checkout wizard8 global-shadow border px-sm-50 px-20 mx-auto my-30 bg-gray radius-xl w-100" id="signUpForm">
         <div class="notification-wrapper top-right"></div>
 
@@ -459,7 +461,7 @@
 
 <?php $__env->stopPush(); ?>
 
-<?php if (! $__env->hasRenderedOnce('3e11040c-2e42-4e08-a140-83cb17d92ba1')): $__env->markAsRenderedOnce('3e11040c-2e42-4e08-a140-83cb17d92ba1');
+<?php if (! $__env->hasRenderedOnce('ac7c0336-b71e-4e8c-bc64-093dd81ccafc')): $__env->markAsRenderedOnce('ac7c0336-b71e-4e8c-bc64-093dd81ccafc');
 $__env->startPush('styles'); ?>
     <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/phone/intlTelInput.css")); ?>">
     <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/phone/demo.css")); ?>">
@@ -494,7 +496,7 @@ $__env->startPush('styles'); ?>
     </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('53dd4ec8-2f22-4650-8989-37202e7fa0f7')): $__env->markAsRenderedOnce('53dd4ec8-2f22-4650-8989-37202e7fa0f7');
+<?php if (! $__env->hasRenderedOnce('487e06d6-6b8e-4dbe-9590-c39c988be6ca')): $__env->markAsRenderedOnce('487e06d6-6b8e-4dbe-9590-c39c988be6ca');
 $__env->startPush('scripts'); ?>
     <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/phone/intlTelInput.js")); ?>"></script>
     <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
