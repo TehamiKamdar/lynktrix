@@ -22,7 +22,7 @@
         <!-- inject:css-->
         <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/bootstrap/bootstrap.css")); ?>">
         <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/remixicon.css")); ?>">
-
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
         <?php echo $__env->yieldPushContent('styles'); ?>
 
         <?php echo $__env->yieldPushContent('top_scripts'); ?>
@@ -61,7 +61,7 @@
         <script src="<?php echo e(asset("vendor_assets/js/bootstrap/bootstrap.min.js")); ?>"></script>
         <script src="<?php echo e(asset("vendor_assets/js/feather.min.js")); ?>"></script>
         <script src="<?php echo e(asset("vendor_assets/js/jquery.validate.min.js")); ?>"></script>
-
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
 
         <script>
@@ -96,6 +96,13 @@
                 /* feather icon */
                 feather.replace();
 
+            });
+            AOS.init({
+                once: true,
+                mirror: false,
+                duration: 1100,
+                offset: 60,
+                easing: 'ease-out-cubic'
             });
         </script>
 
