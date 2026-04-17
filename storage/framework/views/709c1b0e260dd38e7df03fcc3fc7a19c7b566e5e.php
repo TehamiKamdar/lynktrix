@@ -43,4 +43,4 @@
         <h5>Verification</h5>
         <p>Identity verification & confirmation</p>
     </div>
-</div>
+</div><?php /**PATH D:\lynktrix\resources\views/auth/publisher_register/steps/two.blade.php ENDPATH**/ ?>

@@ -4,7 +4,7 @@
 
 @section("content")
 
-    <div class="checkout wizard8 global-shadow border px-sm-50 px-20 mx-auto my-30 bg-gray radius-xl w-100" id="signUpForm">
+    <div class="registration-container" id="signUpForm">
         <div class="notification-wrapper top-right"></div>
 
         @if(($isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour) || (!$isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour))

@@ -2,7 +2,7 @@
 
 <?php $__env->startSection("content"); ?>
 
-    <div class="checkout wizard8 global-shadow border px-sm-50 px-20 mx-auto my-30 bg-gray radius-xl w-100" id="signUpForm">
+    <div class="registration-container" id="signUpForm">
         <div class="notification-wrapper top-right"></div>
 
         <?php if(($isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour) || (!$isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour)): ?>
@@ -207,7 +207,7 @@
                 let iti = window.intlTelInput(input, {
                     hiddenInput: "phone_number",
                     separateDialCode: true,
-                    utilsScript: "<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/phone/utils.js")); ?>",
+                    utilsScript: "<?php echo e(asset("vendor_assets/js/phone/utils.js")); ?>",
                 });
 
                 input.addEventListener("countrychange", function() {
@@ -461,11 +461,11 @@
 
 <?php $__env->stopPush(); ?>
 
-<?php if (! $__env->hasRenderedOnce('ac7c0336-b71e-4e8c-bc64-093dd81ccafc')): $__env->markAsRenderedOnce('ac7c0336-b71e-4e8c-bc64-093dd81ccafc');
+<?php if (! $__env->hasRenderedOnce('3d208a75-7181-498b-a5cc-471a7cb71546')): $__env->markAsRenderedOnce('3d208a75-7181-498b-a5cc-471a7cb71546');
 $__env->startPush('styles'); ?>
-    <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/phone/intlTelInput.css")); ?>">
-    <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/phone/demo.css")); ?>">
-    <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>"/>
+    <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/phone/intlTelInput.css")); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/phone/demo.css")); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/select2.min.css")); ?>"/>
     <style>
         .select2-container{
             height: 40px;
@@ -496,12 +496,9 @@ $__env->startPush('styles'); ?>
     </style>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('487e06d6-6b8e-4dbe-9590-c39c988be6ca')): $__env->markAsRenderedOnce('487e06d6-6b8e-4dbe-9590-c39c988be6ca');
+<?php if (! $__env->hasRenderedOnce('2b133725-dff7-4f0c-a54c-bae873fd537a')): $__env->markAsRenderedOnce('2b133725-dff7-4f0c-a54c-bae873fd537a');
 $__env->startPush('scripts'); ?>
-    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/phone/intlTelInput.js")); ?>"></script>
-    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("vendor_assets/js/phone/intlTelInput.js")); ?>"></script>
+    <script src="<?php echo e(asset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <?php $__env->stopPush(); endif; ?>
-
-
-
 <?php echo $__env->make("layouts.panel_guest", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/auth/publisher_register.blade.php ENDPATH**/ ?>

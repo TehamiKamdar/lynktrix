@@ -1,6 +1,4 @@
-@extends("auth.publisher_register.base")
-
-@section("step_form_content")
+<?php $__env->startSection("step_form_content"); ?>
     <div class="verification-container">
         <div class="verification-card">
 
@@ -41,4 +39,5 @@
     </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("auth.publisher_register.base", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/auth/publisher_register/step_four.blade.php ENDPATH**/ ?>

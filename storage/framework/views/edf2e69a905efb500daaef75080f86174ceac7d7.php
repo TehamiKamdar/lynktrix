@@ -29,6 +29,39 @@
         <?php echo $__env->yieldPushContent('top_scripts'); ?>
 
         <style>
+            :root {
+                --bs-accent: #C22437;
+                --bs-accent-light: rgba(194, 36, 55, 0.12);
+                --bs-accent-dark: #9e1b2c;
+                --bs-step-active: #C22437;
+                --bs-step-completed: #C22437;
+                --bs-step-inactive: #cbd5e1;
+                --bs-step-text-active: #C22437;
+                --bs-step-text-inactive: #94a3b8;
+                --bs-bg-light: #f8fafc;
+                --bs-success: #10b981;
+                --bs-success-light: #10b9811a;
+                --bs-warning: #f59e0b;
+                --bs-bg-dark: #05071e;
+                --bs-text-dark: #1a1a2e;
+                --bs-text-gray: #6c6c7a;
+                --bs-border-light: #eef2f6;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Quicksand', sans-serif !important;
+            }
+
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             .field-icon{
                 position: absolute;
                 z-index: 2;
@@ -41,9 +74,7 @@
     </head>
 
     <body>
-        <main class="main-content">
             <?php echo $__env->yieldContent("content"); ?>
-        </main>
 
         <div id="overlayer">
             <span class="loader-overlay">

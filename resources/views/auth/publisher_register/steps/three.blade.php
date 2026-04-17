@@ -1,18 +1,46 @@
-<div class="checkout-progress justify-content-around px-0">
-    <div class="step completed d-flex flex-column align-items-center" style="gap: 16px;" id="1">
-        <span class="las la-check"></span>
-        <h6>Account Information</h6>
+<!-- Step 1 -->
+<div class="step-item" id="1">
+    <div class="step-indicator completed">
+        <span><i class="ri-check-line"></i></span>
     </div>
-    <div class="step completed d-flex flex-column align-items-center" style="gap: 16px;" id="2">
-        <span class="las la-check"></span>
-        <h6>Promotional Type</h6>
+    <div class="step-content">
+        <h5>Account Information</h5>
+        <p>Your basic details and contact info</p>
     </div>
-    <div class="step current d-flex flex-column align-items-center" style="gap: 16px;" id="3">
+</div>
+<div class="step-connector"></div>
+
+<!-- Step 2 -->
+<div class="step-item" id="2">
+    <div class="step-indicator completed">
+        <span><i class="ri-check-line"></i></span>
+    </div>
+    <div class="step-content">
+        <h5>Promotional Type</h5>
+        <p>How you plan to promote offers</p>
+    </div>
+</div>
+<div class="step-connector"></div>
+
+<!-- Step 3 -->
+<div class="step-item active" id="3">
+    <div class="step-indicator">
         <span>3</span>
-        <h6 style="color: #5b47fb;">Promotional Space</h6>
     </div>
-    <div class="step d-flex flex-column align-items-center" style="gap: 16px;" id="4">
+    <div class="step-content">
+        <h5>Promotional Space</h5>
+        <p>Your traffic channels & volume</p>
+    </div>
+</div>
+<div class="step-connector"></div>
+
+<!-- Step 4 -->
+<div class="step-item" id="4">
+    <div class="step-indicator">
         <span>4</span>
-        <h6>Verification</h6>
+    </div>
+    <div class="step-content">
+        <h5>Verification</h5>
+        <p>Identity verification & confirmation</p>
     </div>
 </div>

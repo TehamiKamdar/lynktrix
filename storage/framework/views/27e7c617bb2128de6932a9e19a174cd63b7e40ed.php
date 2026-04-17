@@ -1,6 +1,4 @@
-@extends("auth.publisher_register.base")
-
-@section("step_form_content")
+<?php $__env->startSection("step_form_content"); ?>
 
     <div class="form-header">
         <h2 id="formTitle">Promotional Type</h2>
@@ -28,9 +26,9 @@
                         <label for="categories" class="font-weight-bold">Category (Max. 4)<span class="text-danger">*</span></label>
                         <div class="atbd-select ">
                             <select name="categories[]" id="categories" class="form-control" multiple="multiple">
-                                @foreach($categories as $category)
-                                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($category['id']); ?>"><?php echo e($category['name']); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                     </div>
@@ -42,9 +40,9 @@
                                 class="text-danger">*</span></label>
                         <div class="atbd-select ">
                             <select name="partner_types[]" id="partner_types" class="form-control" multiple="multiple">
-                                @foreach($partners as $partner)
-                                    <option value="{{ $partner['id'] }}">{{ $partner['name'] }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $partners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($partner['id']); ?>"><?php echo e($partner['name']); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                     </div>
@@ -56,10 +54,11 @@
                                 class="text-danger">*</span></label>
                         <select class="js-example-basic-single js-states form-control" id="website_country" name="website_country">
                             <option value="" disabled selected>Please Select</option>
-                            @foreach($countries as $country)
-                                <option {{ isset($stepTwo['country']) && $stepTwo['country'] == $country['id'] ? "selected" : null }}
-                                    value="{{ $country['id'] }}">{{ ucwords($country['name']) }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option <?php echo e(isset($stepTwo['country']) && $stepTwo['country'] == $country['id'] ? "selected" : null); ?>
+
+                                    value="<?php echo e($country['id']); ?>"><?php echo e(ucwords($country['name'])); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                 </div>
@@ -90,4 +89,5 @@
         </div>
     </form>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("auth.publisher_register.base", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/auth/publisher_register/step_three.blade.php ENDPATH**/ ?>

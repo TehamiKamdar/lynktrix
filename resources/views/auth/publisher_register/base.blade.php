@@ -1,24 +1,30 @@
-<div class="row justify-content-center">
-    <div class="col-xl-12">
-            <div class="col-12">
-                <div class="checkout-progress-indicator border-bottom pb-3">
-                    @if(($isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour) || (!$isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour))
-                        @include("auth.publisher_register.steps.one")
+    <div class="row g-0">
+        <div class="col-12 col-lg-4">
 
-                    @elseif(!$isStepOne && $isStepTwo && !$isStepThree && !$isStepFour)
-                        @include("auth.publisher_register.steps.two")
+            <div class="steps-sidebar">
+                <div class="steps-title">
+                    <h3>Registration Steps</h3>
+                    <p>Complete all steps to get started</p>
+                </div>
 
-                    @elseif(!$isStepOne && !$isStepTwo && $isStepThree && !$isStepFour)
-                        @include("auth.publisher_register.steps.three")
+                @if(($isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour) || (!$isStepOne && !$isStepTwo && !$isStepThree && !$isStepFour))
+                    @include("auth.publisher_register.steps.one")
 
-                    @elseif(!$isStepOne && !$isStepTwo && !$isStepThree && $isStepFour)
-                        @include("auth.publisher_register.steps.four")
+                @elseif(!$isStepOne && $isStepTwo && !$isStepThree && !$isStepFour)
+                    @include("auth.publisher_register.steps.two")
 
-                    @endif
-                </div><!-- checkout -->
+                @elseif(!$isStepOne && !$isStepTwo && $isStepThree && !$isStepFour)
+                    @include("auth.publisher_register.steps.three")
+
+                @elseif(!$isStepOne && !$isStepTwo && !$isStepThree && $isStepFour)
+                    @include("auth.publisher_register.steps.four")
+
+                @endif
             </div>
-            <div class="col-6 mx-auto">
+        </div>
+        <div class="col-12 col-lg-8">
+            <div class="form-sidebar">
                 @yield("step_form_content")
-            </div><!-- ends: col -->
-    </div><!-- ends: col -->
-</div>
+            </div>
+        </div><!-- ends: col -->
+    </div>

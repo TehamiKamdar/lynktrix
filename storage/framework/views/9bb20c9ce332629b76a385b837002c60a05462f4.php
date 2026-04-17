@@ -129,7 +129,6 @@
 
         /* Right Side - Login Form */
         .login-section {
-            background: white;
             display: flex;
             align-items: center;
             padding: 2rem 2rem 2rem 0;
