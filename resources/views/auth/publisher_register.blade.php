@@ -501,5 +501,3 @@
     <script src="{{ asset("vendor_assets/js/phone/intlTelInput.js") }}"></script>
     <script src="{{ asset("vendor_assets/js/select2.full.min.js") }}"></script>
 @endpushonce
-
-
