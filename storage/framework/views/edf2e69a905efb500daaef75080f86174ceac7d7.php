@@ -5,23 +5,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <link rel="icon" type="image/png" href="{{ asset("img/favicon.png") }}">
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
+        <link rel="icon" type="image/png" href="<?php echo e(asset("img/favicon.png")); ?>">
 
-        {!! SEOMeta::generate() !!}
-        {!! OpenGraph::generate() !!}
-        {!! Twitter::generate() !!}
-        {!! JsonLd::generate() !!}
+        <?php echo SEOMeta::generate(); ?>
+
+        <?php echo OpenGraph::generate(); ?>
+
+        <?php echo Twitter::generate(); ?>
+
+        <?php echo JsonLd::generate(); ?>
+
 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- inject:css-->
-        <link rel="stylesheet" href="{{ asset("vendor_assets/css/bootstrap/bootstrap.css") }}">
-        <link rel="stylesheet" href="{{ asset("vendor_assets/css/remixicon.css") }}">
+        <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/bootstrap/bootstrap.css")); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/remixicon.css")); ?>">
 
-        @stack('styles')
+        <?php echo $__env->yieldPushContent('styles'); ?>
 
-        @stack('top_scripts')
+        <?php echo $__env->yieldPushContent('top_scripts'); ?>
 
         <style>
             .field-icon{
@@ -37,7 +41,7 @@
 
     <body>
         <main class="main-content">
-            @yield("content")
+            <?php echo $__env->yieldContent("content"); ?>
         </main>
 
         <div id="overlayer">
@@ -51,14 +55,14 @@
             </span>
         </div>
 
-        <script src="{{ asset("vendor_assets/js/jquery/jquery-3.5.1.min.js") }}"></script>
-        <script src="{{ asset("vendor_assets/js/jquery/jquery-ui.js") }}"></script>
-        <script src="{{ asset("vendor_assets/js/bootstrap/popper.js") }}"></script>
-        <script src="{{ asset("vendor_assets/js/bootstrap/bootstrap.min.js") }}"></script>
-        <script src="{{ asset("vendor_assets/js/feather.min.js") }}"></script>
-        <script src="{{ asset("vendor_assets/js/jquery.validate.min.js") }}"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/jquery/jquery-3.5.1.min.js")); ?>"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/jquery/jquery-ui.js")); ?>"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/bootstrap/popper.js")); ?>"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/bootstrap/bootstrap.min.js")); ?>"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/feather.min.js")); ?>"></script>
+        <script src="<?php echo e(asset("vendor_assets/js/jquery.validate.min.js")); ?>"></script>
 
-        @stack('scripts')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
 
         <script>
             function showPassword(id)
@@ -95,7 +99,7 @@
             });
         </script>
 
-        @if(env("APP_ENV") == "production" && empty(request()->search))
+        <?php if(env("APP_ENV") == "production" && empty(request()->search)): ?>
             <!-- Hotjar Tracking Code for https://app.linkscircle.com/ -->
             <script>
                 (function(h,o,t,j,a,r){
@@ -107,7 +111,8 @@
                     a.appendChild(r);
                 })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             </script>
-        @endif
+        <?php endif; ?>
 
     </body>
 </html>
+<?php /**PATH D:\lynktrix\resources\views/layouts/panel_guest.blade.php ENDPATH**/ ?>

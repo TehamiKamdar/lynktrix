@@ -1,6 +1,4 @@
-@extends("layouts.panel_guest")
-
-@push('styles')
+<?php $__env->startPush('styles'); ?>
     <style>
         :root {
             --bs-accent: #C22437;
@@ -314,9 +312,9 @@
             }
         }
     </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push("scripts")
+<?php $__env->startPush("scripts"); ?>
     <script>
         $("#loginForm").validate({
             rules: {
@@ -340,16 +338,16 @@
             }
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section("content")
+<?php $__env->startSection("content"); ?>
     <div class="contianer-fluid auth-wrapper">
         <div class="row g-0 auth-box align-items-center">
             <div class="col-lg-6">
                 <div class="brand-section">
                     <div class="brand-content">
                         <div class="mb-4">
-                            <img src="{{ asset('new/logo.webp') }}" alt="" class="img-fluid">
+                            <img src="<?php echo e(asset('new/logo.webp')); ?>" alt="" class="img-fluid">
                         </div>
                         <p class="brand-tagline">
                             The performance marketing network trusted by advertisers & publishers worldwide.
@@ -373,13 +371,13 @@
                             <p class="login-subtitle">Sign in to your account</p>
                         </div>
 
-                        @include("partial.admin.alert")
+                        <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                        <form method="POST" action="{{ route('login', ['type' => $type]) }}" id="loginForm">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('login', ['type' => $type])); ?>" id="loginForm">
+                            <?php echo csrf_field(); ?>
                             <div class="mb-3">
                                 <label class="form-label">Email address</label>
-                                <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email Address" required autofocus>
+                                <input type="email" name="email" value="<?php echo e(old('email')); ?>" class="form-control" placeholder="Email Address" required autofocus>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
@@ -394,22 +392,23 @@
                                     <input class="form-check-input" type="checkbox" id="remember">
                                     <label class="form-check-label" for="remember">Remember me</label>
                                 </div>
-                                <a href="{{ route('password.request') }}" class="forgot-link">Forgot password?</a>
+                                <a href="<?php echo e(route('password.request')); ?>" class="forgot-link">Forgot password?</a>
                             </div>
 
                             <button type="submit" class="btn btn-accent login-btn">
                                 Sign in <i class="ri-arrow-right-line ms-1"></i>
                             </button>
                         </form>
-                        @if($admin != $type)
+                        <?php if($admin != $type): ?>
                             <div class="signup-link">
-                                Don't have an account? <a href="{{ route('register', ['type' => $type]) }}">Create an account</a>
+                                Don't have an account? <a href="<?php echo e(route('register', ['type' => $type])); ?>">Create an account</a>
                             </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.panel_guest", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/auth/login.blade.php ENDPATH**/ ?>
