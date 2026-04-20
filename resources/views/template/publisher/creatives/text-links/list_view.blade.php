@@ -1,6 +1,7 @@
 <!-- Start Table Responsive -->
-<div class="table-responsive">
-    <table class="table table-hover align-middle modern-table">
+<div class="table-shell">
+    <div class="table-responsive">
+    <table class="table table-hover align-middle modern-table" style="{{ $links->count() < 2 ? 'overflow: visible;' : '' }}">
         <thead>
             <tr>
                 <th>
@@ -79,6 +80,7 @@
             @endif
         </tbody>
     </table>
+</div>
 </div>
 <!-- Table Responsive End -->
 {{-- <div class="accordion" id="linksAccordion">

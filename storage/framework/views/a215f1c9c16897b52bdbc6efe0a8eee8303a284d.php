@@ -34,6 +34,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?php echo e(route("publisher.creatives.deep-links.list")); ?>" class="nav-link <?php echo e(Route::is("publisher.creatives.deep-links.list") ? 'active' : ''); ?>">
+            <i class="fas fa-sitemap"></i>
+            <span class="tooltip-text-nav">Deep Links</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?php echo e(route("publisher.reports.performance-by-transactions.list")); ?>" class="nav-link <?php echo e(Route::is("publisher.reports.performance-by-transactions.list") ? 'active' : ''); ?>">
             <i class="fas fa-chart-line"></i>
             <span class="tooltip-text-nav">Analytics</span>

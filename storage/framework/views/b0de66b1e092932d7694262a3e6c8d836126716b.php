@@ -1,10 +1,10 @@
-@extends("layouts.publisher.publisher_panel")
-@push('title', 'Deep Links Promotion')
-@pushonce('styles')
+<?php $__env->startPush('title', 'Deep Links Promotion'); ?>
+<?php if (! $__env->hasRenderedOnce('7c654922-2c5f-4830-ac1e-1ceb67cb8830')): $__env->markAsRenderedOnce('7c654922-2c5f-4830-ac1e-1ceb67cb8830');
+$__env->startPush('styles'); ?>
 <script>
     function changeLimit() {
         $.ajax({
-            url: '{{ route("publisher.set-limit") }}',
+            url: '<?php echo e(route("publisher.set-limit")); ?>',
             type: 'GET',
             data: { "limit": $("#limit").val(), "type": "depp_link" },
             success: function (response) {
@@ -42,8 +42,8 @@
 
         dataObj.search_by_name = urlParams.get(`search_by_name`);
 
-        let exportXLSXURL = "{{ route("publisher.creatives.deep-links.export", ['type' => 'xlsx']) }}";
-        let exportCSVURL = "{{ route("publisher.creatives.deep-links.export", ['type' => 'csv']) }}";
+        let exportXLSXURL = "<?php echo e(route("publisher.creatives.deep-links.export", ['type' => 'xlsx'])); ?>";
+        let exportCSVURL = "<?php echo e(route("publisher.creatives.deep-links.export", ['type' => 'csv'])); ?>";
 
         exportXLSXURL = `${exportXLSXURL}${url.search}`;
         exportCSVURL = `${exportCSVURL}${url.search}`;
@@ -52,7 +52,7 @@
         $("#exportXLSX").attr("href", exportXLSXURL);
 
         $.ajax({
-            url: '{{ route("publisher.creatives.deep-links.list") }}',
+            url: '<?php echo e(route("publisher.creatives.deep-links.list")); ?>',
             type: 'GET',
             data: dataObj,
             beforeSend: function () {
@@ -116,13 +116,14 @@
         });
     });
 </script>
-@endpushonce
+<?php $__env->stopPush(); endif; ?>
 
-@pushonce('scripts')
+<?php if (! $__env->hasRenderedOnce('1b489e8a-062a-443d-b6d3-966de90a6f72')): $__env->markAsRenderedOnce('1b489e8a-062a-443d-b6d3-966de90a6f72');
+$__env->startPush('scripts'); ?>
 
-@endpushonce
+<?php $__env->stopPush(); endif; ?>
 
-@section("content")
+<?php $__env->startSection("content"); ?>
 
     <div class="container-fluid">
         <div class="row justify-content-between">
@@ -133,13 +134,13 @@
                             <div class="col-12 col-lg-4">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control" id="SearchByName"
-                                        placeholder="Search advertisers..." value="{{ request()->search_by_name }}">
-                                    @if(request()->search_by_name)
+                                        placeholder="Search advertisers..." value="<?php echo e(request()->search_by_name); ?>">
+                                    <?php if(request()->search_by_name): ?>
                                         <button class="btn btn-outline-danger" onclick="clearFilter('clearSearchByName')"
                                             type="button">
                                             <i class="fas fa-times"></i>
                                         </button>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-6 d-flex justify-content-end">
@@ -149,15 +150,15 @@
                                         <i class="fas fa-download me-2"></i> Export
                                     </button>
 
-                                    @php
+                                    <?php
                                         $queryParams = request()->all();
-                                    @endphp
+                                    ?>
 
                                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
 
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center"
-                                                href="{{ route('publisher.creatives.deep-links.export', array_merge(['type' => 'xlsx'], $queryParams)) }}">
+                                                href="<?php echo e(route('publisher.creatives.deep-links.export', array_merge(['type' => 'xlsx'], $queryParams))); ?>">
                                                 <i class="fa-solid fa-file-excel text-success me-2"></i>
                                                 Export to Excel
                                             </a>
@@ -165,7 +166,7 @@
 
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center"
-                                                href="{{ route('publisher.creatives.deep-links.export', array_merge(['type' => 'csv'], $queryParams)) }}">
+                                                href="<?php echo e(route('publisher.creatives.deep-links.export', array_merge(['type' => 'csv'], $queryParams))); ?>">
                                                 <i class="fa-solid fa-file-csv text-success me-2"></i>
                                                 Export to CSV
                                             </a>
@@ -179,16 +180,17 @@
                     </div>
                 </div>
                 <!-- End: Top Bar -->
-                @include("partial.admin.alert")
+                <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <div class="tab-content" id="ap-tabContent">
-                    @include("template.publisher.widgets.loader-3")
+                    <?php echo $__env->make("template.publisher.widgets.loader-3", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
                         aria-labelledby="ap-overview-tab">
-                        @include("template.publisher.creatives.deep-links.list_view", compact('links'))
+                        <?php echo $__env->make("template.publisher.creatives.deep-links.list_view", compact('links'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     </div>
                 </div>
             </div><!-- End: .columns-2 -->
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.publisher.publisher_panel", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/template/publisher/creatives/deep-links/list.blade.php ENDPATH**/ ?>

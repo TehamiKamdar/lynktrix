@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
     <link rel="icon" type="image/png" href="<?php echo e(asset("img/favicon.png")); ?>">
 
+    <title>Lynktrix | <?php echo $__env->yieldPushContent('title'); ?></title>
     <?php echo SEOMeta::generate(); ?>
 
     <?php echo OpenGraph::generate(); ?>
@@ -17,8 +18,7 @@
     <?php echo JsonLd::generate(); ?>
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">

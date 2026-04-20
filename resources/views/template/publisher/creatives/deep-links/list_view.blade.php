@@ -1,14 +1,11 @@
 <!-- Start Table Responsive -->
 <div class="table-responsive">
-    <table class="table table-hover align-middle modern-table">
+    <table class="table table-hover align-middle modern-table" style="{{ $links->count() < 2 ? 'overflow: visible;' : '' }}">
         <thead>
         <tr>
 
             <th>
                 <span>Advertiser</span>
-            </th>
-            <th>
-                <span>Landing Page</span>
             </th>
 
             <th>
@@ -24,7 +21,7 @@
             </th>
 
             <th>
-
+                Actions
             </th>
         </tr>
         </thead>
@@ -40,17 +37,12 @@
                         </td>
                         <td>
                             <div>
-                                <a href="{{ $link->landing_url }}" target="_blank">{{ \Illuminate\Support\Str::limit($link->landing_url ?? "-", 30, $end='...') }}</a>
+                                <a href="{{ $link->tracking_url }}" class="tracking-short" target="_blank">{{ $link->tracking_url ?? "-" }}</a>
                             </div>
                         </td>
                         <td>
                             <div>
-                                <a href="{{ $link->tracking_url }}" id="trackingURL{{ $key }}" class="tracking-short" target="_blank">{{ $link->tracking_url ?? "-" }}</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <a href="{{ $link->tracking_url_long }}" id="trackingURL{{ $key }}" target="_blank">{{ \Illuminate\Support\Str::limit($link->tracking_url_long ?? "-", 30, $end='...') }}</a>
+                                <a href="{{ $link->tracking_url_long }}" target="_blank">{{ \Illuminate\Support\Str::limit($link->tracking_url_long ?? "-", 30, $end='...') }}</a>
                             </div>
                         </td>
                         <td>
@@ -60,12 +52,12 @@
                         </td>
                         <td>
                             <div class="d-flex justify-content-start align-items-center gap-3">
-                                <a href="{{ $link->url }}" target="_blank" class="website-link tooltip-wrapper" style="font-size: 16px;">
+                                <a href="{{ $link->landing_url }}" target="_blank" class="website-link tooltip-wrapper" style="font-size: 16px;">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     <span class="tooltip-text">Visit</span>
                                 </a>
                                 <a href="javascript:void(0)" class="website-link tooltip-wrapper copy-btn" style="font-size: 18px;">
-                                    <i class="fa-regular fa-copy"></i>
+                                    <i class="fa-solid fa-copy"></i>
                                     <span class="tooltip-text">Copy Link</span>
                                 </a>
                             </div>

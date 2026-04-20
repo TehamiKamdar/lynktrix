@@ -125,6 +125,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route("publisher.creatives.deep-links.list") }}" class="nav-link {{ Route::is("publisher.creatives.deep-links.list") ? 'active' : '' }}">
+            <i class="fas fa-sitemap"></i>
+            <span class="tooltip-text-nav">Deep Links</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route("publisher.reports.performance-by-transactions.list") }}" class="nav-link {{ Route::is("publisher.reports.performance-by-transactions.list") ? 'active' : '' }}">
             <i class="fas fa-chart-line"></i>
             <span class="tooltip-text-nav">Analytics</span>
