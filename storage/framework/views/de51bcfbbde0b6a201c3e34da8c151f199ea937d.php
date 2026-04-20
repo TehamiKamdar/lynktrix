@@ -1,8 +1,8 @@
 <?php $__env->startPush('title', 'Partners'); ?>
-<?php if (! $__env->hasRenderedOnce('0315d324-bc33-4244-a46b-12a062616095')): $__env->markAsRenderedOnce('0315d324-bc33-4244-a46b-12a062616095');
+<?php if (! $__env->hasRenderedOnce('46deadaa-6038-46dc-8a07-c3df9631fb58')): $__env->markAsRenderedOnce('46deadaa-6038-46dc-8a07-c3df9631fb58');
 $__env->startPush('styles'); ?>
 
-<link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
+<link rel="stylesheet" href="<?php echo e(asset("vendor_assets/css/select2.min.css")); ?>" />
 <style>
     :root {
         --primary-color: #c22437;
@@ -312,10 +312,10 @@ $__env->startPush('styles'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('4c66f672-f761-4d02-b4d6-c66cb885f670')): $__env->markAsRenderedOnce('4c66f672-f761-4d02-b4d6-c66cb885f670');
+<?php if (! $__env->hasRenderedOnce('a8f279b9-e4f5-44d1-97df-f83b4204930b')): $__env->markAsRenderedOnce('a8f279b9-e4f5-44d1-97df-f83b4204930b');
 $__env->startPush('scripts'); ?>
-<script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
-<script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>
+<script src="<?php echo e(asset("vendor_assets/js/select2.full.min.js")); ?>"></script>
+<script src="<?php echo e(asset("vendor_assets/js/drawer.js")); ?>"></script>
 <?php $section = request()->section ?? null; ?>
 <?php $page = request()->page ?? null; ?>
 <script>
@@ -667,20 +667,12 @@ $__env->startPush('scripts'); ?>
         window.location.href = window.location.pathname + '?' + params.toString();
     }
 </script>
-<script>
-AOS.init({
-    once: true,
-    duration: 1100,
-    easing: "ease-out-cubic",
-    offset: 10,
-});
-</script>
 <?php $__env->stopPush(); endif; ?>
 
 <?php $__env->startSection("content"); ?>
         <div class="container-fluid">
             <div class="row justify-content-between">
-                <div class="filter-bar-wrapper mb-4" data-aos="fade-down" data-aos-duration="900">
+                <div class="filter-bar-wrapper mb-4">
                     <div class="card shadow-sm border-0 rounded-3">
                         <!-- Filter Header - Collapsible on mobile -->
                         <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
@@ -818,7 +810,7 @@ AOS.init({
                 </div>
 
                 
-                <div class="col-lg-2 col-md-4 col-sm-12" data-aos="fade-right" data-aos-delay="150" data-aos-duration="900">
+                <div class="col-lg-2 col-md-4 col-sm-12">
 
                     <div class="card shadow-sm border-0 rounded-3">
 
@@ -832,20 +824,20 @@ AOS.init({
 
                                 <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
 
-                                    <button class="nav-link text-start <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" id="allBrands" data-aos="fade-right" data-aos-delay="250">
+                                    <button class="nav-link text-start <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" id="allBrands">
                                         <span>All Brands</span>
                                         
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'new' ? 'active' : ''); ?>" data-section="new" id="newBrands" data-aos="fade-right" data-aos-delay="320">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'new' ? 'active' : ''); ?>" data-section="new" id="newBrands">
                                         New
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'not-joined' ? 'active' : ''); ?>" data-section="not-joined" id="notJoinedBrands" data-aos="fade-right" data-aos-delay="390">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'not-joined' ? 'active' : ''); ?>" data-section="not-joined" id="notJoinedBrands">
                                         Not Joined
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" id="pendingBrands" data-aos="fade-right" data-aos-delay="460">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" id="pendingBrands">
                                         Pending
                                     </button>
 
@@ -853,15 +845,15 @@ AOS.init({
 
                                 <?php if(request()->route()->getName() == "publisher.own-advertisers"): ?>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'joined' || empty(request()->section) ? 'active' : ''); ?>" data-section="joined" id="joinedBrands" data-aos="fade-right" data-aos-delay="250">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'joined' || empty(request()->section) ? 'active' : ''); ?>" data-section="joined" id="joinedBrands">
                                         Joined
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" id="holdBrands" data-aos="fade-right" data-aos-delay="320">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" id="holdBrands">
                                         Hold
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'rejected' ? 'active' : ''); ?>" data-section="rejected" id="rejectedBrands" data-aos="fade-right" data-aos-delay="390">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'rejected' ? 'active' : ''); ?>" data-section="rejected" id="rejectedBrands">
                                         Rejected
                                     </button>
 
@@ -875,17 +867,12 @@ AOS.init({
                 </div>
 
                 
-                <div class="col-lg-10 col-md-4 col-sm-12"
-             data-aos="fade-left"
-             data-aos-delay="250"
-             data-aos-duration="950">
+                <div class="col-lg-10 col-md-4 col-sm-12">
                     <!-- Start: Top Bar -->
 
 
                     <!-- View Toggle -->
-                    <div class="card shadow-sm" style="border-radius: 0;"
-                 data-aos="fade-up"
-                 data-aos-delay="350">
+                    <div class="card shadow-sm" style="border-radius: 0;">
                         <div class="card-body py-1">
                             <div class="d-flex justify-content-between align-items-center gap-3 py-3">
                                 <div class="col-12 col-lg-4">
@@ -919,7 +906,7 @@ AOS.init({
                                                     Export to Excel
                                                 </a>
                                             </li>
-                                            
+
                                             <li>
                                                 <a class="dropdown-item d-flex align-items-center"
                                                 href="<?php echo e(route('publisher.export-advertisers', array_merge(['type' => 'csv'], $queryParams))); ?>">

@@ -27,42 +27,48 @@
         <tbody>
             @if(count($links))
                 @foreach($links as $key => $link)
-                        <tr>
-                            <td>
-                                <div class="orderDatatable-title">
-                                    {{ $link->name }} <br>
-                                    <span class="fs-12 color-gray">({{ $link->sid }})</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="orderDatatable-title">
-                                    <a href="{{ $link->tracking_url_short }}" id="trackingURL{{ $key }}" target="_blank">{{ $link->tracking_url_short ?? "-" }}</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="orderDatatable-title">
-                                    <a href="{{ $link->tracking_url_long }}" id="trackingURL{{ $key }}" target="_blank">{{ \Illuminate\Support\Str::limit($link->tracking_url_long ?? "-", 30, $end = '...') }}</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="orderDatatable-title">
-                                    {{ $link->sub_id ?? "-" }}
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-start align-items-center gap-3">
-                                    <a href="{{ $link->url }}" target="_blank" class="website-link tooltip-wrapper" style="font-size: 16px;">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                        <span class="tooltip-text">Visit</span>
-                                    </a>
-                                    <a href="javascript:void(0)" onclick="copyLink('{{ $key }}')" class="website-link tooltip-wrapper" style="font-size: 18px;">
-                                        <i class="fa-regular fa-copy"></i>
-                                        <span class="tooltip-text">Copy Link</span>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- End: tr -->
+                    <tr>
+                        <td>
+                            <div>
+                                {{ $link->name }} <br>
+                                <span class="fs-12 color-gray">({{ $link->sid }})</span>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div>
+                                <a href="{{ $link->tracking_url_short }}" class="tracking-short" target="_blank">
+                                    {{ $link->tracking_url_short ?? "-" }}
+                                </a>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div>
+                                <a href="{{ $link->tracking_url_long }}" target="_blank">
+                                    {{ \Illuminate\Support\Str::limit($link->tracking_url_long ?? "-", 30, '...') }}
+                                </a>
+                            </div>
+                        </td>
+
+                        <td>{{ $link->sub_id ?? "-" }}</td>
+
+                        <td>
+                            <div class="d-flex gap-3">
+
+                                <a href="{{ $link->url }}" target="_blank" class="website-link tooltip-wrapper" style="font-size: 16px;">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    <span class="tooltip-text">Visit</span>
+                                </a>
+
+                                <a href="javascript:void(0)" class="website-link tooltip-wrapper copy-btn" style="font-size: 18px;">
+                                    <i class="fa-solid fa-copy"></i>
+                                    <span class="tooltip-text">Copy Link</span>
+                                </a>
+
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
             @else
                 <tr>

@@ -1,6 +1,6 @@
 <?php $__env->startPush('title', 'Links Promotion'); ?>
 
-<?php if (! $__env->hasRenderedOnce('da353eeb-5d2a-44c5-af4f-9f1c3ed8c98c')): $__env->markAsRenderedOnce('da353eeb-5d2a-44c5-af4f-9f1c3ed8c98c');
+<?php if (! $__env->hasRenderedOnce('3640a462-1373-4540-a9b7-d6d0ee8eaff2')): $__env->markAsRenderedOnce('3640a462-1373-4540-a9b7-d6d0ee8eaff2');
 $__env->startPush('styles'); ?>
 <script>
     function changeLimit() {
@@ -18,23 +18,7 @@ $__env->startPush('styles'); ?>
             }
         });
     }
-    function copyText(button, text) {
-        if (!text) return;
 
-        navigator.clipboard.writeText(text).then(() => {
-            const originalText = button.innerText;
-
-            button.innerText = 'Copied!';
-            button.disabled = true;
-            button.classList.add("text-success");
-
-            setTimeout(() => {
-                button.innerText = originalText;
-                button.disabled = false;
-                button.classList.remove("text-success");
-            }, 1500);
-        });
-    }
     function sendAjaxRequest(url, urlParams, dataObj) {
         history.pushState({}, null, url.href);
 
@@ -119,84 +103,75 @@ $__env->startPush('styles'); ?>
 </script>
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('b1da5b94-388f-4401-b5e9-7ee6069f7bf9')): $__env->markAsRenderedOnce('b1da5b94-388f-4401-b5e9-7ee6069f7bf9');
+<?php if (! $__env->hasRenderedOnce('b8b74a85-8efa-41fb-ac00-9e9b622488df')): $__env->markAsRenderedOnce('b8b74a85-8efa-41fb-ac00-9e9b622488df');
 $__env->startPush('scripts'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
 <?php $__env->startSection("content"); ?>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-12">
+                <div class="card shadow-sm" style="border-radius: 0;">
+                    <div class="card-body py-1">
+                        <div class="d-flex justify-content-between align-items-center gap-3 py-3">
+                            <div class="col-12 col-lg-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" id="SearchByName"
+                                        placeholder="Search advertisers..." value="<?php echo e(request()->search_by_name); ?>">
+                                    <?php if(request()->search_by_name): ?>
+                                        <button class="btn btn-outline-danger" onclick="clearFilter('clearSearchByName')"
+                                            type="button">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 d-flex justify-content-end">
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-success btn-sm dropdown-toggle d-flex align-items-center"
+                                        type="button" data-bs-toggle="dropdown">
+                                        <i class="fas fa-download me-2"></i> Export
+                                    </button>
 
-    
+                                    <?php
+                                        $queryParams = request()->all();
+                                    ?>
 
-    <div class="az-content az-content-dashboard">
-        <div class="container-fluid">
-            <div class="az-content-body">
-                <div class="row justify-content-between">
-                    <div class="col-12">
-                        <div class="card shadow-sm" style="border-radius: 0;">
-                            <div class="card-body py-1">
-                                <div class="d-flex justify-content-between align-items-center gap-3 py-3">
-                                    <div class="col-12 col-lg-4">
-                                        <div class="input-group input-group-sm">
-                                            <input type="text" class="form-control" id="SearchByName"
-                                                placeholder="Search advertisers..." value="<?php echo e(request()->search_by_name); ?>">
-                                            <?php if(request()->search_by_name): ?>
-                                                <button class="btn btn-outline-danger"
-                                                    onclick="clearFilter('clearSearchByName')" type="button">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 d-flex justify-content-end">
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-outline-success btn-sm dropdown-toggle d-flex align-items-center"
-                                                type="button" data-bs-toggle="dropdown">
-                                                <i class="fas fa-download me-2"></i> Export
-                                            </button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
 
-                                            <?php
-                                                $queryParams = request()->all();
-                                            ?>
+                                        <li>
+                                            <a class="dropdown-item d-flex align-items-center"
+                                                href="<?php echo e(route('publisher.creatives.text-links.export', array_merge(['type' => 'xlsx'], $queryParams))); ?>">
+                                                <i class="fa-solid fa-file-excel text-success me-2"></i>
+                                                Export to Excel
+                                            </a>
+                                        </li>
 
-                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                        <li>
+                                            <a class="dropdown-item d-flex align-items-center"
+                                                href="<?php echo e(route('publisher.creatives.text-links.export', array_merge(['type' => 'csv'], $queryParams))); ?>">
+                                                <i class="fa-solid fa-file-csv text-success me-2"></i>
+                                                Export to CSV
+                                            </a>
+                                        </li>
 
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center"
-                                                        href="<?php echo e(route('publisher.creatives.text-links.export', array_merge(['type' => 'xlsx'], $queryParams))); ?>">
-                                                        <i class="fa-solid fa-file-excel text-success me-2"></i>
-                                                        Export to Excel
-                                                    </a>
-                                                </li>
+                                    </ul>
 
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center"
-                                                        href="<?php echo e(route('publisher.creatives.text-links.export', array_merge(['type' => 'csv'], $queryParams))); ?>">
-                                                        <i class="fa-solid fa-file-csv text-success me-2"></i>
-                                                        Export to CSV
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End: Top Bar -->
-                        <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                        <div class="tab-content mt-25" id="ap-tabContent">
-                            <?php echo $__env->make("template.publisher.widgets.loader-3", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                            <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
-                                aria-labelledby="ap-overview-tab">
-                                <?php echo $__env->make("template.publisher.creatives.text-links.list_view", compact('links'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                            </div>
-                        </div>
-                    </div><!-- End: .columns-2 -->
+                    </div>
                 </div>
-            </div>
+                <!-- End: Top Bar -->
+                <?php echo $__env->make("partial.admin.alert", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <div class="tab-content" id="ap-tabContent">
+                    <?php echo $__env->make("template.publisher.widgets.loader-3", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <div class="tab-pane fade show active" id="ap-overview" role="tabpanel" aria-labelledby="ap-overview-tab">
+                        <?php echo $__env->make("template.publisher.creatives.text-links.list_view", compact('links'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    </div>
+                </div>
+            </div><!-- End: .columns-2 -->
         </div>
     </div>
 

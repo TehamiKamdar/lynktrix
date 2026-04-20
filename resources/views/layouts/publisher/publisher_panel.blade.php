@@ -13,7 +13,8 @@
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
 
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
@@ -398,10 +399,39 @@
                     }
                 })
                 .trigger("resize");
+
+
+            document.querySelectorAll(".copy-btn").forEach(btn => {
+
+                btn.addEventListener("click", function () {
+
+                    const row = this.closest("tr");
+                    const link = row.querySelector(".tracking-short");
+
+                    if (!link) return;
+
+                    const text = link.href;
+
+                    navigator.clipboard.writeText(text).then(() => {
+
+                        const icon = this.querySelector("i");
+                        const tip = this.querySelector(".tooltip-text");
+
+                        icon.classList.replace("fa-copy", "fa-check");
+                        tip.innerText = "Copied";
+
+                        setTimeout(() => {
+                            icon.classList.replace("fa-check", "fa-copy");
+                            tip.innerText = "Copy Link";
+                        }, 1500);
+
+                    });
+
+                });
+
+            });
         });
     </script>
-
-
 
     @if(env("APP_ENV") == "production" && empty(request()->search))
         <!-- Hotjar Tracking Code for https://app.linkscircle.com/ -->
@@ -422,52 +452,52 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    (function() {
-      // Mobile sidebar toggle functionality (without overriding any bootstrap component)
-      const sidebar = document.getElementById('dashboardSidebar');
-      const toggleBtn = document.getElementById('mobileToggleBtn');
+    (function () {
+        // Mobile sidebar toggle functionality (without overriding any bootstrap component)
+        const sidebar = document.getElementById('dashboardSidebar');
+        const toggleBtn = document.getElementById('mobileToggleBtn');
 
-      if (toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          sidebar.classList.toggle('mobile-open');
-        });
+        if (toggleBtn && sidebar) {
+            toggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                sidebar.classList.toggle('mobile-open');
+            });
 
-        // Optional: close sidebar when clicking outside on small screens (nice UX)
-        document.addEventListener('click', function(event) {
-          const isMobile = window.innerWidth <= 992;
-          if (isMobile && sidebar.classList.contains('mobile-open')) {
-            // if click target is not inside sidebar and not the toggle button
-            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-              sidebar.classList.remove('mobile-open');
-            }
-          }
-        });
-      }
-
-      // Handle window resize: if screen becomes > 992px and sidebar has mobile-open class, remove it
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 992 && sidebar.classList.contains('mobile-open')) {
-          sidebar.classList.remove('mobile-open');
+            // Optional: close sidebar when clicking outside on small screens (nice UX)
+            document.addEventListener('click', function (event) {
+                const isMobile = window.innerWidth <= 992;
+                if (isMobile && sidebar.classList.contains('mobile-open')) {
+                    // if click target is not inside sidebar and not the toggle button
+                    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        sidebar.classList.remove('mobile-open');
+                    }
+                }
+            });
         }
-      });
 
-      // Optional: simple active link handling (just for demo to show active state update without page reload)
-      // This demonstrates that custom active class can be changed without bootstrap interference
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          // prevent default only for demo smoothness, but keep href if needed (just for presentation)
-          if (this.getAttribute('href') === '#' || this.getAttribute('href') === '#') {
-            e.preventDefault();
-          }
-          // Remove active class from all links
-          navLinks.forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
+        // Handle window resize: if screen becomes > 992px and sidebar has mobile-open class, remove it
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 992 && sidebar.classList.contains('mobile-open')) {
+                sidebar.classList.remove('mobile-open');
+            }
         });
-      });
 
-      // small demo: default active Dashboard stays but if other clicked, active changes.
-      // also ensure the branding no bootstrap conflict
+        // Optional: simple active link handling (just for demo to show active state update without page reload)
+        // This demonstrates that custom active class can be changed without bootstrap interference
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                // prevent default only for demo smoothness, but keep href if needed (just for presentation)
+                if (this.getAttribute('href') === '#' || this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // small demo: default active Dashboard stays but if other clicked, active changes.
+        // also ensure the branding no bootstrap conflict
     })();
-  </script>
+</script>

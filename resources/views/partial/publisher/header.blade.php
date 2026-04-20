@@ -14,21 +14,21 @@
 <header class="dashboard-header">
     <div class="header-left-area">
         <button class="mobile-toggle-btn" id="mobileToggleBtn" aria-label="Toggle sidebar">
-            <i class="bi bi-list"></i>
+            <i class="ri-list-check"></i>
         </button>
     </div>
     <div class="header-title">
         <h6>@stack('title')</h6>
-    </div>
-    <div class="header-actions">
-        <div class="user-profile">
-            <div class="user-avatar">
-                <img src="{{ asset('publisher_dashboard/img/faces/face1.jpg') }}" style="width: 40px;" class="rounded-circle shadow-4" alt="">
-            </div>
-            <div class="user-info">
-                <div class="user-name">{{ auth()->user()->full_name }}</div>
-                <div class="user-role">{{ auth()->user()->getRoleName() }} | ID: {{ auth()->user()->sid }}</div>
+        </div>
+        <div class="header-actions">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="{{ asset('publisher_dashboard/img/faces/face1.jpg') }}" style="width: 40px;" class="rounded-circle shadow-4" alt="">
+                </div>
+                <div class="user-info">
+                    <div class="user-name">{{ auth()->user()->full_name }}</div>
+                    <div class="user-role">{{ auth()->user()->getRoleName() }} | ID: {{ auth()->user()->sid }}</div>
+                </div>
             </div>
         </div>
-    </div>
 </header>
