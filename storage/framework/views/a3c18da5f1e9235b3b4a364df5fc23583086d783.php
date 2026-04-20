@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
-    <link rel="icon" type="image/png" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("img/favicon.png")); ?>">
+    <link rel="icon" type="image/png" href="<?php echo e(asset("img/favicon.png")); ?>">
 
     <?php echo SEOMeta::generate(); ?>
 
@@ -17,18 +17,16 @@
     <?php echo JsonLd::generate(); ?>
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <?php echo $__env->yieldPushContent('styles'); ?>
-    <?php echo $__env->yieldPushContent('extended_styles'); ?>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <!-- Styles CSS -->
-    <link rel="stylesheet" href="<?php echo e(asset("new/style.css")); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset("new/remixicons/remixicon.css")); ?>">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="<?php echo e(asset('publisher_dashboard/lib/bootstrap/css/bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset("publisher_dashboard/css/style.css")); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset("publisher_dashboard/remixicons/remixicon.css")); ?>">
 
+    <?php echo $__env->yieldPushContent('styles'); ?>
+    <?php echo $__env->yieldPushContent('extended_styles'); ?>
 
 </head>
 
@@ -126,29 +124,13 @@
 
 
 
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/jquery/jquery.min.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/bootstrap/js/bootstrap.bundle.min.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/ionicons/ionicons.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/jquery.flot/jquery.flot.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/jquery.flot/jquery.flot.resize.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/chart.js/Chart.bundle.min.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/lib/peity/jquery.peity.min.js")); ?>"></script>
-
-    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/js/azia.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/js/chart.flot.sampledata.js")); ?>"></script>
-    <script
-        src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/js/dashboard.sampledata.js")); ?>"></script>
-    <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("publisher_dashboard/js/cookie.js")); ?>"
-        type="text/javascript"></script>
-
+    <script src="<?php echo e(asset("publisher_dashboard/lib/jquery/jquery.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("publisher_dashboard/lib/bootstrap/js/bootstrap.bundle.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("publisher_dashboard/lib/chart.js/Chart.bundle.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("publisher_dashboard/js/chart.flot.sampledata.js")); ?>"></script>
+    <script src="<?php echo e(asset("publisher_dashboard/js/dashboard.sampledata.js")); ?>"></script>
+    <script src="<?php echo e(asset("publisher_dashboard/js/cookie.js")); ?>"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->yieldPushContent('extended_scripts'); ?>
 
@@ -443,20 +425,6 @@
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // Optional: Add some interactivity
-    document.addEventListener('DOMContentLoaded', function () {
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // You can add custom logic here
-                console.log('Accordion toggled:', this.querySelector('.advertiser-name').textContent.trim());
-            });
-        });
-    });
-</script>
 <script>
     (function() {
       // Mobile sidebar toggle functionality (without overriding any bootstrap component)

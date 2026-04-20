@@ -12,7 +12,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-color: var(--body-bg);
     overflow-x: hidden;
 }
@@ -603,6 +603,7 @@ body {
     padding: 6px 10px;
     border-radius: 6px;
     font-size: 14px;
+    font-weight: 600;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
@@ -637,8 +638,12 @@ body {
     vertical-align: middle;
 }
 
-.modern-table tbody tr:hover {
+.modern-table.table-hover > tbody > tr:hover > * {
     background-color: #fcd1d1 !important;
+}
+.modern-table.table-hover > tbody > tr {
+    border-top: 1px solid var(--primary-color) !important;
+    border-bottom: 1px solid var(--primary-color) !important;
 }
 
 .website-link {
@@ -664,6 +669,10 @@ body {
 /* Parent container (IMPORTANT) */
 .parentContainer {
   position: relative;
+}
+
+.dropdown .dropdown-menu{
+    z-index: 9999;
 }
 
 /* Tooltip container */

@@ -94,14 +94,14 @@
 <aside class="dashboard-sidebar" id="dashboardSidebar">
     <div class="sidebar-brand">
       <div class="brand-logo">
-        <img src="{{ asset("new/logo.jpg") }}" class="img-fluid" alt="">
+        <img src="{{ asset("img/favicon.png") }}" class="img-fluid" alt="">
       </div>
     </div>
 
     <div class="sidebar-nav">
       <ul class="list-unstyled">
         <li class="nav-item">
-          <a href="#" class="nav-link {{ Route::is("dashboard", ["type" => "publisher"]) ? "active" : "" }}" id="navDashboard">
+          <a href="{{ route("dashboard", ["type" => "publisher"]) }}" class="nav-link {{ Route::is("dashboard", ["type" => "publisher"]) ? "active" : "" }}" id="navDashboard">
             <i class="fas fa-gauge-high"></i>
             <span class="tooltip-text-nav">Dashboard</span>
           </a>

@@ -1,5 +1,5 @@
 <?php $__env->startPush('title', 'Partners'); ?>
-<?php if (! $__env->hasRenderedOnce('e81b0618-fc6a-470a-82e3-80ade4ed4186')): $__env->markAsRenderedOnce('e81b0618-fc6a-470a-82e3-80ade4ed4186');
+<?php if (! $__env->hasRenderedOnce('0315d324-bc33-4244-a46b-12a062616095')): $__env->markAsRenderedOnce('0315d324-bc33-4244-a46b-12a062616095');
 $__env->startPush('styles'); ?>
 
 <link rel="stylesheet" href="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css")); ?>" />
@@ -312,7 +312,7 @@ $__env->startPush('styles'); ?>
 
 <?php $__env->stopPush(); endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('0c9c9bef-7f5b-44e5-95b1-66da86e54998')): $__env->markAsRenderedOnce('0c9c9bef-7f5b-44e5-95b1-66da86e54998');
+<?php if (! $__env->hasRenderedOnce('4c66f672-f761-4d02-b4d6-c66cb885f670')): $__env->markAsRenderedOnce('4c66f672-f761-4d02-b4d6-c66cb885f670');
 $__env->startPush('scripts'); ?>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js")); ?>"></script>
 <script src="<?php echo e(\App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js")); ?>"></script>
@@ -667,13 +667,20 @@ $__env->startPush('scripts'); ?>
         window.location.href = window.location.pathname + '?' + params.toString();
     }
 </script>
+<script>
+AOS.init({
+    once: true,
+    duration: 1100,
+    easing: "ease-out-cubic",
+    offset: 10,
+});
+</script>
 <?php $__env->stopPush(); endif; ?>
 
 <?php $__env->startSection("content"); ?>
-    <div class="az-content az-content-dashboard">
         <div class="container-fluid">
             <div class="row justify-content-between">
-                <div class="filter-bar-wrapper mb-4">
+                <div class="filter-bar-wrapper mb-4" data-aos="fade-down" data-aos-duration="900">
                     <div class="card shadow-sm border-0 rounded-3">
                         <!-- Filter Header - Collapsible on mobile -->
                         <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
@@ -811,7 +818,7 @@ $__env->startPush('scripts'); ?>
                 </div>
 
                 
-                <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="col-lg-2 col-md-4 col-sm-12" data-aos="fade-right" data-aos-delay="150" data-aos-duration="900">
 
                     <div class="card shadow-sm border-0 rounded-3">
 
@@ -825,20 +832,20 @@ $__env->startPush('scripts'); ?>
 
                                 <?php if(request()->route()->getName() != "publisher.own-advertisers"): ?>
 
-                                    <button class="nav-link text-start <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" id="allBrands">
+                                    <button class="nav-link text-start <?php echo e(!request()->section || request()->section == 'all' ? 'active' : ''); ?>" data-section="all" id="allBrands" data-aos="fade-right" data-aos-delay="250">
                                         <span>All Brands</span>
                                         
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'new' ? 'active' : ''); ?>" data-section="new" id="newBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'new' ? 'active' : ''); ?>" data-section="new" id="newBrands" data-aos="fade-right" data-aos-delay="320">
                                         New
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'not-joined' ? 'active' : ''); ?>" data-section="not-joined" id="notJoinedBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'not-joined' ? 'active' : ''); ?>" data-section="not-joined" id="notJoinedBrands" data-aos="fade-right" data-aos-delay="390">
                                         Not Joined
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" id="pendingBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'pending' ? 'active' : ''); ?>" data-section="pending" id="pendingBrands" data-aos="fade-right" data-aos-delay="460">
                                         Pending
                                     </button>
 
@@ -846,15 +853,15 @@ $__env->startPush('scripts'); ?>
 
                                 <?php if(request()->route()->getName() == "publisher.own-advertisers"): ?>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'joined' || empty(request()->section) ? 'active' : ''); ?>" data-section="joined" id="joinedBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'joined' || empty(request()->section) ? 'active' : ''); ?>" data-section="joined" id="joinedBrands" data-aos="fade-right" data-aos-delay="250">
                                         Joined
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" id="holdBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'hold' ? 'active' : ''); ?>" data-section="hold" id="holdBrands" data-aos="fade-right" data-aos-delay="320">
                                         Hold
                                     </button>
 
-                                    <button class="nav-link text-start <?php echo e(request()->section == 'rejected' ? 'active' : ''); ?>" data-section="rejected" id="rejectedBrands">
+                                    <button class="nav-link text-start <?php echo e(request()->section == 'rejected' ? 'active' : ''); ?>" data-section="rejected" id="rejectedBrands" data-aos="fade-right" data-aos-delay="390">
                                         Rejected
                                     </button>
 
@@ -868,12 +875,17 @@ $__env->startPush('scripts'); ?>
                 </div>
 
                 
-                <div class="col-lg-10 col-md-4 col-sm-12">
+                <div class="col-lg-10 col-md-4 col-sm-12"
+             data-aos="fade-left"
+             data-aos-delay="250"
+             data-aos-duration="950">
                     <!-- Start: Top Bar -->
 
 
                     <!-- View Toggle -->
-                    <div class="card shadow-sm" style="border-radius: 0;">
+                    <div class="card shadow-sm" style="border-radius: 0;"
+                 data-aos="fade-up"
+                 data-aos-delay="350">
                         <div class="card-body py-1">
                             <div class="d-flex justify-content-between align-items-center gap-3 py-3">
                                 <div class="col-12 col-lg-4">
@@ -898,7 +910,7 @@ $__env->startPush('scripts'); ?>
                                             $queryParams = request()->all();
                                         ?>
 
-                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-1">
 
                                             <li>
                                                 <a class="dropdown-item d-flex align-items-center"
@@ -907,7 +919,7 @@ $__env->startPush('scripts'); ?>
                                                     Export to Excel
                                                 </a>
                                             </li>
-
+                                            
                                             <li>
                                                 <a class="dropdown-item d-flex align-items-center"
                                                 href="<?php echo e(route('publisher.export-advertisers', array_merge(['type' => 'csv'], $queryParams))); ?>">
@@ -1015,8 +1027,6 @@ $__env->startPush('scripts'); ?>
                 </form>
             </div>
         </div>
-
-    </div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make("layouts.publisher.publisher_panel", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\lynktrix\resources\views/template/publisher/advertisers/find.blade.php ENDPATH**/ ?>

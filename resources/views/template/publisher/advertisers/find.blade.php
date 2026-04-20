@@ -2,7 +2,7 @@
 @push('title', 'Partners')
 @pushonce('styles')
 
-<link rel="stylesheet" href="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/css/select2.min.css") }}" />
+<link rel="stylesheet" href="{{ asset("vendor_assets/css/select2.min.css") }}" />
 <style>
     :root {
         --primary-color: #c22437;
@@ -313,8 +313,8 @@
 @endpushonce
 
 @pushonce('scripts')
-<script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/select2.full.min.js") }}"></script>
-<script src="{{ \App\Helper\Static\Methods::staticAsset("vendor_assets/js/drawer.js") }}"></script>
+<script src="{{ asset("vendor_assets/js/select2.full.min.js") }}"></script>
+<script src="{{ asset("vendor_assets/js/drawer.js") }}"></script>
 @php $section = request()->section ?? null; @endphp
 @php $page = request()->page ?? null; @endphp
 <script>
@@ -669,7 +669,6 @@
 @endpushonce
 
 @section("content")
-    <div class="az-content az-content-dashboard">
         <div class="container-fluid">
             <div class="row justify-content-between">
                 <div class="filter-bar-wrapper mb-4">
@@ -897,7 +896,7 @@
                                             $queryParams = request()->all();
                                         @endphp
 
-                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-1">
 
                                             <li>
                                                 <a class="dropdown-item d-flex align-items-center"
@@ -1018,6 +1017,4 @@
                 </form>
             </div>
         </div>
-
-    </div>
 @endsection
