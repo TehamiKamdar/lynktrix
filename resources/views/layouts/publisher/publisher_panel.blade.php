@@ -133,177 +133,177 @@
 
     <script>
 
-        let toastCount = 0;
+        // let toastCount = 0;
 
-        function createToast(type, content) {
-            let icon = '', toast = '';
-            const notificationShocase = $('.notification-wrapper');
+        // function createToast(type, content) {
+        //     let icon = '', toast = '';
+        //     const notificationShocase = $('.notification-wrapper');
 
-            if (type)
-                icon = 'check-circle';
-            else
-                icon = 'x-circle';
+        //     if (type)
+        //         icon = 'check-circle';
+        //     else
+        //         icon = 'x-circle';
 
-            toast = `
-                    <div class="atbd-notification-box notification-${type} notification-${toastCount}">
-                        <div class="atbd-notification-box__content media">
-                            <div class="atbd-notification-box__icon">
-                                <span data-feather="${icon}"></span>
-                            </div>
-                            <div class="atbd-notification-box__text media-body">
-                                <h6>Notification</h6>
-                                ${content}
-                            </div>
-                        </div>
-                        <a href="#" class="atbd-notification-box__close" data-toast="close">
-                            <span data-feather="x"></span>
-                        </a>
-                    </div>
-                    `;
+        //     toast = `
+        //             <div class="atbd-notification-box notification-${type} notification-${toastCount}">
+        //                 <div class="atbd-notification-box__content media">
+        //                     <div class="atbd-notification-box__icon">
+        //                         <span data-feather="${icon}"></span>
+        //                     </div>
+        //                     <div class="atbd-notification-box__text media-body">
+        //                         <h6>Notification</h6>
+        //                         ${content}
+        //                     </div>
+        //                 </div>
+        //                 <a href="#" class="atbd-notification-box__close" data-toast="close">
+        //                     <span data-feather="x"></span>
+        //                 </a>
+        //             </div>
+        //             `;
 
-            notificationShocase.append(toast);
-            toastCount++;
-        }
+        //     notificationShocase.append(toast);
+        //     toastCount++;
+        // }
 
-        function normalMsg(response) {
-            let content = `<p>${response.message}</p>`;
+        // function normalMsg(response) {
+        //     let content = `<p>${response.message}</p>`;
 
-            let duration = (optionValue, defaultValue) =>
-                typeof optionValue === "undefined" ? defaultValue : optionValue;
+        //     let duration = (optionValue, defaultValue) =>
+        //         typeof optionValue === "undefined" ? defaultValue : optionValue;
 
-            let type = "danger";
-            if (response.success)
-                type = "success";
+        //     let type = "danger";
+        //     if (response.success)
+        //         type = "success";
 
-            createToast(type, content);
-            feather.replace();
-            let thisToast = toastCount - 1;
+        //     createToast(type, content);
+        //     feather.replace();
+        //     let thisToast = toastCount - 1;
 
-            $('*[data-toast]').on('click', function () {
-                $(this).parent('.atbd-notification-box').remove();
-            })
+        //     $('*[data-toast]').on('click', function () {
+        //         $(this).parent('.atbd-notification-box').remove();
+        //     })
 
-            setTimeout(function () {
-                $(document).find(".notification-" + thisToast).remove();
-            }, duration(6000));
-        }
+        //     setTimeout(function () {
+        //         $(document).find(".notification-" + thisToast).remove();
+        //     }, duration(6000));
+        // }
 
-        function copyToClipboard(elem) {
-            // create hidden text element, if it doesn't already exist
-            var targetId = "_hiddenCopyText_";
-            var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
-            var origSelectionStart, origSelectionEnd;
-            if (isInput) {
-                // can just use the original source element for the selection and copy
-                target = elem;
-                origSelectionStart = elem.selectionStart;
-                origSelectionEnd = elem.selectionEnd;
-            } else {
-                // must use a temporary form element for the selection and copy
-                target = document.getElementById(targetId);
-                if (!target) {
-                    var target = document.createElement("textarea");
-                    target.style.position = "absolute";
-                    target.style.left = "-9999px";
-                    target.style.top = "0";
-                    target.id = targetId;
-                    document.body.appendChild(target);
-                }
-                target.textContent = elem.textContent;
-            }
-            // select the content
-            var currentFocus = document.activeElement;
-            target.focus();
-            target.setSelectionRange(0, target.value.length);
+        // function copyToClipboard(elem) {
+        //     // create hidden text element, if it doesn't already exist
+        //     var targetId = "_hiddenCopyText_";
+        //     var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        //     var origSelectionStart, origSelectionEnd;
+        //     if (isInput) {
+        //         // can just use the original source element for the selection and copy
+        //         target = elem;
+        //         origSelectionStart = elem.selectionStart;
+        //         origSelectionEnd = elem.selectionEnd;
+        //     } else {
+        //         // must use a temporary form element for the selection and copy
+        //         target = document.getElementById(targetId);
+        //         if (!target) {
+        //             var target = document.createElement("textarea");
+        //             target.style.position = "absolute";
+        //             target.style.left = "-9999px";
+        //             target.style.top = "0";
+        //             target.id = targetId;
+        //             document.body.appendChild(target);
+        //         }
+        //         target.textContent = elem.textContent;
+        //     }
+        //     // select the content
+        //     var currentFocus = document.activeElement;
+        //     target.focus();
+        //     target.setSelectionRange(0, target.value.length);
 
-            // copy the selection
-            var succeed;
-            try {
-                succeed = document.execCommand("copy");
-            } catch (e) {
-                succeed = false;
-            }
-            // restore original focus
-            if (currentFocus && typeof currentFocus.focus === "function") {
-                currentFocus.focus();
-            }
+        //     // copy the selection
+        //     var succeed;
+        //     try {
+        //         succeed = document.execCommand("copy");
+        //     } catch (e) {
+        //         succeed = false;
+        //     }
+        //     // restore original focus
+        //     if (currentFocus && typeof currentFocus.focus === "function") {
+        //         currentFocus.focus();
+        //     }
 
-            if (isInput) {
-                // restore prior selection
-                elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-            } else {
-                // clear temporary content
-                target.textContent = "";
-            }
-            return succeed;
-        }
+        //     if (isInput) {
+        //         // restore prior selection
+        //         elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        //     } else {
+        //         // clear temporary content
+        //         target.textContent = "";
+        //     }
+        //     return succeed;
+        // }
 
-        function showErrors(response) {
-            let duration = (optionValue, defaultValue) =>
-                typeof optionValue === "undefined" ? defaultValue : optionValue;
+        // function showErrors(response) {
+        //     let duration = (optionValue, defaultValue) =>
+        //         typeof optionValue === "undefined" ? defaultValue : optionValue;
 
-            let errorContent = "";
+        //     let errorContent = "";
 
-            if (response.responseJSON.hasOwnProperty("errors")) {
-                Object.values(response.responseJSON.errors).forEach(errors => {
-                    errors.forEach(error => {
-                        errorContent += `<p>${error}</p>`
-                    });
-                });
-            } else if (response.responseJSON.hasOwnProperty("message")) {
-                errorContent += `<p>${response.responseJSON.message}</p>`
-            }
+        //     if (response.responseJSON.hasOwnProperty("errors")) {
+        //         Object.values(response.responseJSON.errors).forEach(errors => {
+        //             errors.forEach(error => {
+        //                 errorContent += `<p>${error}</p>`
+        //             });
+        //         });
+        //     } else if (response.responseJSON.hasOwnProperty("message")) {
+        //         errorContent += `<p>${response.responseJSON.message}</p>`
+        //     }
 
-            createToast("danger", errorContent);
-            feather.replace();
-            let thisToast = toastCount - 1;
+        //     createToast("danger", errorContent);
+        //     feather.replace();
+        //     let thisToast = toastCount - 1;
 
-            $('*[data-toast]').on('click', function () {
-                $(this).parent('.atbd-notification-box').remove();
-            })
+        //     $('*[data-toast]').on('click', function () {
+        //         $(this).parent('.atbd-notification-box').remove();
+        //     })
 
-            setTimeout(function () {
-                $(document).find(".notification-" + thisToast).remove();
-            }, duration(6000));
-        }
+        //     setTimeout(function () {
+        //         $(document).find(".notification-" + thisToast).remove();
+        //     }, duration(6000));
+        // }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            $(".btn-author-action").on("click", function () {
-                $(".mobile-author-actions").toggleClass("show");
-                $(".mobile-search").removeClass("show");
-                $(".btn-search").removeClass("search-active");
-            });
-            $(".sales-target__progress-bar").each(function () {
-                var bar = $(this).find(".bar");
-                var val = $(this).find("span");
-                var per = parseInt(val.text(), 10);
-                var $right = $('.right');
-                var $back = $('.back');
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     $(".btn-author-action").on("click", function () {
+        //         $(".mobile-author-actions").toggleClass("show");
+        //         $(".mobile-search").removeClass("show");
+        //         $(".btn-search").removeClass("search-active");
+        //     });
+        //     $(".sales-target__progress-bar").each(function () {
+        //         var bar = $(this).find(".bar");
+        //         var val = $(this).find("span");
+        //         var per = parseInt(val.text(), 10);
+        //         var $right = $('.right');
+        //         var $back = $('.back');
 
-                $({
-                    p: 0
-                }).animate({
-                    p: per
-                }, {
-                    duration: 3000,
-                    step: function (p) {
-                        bar.css({
-                            transform: "rotate(" + (45 + (p * 1.8)) + "deg)"
-                        });
-                        val.text(p | 0);
-                    }
-                }).delay(200);
+        //         $({
+        //             p: 0
+        //         }).animate({
+        //             p: per
+        //         }, {
+        //             duration: 3000,
+        //             step: function (p) {
+        //                 bar.css({
+        //                     transform: "rotate(" + (45 + (p * 1.8)) + "deg)"
+        //                 });
+        //                 val.text(p | 0);
+        //             }
+        //         }).delay(200);
 
-                if (per == 100) {
-                    $back.delay(2600).animate({
-                        'top': '18px'
-                    }, 200);
-                }
-                if (per == 0) {
-                    $('.left').css('background', 'gray');
-                }
-            });
-        });
+        //         if (per == 100) {
+        //             $back.delay(2600).animate({
+        //                 'top': '18px'
+        //             }, 200);
+        //         }
+        //         if (per == 0) {
+        //             $('.left').css('background', 'gray');
+        //         }
+        //     });
+        // });
 
         // Preloader
         window.addEventListener('load', function () {
